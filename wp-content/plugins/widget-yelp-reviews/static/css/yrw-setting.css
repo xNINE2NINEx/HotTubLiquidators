@@ -1,0 +1,88 @@
+#wpcontent {
+  font-size: 14px;
+  background-color:#fafafa;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.form {
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.yrw-setting {
+  position: relative;
+  margin: 20px 0 0;
+}
+
+.nav-tabs {
+  margin: 13px 0 0;
+}
+
+.version {
+  position: absolute;
+  top: 6px;
+  right: 16px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 20px 0 0;
+  padding: 6px 10px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFF;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: #999;
+}
+
+.version.pro {
+  background-color: #00bf54;
+}
+
+.twitter > iframe {
+  vertical-align: bottom !important;
+}
+
+.googleplus > div {
+  vertical-align: bottom !important;
+}
+
+#yrw-shortcode {
+  width: 100%;
+  overflow: auto;
+  border: 0;
+  outline: 0;
+  min-height: 184px;
+  padding: 0;
+  color: #555;
+  font-size: 13px;
+  resize: none;
+  background-color: #fff;
+  box-shadow: none !important;
+}
+
+#setting input[type="text"],
+#setting select {
+  height: 30px;
+  width: 400px;
+  padding: 4px;
+  background: #fff;
+  box-shadow: none;
+  border: 1px solid #ccc;
+}
+
+
+input[type="checkbox"] {
+  margin-right: 6px;
+  vertical-align: baseline !important;
+}
+
+input[type="checkbox"]:checked:before {
+  margin: 0 !important;
+}

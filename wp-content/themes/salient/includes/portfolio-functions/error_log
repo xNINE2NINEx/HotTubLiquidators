@@ -1,0 +1,1 @@
+[02-Oct-2014 13:43:14 UTC] PHP Warning:  array_key_exists() expects parameter 2 to be array, boolean given in /home/hottub1/public_html/wp-content/plugins/yelp-widget-pro/yelp-widget-pro.php on line 56
