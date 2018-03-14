@@ -298,7 +298,9 @@ caption, th, td {
 		font-weight: normal;
 		text-align: left;
 }
-
+.home .container-wrap{
+	background-color:#000 !important;
+	}
 .container-wrap, .project-title {
 	background-color: #fff;
 	position: relative;
@@ -1009,6 +1011,43 @@ border-right:1px dotted #333 !important;
 	height: 50px;	
 	z-index: 1000;
 }
+.icon-yelp:before{
+	content:'';
+	background-image: url(img/icon-yelp.png);
+	background-size:contain;
+	height:22px;
+	width:22px;
+	margin-top:-5px;
+	}
+.icon-yelp:hover::before{
+	content:'';
+	background-image: url(img/icon-yelp-hover.png);
+	background-size:contain;
+	height:22px;
+	width:22px;
+	margin-top:-5px;
+	}
+
+#footer-outer #copyright .icon-yelp:before{
+	content:'';
+	background-image: url(img/icon-yelp-hover.png);
+	background-size:contain;
+	height:22px;
+	width:22px;
+	margin-top:4px;
+	}
+#footer-outer #copyright .icon-yelp:hover::before{
+	content:'';
+	background-image: url(img/icon-yelp.png);
+	background-size:contain;
+	height:22px;
+	width:22px;
+	margin-top:4px;
+	}
+
+#footer-outer #copyright li a i:hover::before{
+	color:#fff !important;
+	}
 /*.sf-menu .menu-item-2040 a{
 	background-color:#9eddf1 !important;
 	
@@ -6673,6 +6712,9 @@ html:not(.js) .full-width-section {
     padding: 16px 21px;
 }
 
+.home #call-to-action .triangle {
+    border-top: 15px solid #000;
+}
 #call-to-action .triangle {
 	border-left: 15px solid transparent;
     border-right: 15px solid transparent;
@@ -8697,7 +8739,7 @@ header#top nav > ul{
 	margin-bottom:-7px !important;
 }
 .sub-menu{
-	top:39px !important;
+	top:36px !important;
 	left:0 !important;
 }
 header#top nav .sub-menu li a{
@@ -8859,6 +8901,9 @@ header#top nav .sub-menu li:first-child{
 }
 .blue{
 	background-color:#2c3e50 !important;
+}
+.whitetxt{
+	color:#fff !important;
 }
 .redtxt{
 	color:#d13826 !important;
