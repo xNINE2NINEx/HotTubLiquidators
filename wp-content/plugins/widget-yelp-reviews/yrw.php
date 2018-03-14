@@ -4,7 +4,7 @@ Plugin Name: Yelp Reviews Widget
 Plugin URI: https://richplugins.com
 Description: Instantly Yelp rating and reviews on your website to increase user confidence and SEO.
 Author: RichPlugins <support@richplugins.com>
-Version: 1.5
+Version: 1.6
 Author URI: https://richplugins.com
 */
 
@@ -15,7 +15,7 @@ require(ABSPATH . 'wp-includes/version.php');
 include_once(dirname(__FILE__) . '/api/urlopen.php');
 include_once(dirname(__FILE__) . '/helper/debug.php');
 
-define('YRW_VERSION',             '1.5');
+define('YRW_VERSION',             '1.6');
 define('YRW_API',                 'https://api.yelp.com/v3/businesses');
 define('YRW_PLUGIN_URL',          plugins_url(basename(plugin_dir_path(__FILE__ )), basename(__FILE__)));
 define('YRW_AVATAR',              YRW_PLUGIN_URL . '/static/img/yelp-avatar.png');
@@ -25,6 +25,7 @@ function yrw_options() {
         'yrw_version',
         'yrw_active',
         'yrw_api_key',
+        'yrw_language',
     );
 }
 
@@ -82,14 +83,15 @@ function yrw_plugin_row_meta($input, $file) {
 add_filter('plugin_row_meta', 'yrw_plugin_row_meta', 10, 2);
 
 /*-------------------------------- Database --------------------------------*/
-function yrw_activation() {
+function yrw_activation($network_wide) {
     if (yrw_does_need_update()) {
-        yrw_install();
+        yrw_install($network_wide);
     }
 }
 register_activation_hook(__FILE__, 'yrw_activation');
 
-function yrw_install($allow_db_install=true) {
+function yrw_install($network_wide, $allow_db_install=true) {
+    global $wpdb;
 
     $version = (string)get_option('yrw_version');
     if (!$version) {
@@ -97,7 +99,17 @@ function yrw_install($allow_db_install=true) {
     }
 
     if ($allow_db_install) {
-        yrw_install_db($version);
+        if (function_exists('is_multisite') && is_multisite() && $network_wide) {
+            $current_blog_id = get_current_blog_id();
+            $blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+            foreach ($blog_ids as $blog_id) {
+                switch_to_blog($blog_id);
+                yrw_install_db();
+            }
+            switch_to_blog($current_blog_id);
+        } else {
+            yrw_install_db();
+        }
     }
 
     if (version_compare($version, YRW_VERSION, '=')) {
@@ -111,41 +123,70 @@ function yrw_install($allow_db_install=true) {
 function yrw_install_db() {
     global $wpdb;
 
-    $wpdb->query("CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "yrw_yelp_business (".
-                 "id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,".
-                 "business_id VARCHAR(100) NOT NULL,".
-                 "name VARCHAR(255) NOT NULL,".
-                 "photo VARCHAR(255),".
-                 "address VARCHAR(255),".
-                 "rating DOUBLE PRECISION,".
-                 "url VARCHAR(255),".
-                 "website VARCHAR(255),".
-                 "review_count INTEGER NOT NULL,".
-                 "PRIMARY KEY (`id`),".
-                 "UNIQUE INDEX yrw_business_id (`business_id`)".
-                 ");");
+    $charset_collate = $wpdb->get_charset_collate();
 
-    $wpdb->query("CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "yrw_yelp_review (".
-                 "id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,".
-                 "yelp_business_id BIGINT(20) UNSIGNED NOT NULL,".
-                 "hash VARCHAR(40) NOT NULL,".
-                 "rating INTEGER NOT NULL,".
-                 "text VARCHAR(10000),".
-                 "url VARCHAR(255),".
-                 "time VARCHAR(20) NOT NULL,".
-                 "author_name VARCHAR(255),".
-                 "author_img VARCHAR(255),".
-                 "PRIMARY KEY (`id`),".
-                 "UNIQUE INDEX yrw_yelp_review_hash (`hash`),".
-                 "INDEX yrw_yelp_business_id (`yelp_business_id`)".
-                 ");");
+    $sql = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "yrw_yelp_business (".
+           "id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,".
+           "business_id VARCHAR(100) NOT NULL,".
+           "name VARCHAR(255) NOT NULL,".
+           "photo VARCHAR(255),".
+           "address VARCHAR(255),".
+           "rating DOUBLE PRECISION,".
+           "url VARCHAR(255),".
+           "website VARCHAR(255),".
+           "review_count INTEGER NOT NULL,".
+           "PRIMARY KEY (`id`),".
+           "UNIQUE INDEX yrw_business_id (`business_id`)".
+           ") " . $charset_collate . ";";
+
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
+    dbDelta($sql);
+
+    $sql = "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "yrw_yelp_review (".
+           "id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,".
+           "yelp_business_id BIGINT(20) UNSIGNED NOT NULL,".
+           "hash VARCHAR(40) NOT NULL,".
+           "rating INTEGER NOT NULL,".
+           "text VARCHAR(10000),".
+           "url VARCHAR(255),".
+           "time VARCHAR(20) NOT NULL,".
+           "author_name VARCHAR(255),".
+           "author_img VARCHAR(255),".
+           "PRIMARY KEY (`id`),".
+           "UNIQUE INDEX yrw_yelp_review_hash (`hash`),".
+           "INDEX yrw_yelp_business_id (`yelp_business_id`)".
+           ") " . $charset_collate . ";";
+
+    dbDelta($sql);
 }
 
-function yrw_reset_db() {
+function yrw_reset($reset_db) {
     global $wpdb;
 
-    $wpdb->query("DROP TABLE " . $wpdb->prefix . "yrw_yelp_business;");
-    $wpdb->query("DROP TABLE " . $wpdb->prefix . "yrw_yelp_review;");
+    if (function_exists('is_multisite') && is_multisite()) {
+        $current_blog_id = get_current_blog_id();
+        $blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
+        foreach ($blog_ids as $blog_id) {
+            switch_to_blog($blog_id);
+            yrw_reset_data($reset_db);
+        }
+        switch_to_blog($current_blog_id);
+    } else {
+        yrw_reset_data($reset_db);
+    }
+}
+
+function yrw_reset_data($reset_db) {
+    global $wpdb;
+
+    foreach (yrw_options() as $opt) {
+        delete_option($opt);
+    }
+    if ($reset_db) {
+        $wpdb->query("DROP TABLE " . $wpdb->prefix . "yrw_yelp_business;");
+        $wpdb->query("DROP TABLE " . $wpdb->prefix . "yrw_yelp_review;");
+    }
 }
 
 /*-------------------------------- Request --------------------------------*/

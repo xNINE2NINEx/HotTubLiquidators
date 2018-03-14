@@ -10,21 +10,21 @@
 </div>
 <?php } ?>
 
-<h4 class="yrw-options-toggle"><?php echo yrw_i('Review Options'); ?></h4>
-<div class="yrw-options" style="display:none">
-    <div class="form-group yrw-disabled">
+<h4 class="rplg-options-toggle"><?php echo yrw_i('Review Options'); ?></h4>
+<div class="rplg-options" style="display:none">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <input class="form-control" type="checkbox" disabled />
             <label><?php echo yrw_i('Try to get more than 3 reviews from Yelp'); ?></label>
         </div>
     </div>
-    <div class="form-group yrw-disabled">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <input class="form-control" type="checkbox" disabled />
             <label><?php echo yrw_i('Enable Google Rich Snippet (schema.org)'); ?></label>
         </div>
     </div>
-    <div class="form-group yrw-disabled">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <?php echo yrw_i('Pagination'); ?>
             <select class="form-control" disabled >
@@ -38,7 +38,7 @@
             </select>
         </div>
     </div>
-    <div class="form-group yrw-disabled">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <?php echo yrw_i('Sorting'); ?>
             <select class="form-control" disabled >
@@ -50,7 +50,7 @@
             </select>
         </div>
     </div>
-    <div class="form-group yrw-disabled">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <?php echo yrw_i('Minimum Review Rating'); ?>
             <select class="form-control" disabled >
@@ -64,21 +64,21 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="yrw-pro"><?php echo yrw_i('These features are available in Yelp Reviews Pro plugin: '); ?>
+        <div class="rplg-pro"><?php echo yrw_i('These features are available in Yelp Reviews Pro plugin: '); ?>
             <a href="https://richplugins.com/yelp-reviews-pro-wordpress-plugin" target="_blank"><?php echo yrw_i('Upgrade to Pro'); ?></a>
         </div>
     </div>
 </div>
 
-<h4 class="yrw-options-toggle"><?php echo yrw_i('Display Options'); ?></h4>
-<div class="yrw-options" style="display:none">
-    <div class="form-group yrw-disabled">
+<h4 class="rplg-options-toggle"><?php echo yrw_i('Display Options'); ?></h4>
+<div class="rplg-options" style="display:none">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <input class="form-control" type="checkbox" disabled />
             <label><?php echo yrw_i('Hide business photo'); ?></label>
         </div>
     </div>
-    <div class="form-group yrw-disabled">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <input class="form-control" type="checkbox" disabled />
             <label><?php echo yrw_i('Hide user avatars'); ?></label>
@@ -90,7 +90,7 @@
             <label for="<?php echo $this->get_field_id('dark_theme'); ?>"><?php echo yrw_i('Dark theme'); ?></label>
         </div>
     </div>
-    <div class="form-group yrw-disabled">
+    <div class="form-group rplg-disabled">
         <div class="col-sm-12">
             <label><?php echo yrw_i('Review limit before \'read more\' link'); ?></label>
             <input class="form-control" type="text" placeholder="for instance: 120"  disabled />
@@ -109,14 +109,14 @@
         </div>
     </div>
     <div class="form-group">
-        <div class="yrw-pro"><?php echo yrw_i('These features are available in Yelp Reviews Pro plugin: '); ?>
+        <div class="rplg-pro"><?php echo yrw_i('These features are available in Yelp Reviews Pro plugin: '); ?>
             <a href="https://richplugins.com/yelp-reviews-pro-wordpress-plugin" target="_blank"><?php echo yrw_i('Upgrade to Pro'); ?></a>
         </div>
     </div>
 </div>
 
-<h4 class="yrw-options-toggle"><?php echo yrw_i('Advance Options'); ?></h4>
-<div class="yrw-options" style="display:none">
+<h4 class="rplg-options-toggle"><?php echo yrw_i('Advance Options'); ?></h4>
+<div class="rplg-options" style="display:none">
     <div class="form-group">
         <div class="col-sm-12">
             <input id="<?php echo $this->get_field_id('open_link'); ?>" name="<?php echo $this->get_field_name('open_link'); ?>" class="form-control" type="checkbox" value="1" <?php checked('1', $open_link); ?> />

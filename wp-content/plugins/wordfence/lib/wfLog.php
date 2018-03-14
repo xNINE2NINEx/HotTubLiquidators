@@ -301,7 +301,7 @@ class wfLog {
 	
 	public function tagRequestForLockout($reason) {
 		if ($this->currentRequest !== null) {
-			$this->currentRequest->statusCode = 403;
+			$this->currentRequest->statusCode = 503;
 			$this->currentRequest->action = 'lockedOut';
 			$this->currentRequest->actionDescription = $reason;
 		}
@@ -1322,6 +1322,15 @@ class wfRequestModel extends wfModel {
 
 	public function hasColumn($column) {
 		return in_array($column, $this->columns);
+	}
+	
+	public function save() {
+		$sapi = @php_sapi_name();
+		if ($sapi == "cli") {
+			return false;
+		}
+		
+		return parent::save();
 	}
 }
 

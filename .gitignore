@@ -1,0 +1,6 @@
+wp-content/uploads/
+wp-config.php
+wp-admin/error_log
+wp-content/wflogs/*
+wp-content/wflogs/config.php
+error_log

@@ -43,22 +43,21 @@ class Yelp_Reviews_Widget extends WP_Widget {
     function yrw_widget_scripts($hook) {
         if ($hook == 'widgets.php' || ($hook == 'customize.php' && defined('SITEORIGIN_PANELS_VERSION'))) {
 
+            wp_register_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
+            wp_enqueue_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
+
             wp_enqueue_script('jquery');
 
             wp_register_script('yrw_wpac_js', plugins_url('/static/js/wpac.js', __FILE__));
             wp_enqueue_script('yrw_wpac_js', plugins_url('/static/js/wpac.js', __FILE__));
 
-            $finder_vars = array(
+            wp_register_script('yrw_finder_js', plugins_url('/static/js/yrw-finder.js', __FILE__));
+            wp_localize_script('yrw_finder_js', 'finderVars', array(
                 'YELP_AVATAR' => YRW_AVATAR,
                 'handlerUrl' => admin_url('options-general.php?page=yrw'),
                 'actionPrefix' => 'yrw'
-            );
-            wp_register_script('yrw_finder_js', plugins_url('/static/js/yrw-finder.js', __FILE__));
-            wp_localize_script('yrw_finder_js', 'finderVars', $finder_vars );
+            ));
             wp_enqueue_script('yrw_finder_js', plugins_url('/static/js/yrw-finder.js', __FILE__));
-
-            wp_register_style('yrw_finder_css', plugins_url('/static/css/yrw-finder.css', __FILE__));
-            wp_enqueue_style('yrw_finder_css', plugins_url('/static/css/yrw-finder.css', __FILE__));
         }
     }
 

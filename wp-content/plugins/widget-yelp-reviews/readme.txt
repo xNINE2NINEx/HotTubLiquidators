@@ -4,7 +4,7 @@ Donate link: https://richplugins.com/yelp-reviews-pro-wordpress-plugin
 Tags: yelp, yelp widget, yelp shortcode, yelp api, yelp business listings, yelp reviews, yelp reviews widget, yelp business reviews, yelp widget pro, business reviews, google reviews, google places reviews, facebook reviews, facebook page reviews
 Requires at least: 2.8
 Tested up to: 4.9
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,8 @@ Yelp Reviews Widget show Yelp Business Reviews on your WordPress website to incr
 `To get more unique features we have <a href="https://richplugins.com/yelp-reviews-pro-wordpress-plugin">Yelp Reviews Pro</a> plugin`
 
 This plugin display Yelp Business Reviews on your websites in sidebar widget. A unique feature of the plugin is that it save reviews in WordPress database and have no depend on any services like Yelp to show these reviews.
+
+The plugin requires Yelp API key to work. To get the key, please <a href="https://www.yelp.com/developers/v3/manage_app" target="_blank">create Yelp application</a> under a free Yelp account.
 
 [youtube https://www.youtube.com/watch?v=nVyxAHmYQkU]
 
@@ -68,6 +70,11 @@ Why limit your reviews to just Yelp Business Reviews? Check out our other free b
 3. Yelp Reviews sidebar
 
 == Changelog ==
+
+= 1.6 =
+* Update readme
+* Improve: Added compatibility with WP multisite
+* Bugfix: corrected time ago messages
 
 = 1.5 =
 * Move from OAuth to Yelp API Key

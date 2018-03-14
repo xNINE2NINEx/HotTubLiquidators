@@ -46,7 +46,7 @@ function yrw_sidebar_init(data) {
     });
 
     jQuery(document).ready(function($) {
-        $('.yrw-options-toggle', el).unbind('click').click(function () {
+        $('.rplg-options-toggle', el).unbind('click').click(function () {
             $(this).toggleClass('toggled');
             $(this).next().slideToggle();
         });

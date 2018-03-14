@@ -43,12 +43,7 @@ if (!empty($_POST)) {
 
 // Reset
 if (isset($_POST['reset'])) {
-    foreach (yrw_options() as $opt) {
-        delete_option($opt);
-    }
-    if (isset($_POST['reset_db'])) {
-        yrw_reset_db();
-    }
+    yrw_reset(isset($_POST['reset_db']));
     unset($_POST);
     ?>
     <div class="wrap">
@@ -78,36 +73,39 @@ if (isset($_POST['yrw_active']) && isset($_GET['yrw_active'])) {
 if (isset($_POST['yrw_setting'])) {
     update_option('yrw_api_key', trim(sanitize_text_field($_POST['yrw_api_key'])));
     update_option('yrw_language', trim(sanitize_text_field($_POST['yrw_language'])));
+    $yrw_setting_page = true;
+} else {
+    $yrw_setting_page = false;
 }
 
 if (isset($_POST['yrw_install_db'])) {
     yrw_install_db();
 }
 
+wp_register_style('twitter_bootstrap3_css', plugins_url('/static/css/bootstrap.min.css', __FILE__));
+wp_enqueue_style('twitter_bootstrap3_css', plugins_url('/static/css/bootstrap.min.css', __FILE__));
+
+wp_register_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
+wp_enqueue_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
+
+wp_register_style('rplg_setting_css', plugins_url('/static/css/rplg-setting.css', __FILE__));
+wp_enqueue_style('rplg_setting_css', plugins_url('/static/css/rplg-setting.css', __FILE__));
+
 wp_enqueue_script('jquery');
-
-wp_register_script('yrw_bootstrap_js', plugins_url('/static/js/bootstrap.min.js', __FILE__));
-wp_enqueue_script('yrw_bootstrap_js', plugins_url('/static/js/bootstrap.min.js', __FILE__));
-wp_register_style('yrw_bootstrap_css', plugins_url('/static/css/bootstrap.min.css', __FILE__));
-wp_enqueue_style('yrw_bootstrap_css', plugins_url('/static/css/bootstrap.min.css', __FILE__));
-
-wp_register_style('yrw_setting_css', plugins_url('/static/css/yrw-setting.css', __FILE__));
-wp_enqueue_style('yrw_setting_css', plugins_url('/static/css/yrw-setting.css', __FILE__));
 
 $yrw_enabled = get_option('yrw_active') == '1';
 $yrw_api_key = get_option('yrw_api_key');
 $yrw_language = get_option('yrw_language');
-
 ?>
 
 <span class="version"><?php echo yrw_i('Free Version: %s', esc_html(YRW_VERSION)); ?></span>
 <div class="yrw-setting container-fluid">
     <img src="<?php echo YRW_PLUGIN_URL . '/static/img/yelp-logo.png'; ?>" alt="Yelp" style="height:45px">
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active">
+        <li role="presentation"<?php if (!$yrw_setting_page) { ?> class="active"<?php } ?>>
             <a href="#about" aria-controls="about" role="tab" data-toggle="tab"><?php echo yrw_i('About'); ?></a>
         </li>
-        <li role="presentation">
+        <li role="presentation"<?php if ($yrw_setting_page) { ?> class="active"<?php } ?>>
             <a href="#setting" aria-controls="setting" role="tab" data-toggle="tab"><?php echo yrw_i('Setting'); ?></a>
         </li>
         <li role="presentation">
@@ -115,7 +113,7 @@ $yrw_language = get_option('yrw_language');
         </li>
     </ul>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="about">
+        <div role="tabpanel" class="tab-pane<?php if (!$yrw_setting_page) { ?> active<?php } ?>" id="about">
             <div class="row">
                 <div class="col-sm-6">
                     <h4><?php echo yrw_i('Yelp Reviews Widget for WordPress'); ?></h4>
@@ -191,7 +189,7 @@ $yrw_language = get_option('yrw_language');
             <p>* Hide/Show business photo, user avatars</p>
             <p>* Priority support</p>
         </div>
-        <div role="tabpanel" class="tab-pane" id="setting">
+        <div role="tabpanel" class="tab-pane<?php if ($yrw_setting_page) { ?> active<?php } ?>" id="setting">
             <h4><?php echo yrw_i('Yelp Reviews Widget Setting'); ?></h4>
             <!-- Configuration form -->
             <form method="POST" enctype="multipart/form-data">
@@ -297,3 +295,18 @@ $yrw_language = get_option('yrw_language');
         </div>
     </div>
 </div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $('a[data-toggle="tab"]').on('click', function(e)  {
+        var active = $(this).attr('href');
+        $('.tab-content ' + active).show().siblings().hide();
+        $(this).parent('li').addClass('active').siblings().removeClass('active');
+        e.preventDefault();
+    });
+    $('button[data-toggle="collapse"]').click(function () {
+        $target = $(this);
+        $collapse = $target.next();
+        $collapse.slideToggle(500);
+    });
+});
+</script>
