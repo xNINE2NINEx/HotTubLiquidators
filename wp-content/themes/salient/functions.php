@@ -257,7 +257,7 @@ add_action('wp_enqueue_scripts', 'nectar_page_sepcific_styles');
 	$accoladelogos = new WP_Query(
 		array(
 			'orderby' => 'ASC',
-			'posts_per_page' => 6,
+			'posts_per_page' => 7,
 			'post_type' => 'accolades',
 		)
 	);

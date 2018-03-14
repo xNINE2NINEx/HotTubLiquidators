@@ -8322,6 +8322,9 @@ label span {
   .col-md-3 {
     width: 25%;
   }
+  .bottom-footer .col-md-2 {
+    width: 13.66666667%;
+  }
   .col-md-2 {
     width: 16.66666667%;
   }

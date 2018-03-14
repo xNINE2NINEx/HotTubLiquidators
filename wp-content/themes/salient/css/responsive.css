@@ -1978,7 +1978,7 @@ and (min-width : 1px) and (max-width : 1024px) {
 	}
 	
 	#footer-outer #social li {	
-	   width: 50%;
+	   
 	   margin-top: 9px;
 	   margin-bottom: 9px;
 	}
@@ -2537,6 +2537,11 @@ and (min-width : 1px) and (max-width : 1024px) {
 
 }
 
+@media only screen and (max-width: 640px) {
+	#footer-outer #social li {	
+	   width: 50%;
+	   }
+}
 @media only screen and (max-width: 470px) {
 	body:after {
 		content: 'one';
