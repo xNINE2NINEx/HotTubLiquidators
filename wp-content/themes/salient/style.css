@@ -304,7 +304,7 @@ caption, th, td {
 	position: relative;
 	z-index: 10;
 	margin-top: -55px;
-	padding-top: 93px;
+	/*padding-top: 93px;*/
 	padding-bottom: 40px;
 }
 
@@ -8572,7 +8572,7 @@ label span {
 	max-width:80% !important;
 }
 }
-@media only screen and (max-width: 1165px){
+/*@media only screen and (max-width: 1165px){
 header#top nav > ul > li{
 	height:50px !important;
 }
@@ -8580,7 +8580,7 @@ header#top nav > ul > li > a{
 	font-size:14px !important;
 	line-height:16px !important;
 }
-}
+}*/
 @media only screen and (max-width: 740px){
 	.logocentered{
 		width:280px;
@@ -8594,9 +8594,9 @@ header#top nav > ul > li > a{
 }
 .home #cshover{
 	width:220px !important;
-	margin:0 10% !important;
+	margin:0 auto !important;
 	bottom:-270px !important;
-	right:inherit !important;
+	/*right:inherit !important;*/
 }
 	.swiper-slide .content h2{
 	display:none;
@@ -8637,9 +8637,9 @@ header#top nav > ul > li > a{
 .home #cshover{
 	width:280px;
 	height:auto;
-	position:absolute;
+	position:relative;
 	bottom:-440px;
-	right:0;
+	margin:0 auto;
 	z-index:20;
 	display:block !important;
 }
@@ -8653,15 +8653,14 @@ header#top nav ul li{
 	padding:0;
 }
 header#top nav > ul > li{
-	height:60px;	
+	/*height:38px;*/	
 	vertical-align:middle !important;
 }
 header#top nav > ul > li > a{
-	padding:7px 13px 0 !important;
+	padding:10px 12px !important;
 	margin:0 !important;
-	font-size:18px;
-	line-height:22px;
-	height:30px !important;
+	font-size:16px;
+	height:35px;
 }
 header#top nav > ul > li:hover{
 	background-color:#d13826 !important;
@@ -8698,7 +8697,7 @@ header#top nav > ul{
 	margin-bottom:-7px !important;
 }
 .sub-menu{
-	top:60px !important;
+	top:39px !important;
 	left:0 !important;
 }
 header#top nav .sub-menu li a{
@@ -8867,7 +8866,7 @@ header#top nav .sub-menu li:first-child{
 .bluetxt{
 	color:#2c3e50 !important;
 }
-/*** MAIN NAV CENTER MENU LINKS  ***/
+/*** MAIN NAV CENTER MENU LINKS  
 header#top nav .sf-menu [class^="icon-"]{
 	font-size:16px !important;
 }
@@ -8889,6 +8888,7 @@ header#top nav .sf-menu li:nth-child(10) a{
 header#top nav .sf-menu li:nth-child(10) .sf-sub-indicator [class^="icon-"]{
 	margin-bottom:-5px;
 }
+
 
 @media only screen and (max-width: 1165px){
 .sub-menu{
@@ -8914,7 +8914,7 @@ header#top nav .sf-menu li:nth-child(10) .sf-sub-indicator [class^="icon-"]{
 	margin-bottom:-2px !important;
 }
 }
-/*header#top nav .sf-menu li:nth-child(2) a{
+header#top nav .sf-menu li:nth-child(2) a{
 	padding-top:13px !important;
 }
 header#top nav .sf-menu li:nth-child(8) a{

@@ -4,7 +4,7 @@
 
 <div class="container-wrap">
 <div class="container logocentered">
-<div id="logohover"><img src="/wp-content/themes/salient/img/homebadge.png" width="100%" height="auto" alt="Hot Tub Liquidators Logo"></div>
+<!--div id="logohover"><img src="/wp-content/themes/salient/img/homebadge.png" width="100%" height="auto" alt="Hot Tub Liquidators Logo"></div-->
 <div id="cshover"><img src="/wp-content/themes/salient/img/coastspas_logo.png" width="100%" height="auto" alt="Coast Spas Logo"></div>
 </div>
 	<div class="main-content">
