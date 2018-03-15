@@ -257,7 +257,7 @@ add_action('wp_enqueue_scripts', 'nectar_page_sepcific_styles');
 	$accoladelogos = new WP_Query(
 		array(
 			'orderby' => 'ASC',
-			'posts_per_page' => 7,
+			'posts_per_page' => 6,
 			'post_type' => 'accolades',
 		)
 	);
@@ -265,7 +265,7 @@ add_action('wp_enqueue_scripts', 'nectar_page_sepcific_styles');
 	$accolade =
 	'<div class="bottom-footer"><div class="container">';
 	while ( $accoladelogos->have_posts() ) { $accoladelogos->the_post();
-		$accolade .=  '<div class="col-xs-6 col-md-6 col-sm-4 col-md-2 footer-l"><center>' . get_the_post_thumbnail() . '</center></div>';
+		$accolade .=  '<div class="col-xs-6 col-md-6 col-sm-3 col-md-2 footer-l"><center>' . get_the_post_thumbnail() . '</center></div>';
 		
 	}
 	$accolade .= '</div></div>';

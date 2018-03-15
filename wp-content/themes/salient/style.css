@@ -1,5 +1,5 @@
 /*
-	Theme Name: Salient
+	Theme Name:Hot Tub Liquidators
 	Theme URI: http://www.themenectar.com
 	Author: ThemeNectar
 	Author URI: http://themenectar.com
@@ -305,8 +305,6 @@ caption, th, td {
 	background-color: #fff;
 	position: relative;
 	z-index: 10;
-	margin-top: -55px;
-	/*padding-top: 93px;*/
 	padding-bottom: 40px;
 }
 
@@ -2355,6 +2353,7 @@ html:not(.js) .nectar-slider-wrap {
 	width: 100%;
 	text-align: center;
 	opacity: 0;
+	display:none;
 }
 
 .slider-pagination .swiper-pagination-switch {
@@ -5072,7 +5071,24 @@ body .portfolio-items .col.elastic-portfolio-item.wide_tall {
 html:not(.js) #contact-map, html:not(.js) .nectar-google-map {
 	display: none;	
 }
-
+#header-secondary-outer #contacto {
+	width:auto;
+	height:20px;
+	margin:15px 5px 0 0;
+	float:right;
+}
+#header-secondary-outer #contacto a {
+	background-color:#d13826;
+	color:#fff;
+	width:auto;
+	height:20px;
+	padding:5px 15px;
+	margin:0 auto;
+	border-radius:25px;
+}
+#header-secondary-outer #contacto a:hover {
+	font-weight:bold;
+}
 #contact-map {
 	width: 100%;
 	height: 370px;
@@ -8322,9 +8338,7 @@ label span {
   .col-md-3 {
     width: 25%;
   }
-  .bottom-footer .col-md-2 {
-    width: 13.66666667%;
-  }
+
   .col-md-2 {
     width: 16.66666667%;
   }
@@ -8617,31 +8631,12 @@ label span {
 	max-width:80% !important;
 }
 }
-/*@media only screen and (max-width: 1165px){
-header#top nav > ul > li{
-	height:50px !important;
-}
-header#top nav > ul > li > a{
-	font-size:14px !important;
-	line-height:16px !important;
-}
-}*/
+
 @media only screen and (max-width: 740px){
-	.logocentered{
-		width:280px;
-		text-align:center; 
-		margin:0 auto !important;
-}
-	.home #logohover{
-	width:280px !important;
-	margin:0 auto !important;
-	top:0px !important;
-}
 .home #cshover{
 	width:220px !important;
-	margin:0 auto !important;
+	margin:0!important;
 	bottom:-270px !important;
-	/*right:inherit !important;*/
 }
 	.swiper-slide .content h2{
 	display:none;
@@ -8671,23 +8666,32 @@ header#top nav > ul > li > a{
 	color:#d13826 !important;
 }
 .home #logohover{
-	width:340px;
+	width:300px;
 	height:auto;
 	position:absolute;
-	top:40px;
-	
 	z-index:20;
 	display:block !important;
 }
 .home #cshover{
-	width:280px;
+	width:300px;
 	height:auto;
 	position:relative;
 	bottom:-440px;
-	margin:0 auto;
+	margin:0;
 	z-index:20;
 	display:block !important;
 }
+.logocentered{
+		width:300px;
+		text-align:center; 
+		margin:-57px auto 0px !important;
+}
+.home #logohover{
+	width:300px !important;
+	margin:0 !important;
+	top:0px !important;
+}
+
 .page-template-default #logohover{
 	display:none;
 }

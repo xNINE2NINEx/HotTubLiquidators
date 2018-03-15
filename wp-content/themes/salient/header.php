@@ -131,14 +131,15 @@ if($using_secondary == 'header_with_secondary') { ?>
         
         <?php if(!empty($options['enable_social_in_header']) && $options['enable_social_in_header'] == '1') { ?>
 					<ul id="social">
-                    	<li><a target="" href="http://hottubliquidators.com/yelp-reviews/"><i class="icon-yelp"></i></a></li> 
+                    	<li><a target="_self" href="http://hottubliquidators.com/yelp-reviews/"><i class="icon-yelp"></i></a></li> 
                         <li><a target="_blank" href="http://bit.ly/2HxIPju"><i class="icon-google-plus"></i> </a></li>
 						<li><a target="_blank" href="https://www.facebook.com/hottubliquidators"><i class="icon-facebook"></i> </a></li>
 						<li><a target="_blank" href="https://www.youtube.com/user/CoastSpas"><i class="icon-youtube"></i> </a></li>
-						
-						
 					</ul>
 				<?php } ?>
+                <div id="contacto">
+                <a target="_self" href="http://hottubliquidators.com/contact/">Contact</a>
+                </div>
 			</nav>
 		</div>
 	</div>

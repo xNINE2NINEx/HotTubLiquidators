@@ -118,7 +118,7 @@ $cta_btn_color = (!empty($options['cta-btn-color'])) ? $options['cta-btn-color']
 				
 				<div class="col span_7 col_last">
 					<ul id="social">
-						<li><a target="" href="http://hottubliquidators.com/yelp-reviews/"><i class="icon-yelp"></i></a></li> 
+						<li><a target="_self" href="http://hottubliquidators.com/yelp-reviews/"><i class="icon-yelp"></i></a></li> 
                         <li><a target="_blank" href="http://bit.ly/2HxIPju"><i class="icon-google-plus"></i> </a></li>
 						<li><a target="_blank" href="https://www.facebook.com/hottubliquidators"><i class="icon-facebook"></i> </a></li>
 						<li><a target="_blank" href="https://www.youtube.com/user/CoastSpas"><i class="icon-youtube"></i> </a></li>
