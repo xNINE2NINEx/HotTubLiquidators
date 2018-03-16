@@ -459,11 +459,17 @@ blockquote {
 	margin-bottom: 30px;
 }
 
+.home .main-content {
+	margin-top:0px;
+}
+body:not(.home) .main-content {
+	margin-top:80px;
+}
+
 .main-content ul, .main-content ol {
 	margin-left: 30px;
 	margin-bottom: 30px;
 }
-
 
 .main-content ul li {
 	list-style: disc;
@@ -6726,6 +6732,12 @@ html:not(.js) .full-width-section {
     display: inline-block;
     border-radius: 5px 5px 5px 5px;
     padding: 16px 21px;
+}
+#call-to-action .container a:before {
+	content:' CALL RAY ';
+}
+#call-to-action .container a:hover::before {
+	content:'702.303.8836';
 }
 
 .home #call-to-action .triangle {
