@@ -3,9 +3,9 @@
 <?php nectar_page_header($post->ID); ?>
 
 <div class="container-wrap">
-<div class="logocentered">
+<!--div class="logocentered">
 <div id="cshover"><img src="/wp-content/themes/salient/img/coastspas_logo.png" width="100%" height="auto" alt="Coast Spas Logo"></div>
-</div>
+</div-->
 	<div class="main-content">
 		
 		<div class="row">

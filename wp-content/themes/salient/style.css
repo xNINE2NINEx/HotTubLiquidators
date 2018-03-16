@@ -300,6 +300,7 @@ caption, th, td {
 }
 .home .container-wrap{
 	background-color:#000 !important;
+	margin-top:70px !important;
 	}
 .container-wrap, .project-title {
 	background-color: #fff;
@@ -8700,7 +8701,7 @@ label span {
 	width:300px;
 	height:auto;
 	position:relative;
-	bottom:-440px;
+	bottom:-380px;
 	margin:0;
 	z-index:20;
 	display:block !important;
@@ -8708,7 +8709,7 @@ label span {
 .logocentered{
 		width:300px;
 		text-align:center; 
-		margin:-57px auto 0px !important;
+		margin:0 auto !important;
 }
 .home #logohover{
 	width:300px !important;
