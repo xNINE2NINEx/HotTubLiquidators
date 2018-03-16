@@ -8950,6 +8950,19 @@ header#top nav .sub-menu li:first-child{
 .cs_list li{
 	margin:5px 0;
 }
+@media only screen and (max-width: 640px){
+.cs_list{
+	width:85%;
+	background-image:none !important;
+	font-size:18px !important;
+}
+.cs_list li{
+	margin:10px 0;
+}
+.desertproof{
+	font-size:50px;
+}
+}
 /*** MAIN NAV CENTER MENU LINKS  
 header#top nav .sf-menu [class^="icon-"]{
 	font-size:16px !important;
