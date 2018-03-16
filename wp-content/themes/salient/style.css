@@ -463,7 +463,7 @@ blockquote {
 	margin-top:0px;
 }
 body:not(.home) .main-content {
-	margin-top:80px;
+	margin-top:70px;
 }
 @media only screen and (max-width: 1024px){
 body:not(.home) .main-content {
@@ -636,14 +636,13 @@ body[data-header-color="dark"] #boxed #header-outer {
 /*-------------------------------------------------------------------------*/
 
 #header-space {
-	height: 90px;	
+	height:50px !important;	
 }
 
 #header-outer {
 	width: 100%;
 	top: 0px;
 	left: 0px;
-	position: fixed;
 	overflow: visible!important;
 	padding: 28px 0px 0px 0px;
 	background-color:#fff;
@@ -779,6 +778,7 @@ header#top #logo img {
 }
 
 header#top {
+	background-color:#000;
 	position: relative;
 	z-index: 9998;
 	width: 100%;
@@ -959,7 +959,7 @@ header#top nav ul #search-btn a span:hover {
 }
 
 #header-secondary-outer {
-	position: fixed;
+	/*position: fixed;*/
 	top: 0px;
 	left: 0px;
 	width: 100%;
@@ -5086,20 +5086,21 @@ html:not(.js) #contact-map, html:not(.js) .nectar-google-map {
 }
 #header-secondary-outer #contacto {
 	width:auto;
-	height:20px;
+	height:15px;
 	margin:15px 5px 0 0;
 	float:right;
 }
 #header-secondary-outer #contacto a {
-	background-color:#d13826;
+	border:1px solid #d13826;
 	color:#fff;
 	width:auto;
 	height:20px;
-	padding:5px 15px;
+	padding:1px 10px;
 	margin:0 auto;
 	border-radius:25px;
 }
 #header-secondary-outer #contacto a:hover {
+	background-color:#d13826;
 	font-weight:bold;
 }
 #contact-map {
@@ -6745,6 +6746,10 @@ html:not(.js) .full-width-section {
 }
 #call-to-action .container a:hover::before {
 	content:'702.303.8836';
+}
+#call-to-action .container .extra-color-1:before,
+#call-to-action .container .extra-color-1:hover::before{
+	content:'';
 }
 
 .home #call-to-action .triangle {
@@ -9046,17 +9051,18 @@ header#top nav .sf-menu li:nth-child(9) a{
 /*** MAIN header  ***/
 .mainheader{
 	text-align:center;
-	width:100%;
+	width:90%;
 	height:auto;
-	margin:-50px 0 0 0;
-	padding:5px 0;
+	margin:0 auto;
+	padding:0;
 	overflow: visible !important;
 	z-index:1000;
 }
 .mainheader img{
-	margin:0 0 -5px 0;
+	margin:-50px 0 0 0;
 	padding:0;
 }
+.desktophide img{width:90%;}
 .desktophide{display:block;}
 .mobileshow{display:none;}
 @media only screen and (max-width: 1024px){
@@ -9098,7 +9104,7 @@ header#top nav .sf-menu li:nth-child(9) a{
 	.trade{display:none !important;}
 }
 .header-secondary-cover{
-	position:fixed;top:0;background-color:#000 !important;width:100%;height:100px;z-index:9997;
+	top:0;background-color:#000 !important;width:100%;z-index:9997;
 }
 /**** Above main header img ****/
 #header-secondary-outer .sf-menu{
