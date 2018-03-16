@@ -465,7 +465,11 @@ blockquote {
 body:not(.home) .main-content {
 	margin-top:80px;
 }
-
+@media only screen and (max-width: 1024px){
+body:not(.home) .main-content {
+	margin-top:70px;
+}
+}
 .main-content ul, .main-content ol {
 	margin-left: 30px;
 	margin-bottom: 30px;
@@ -1354,7 +1358,10 @@ header#top #toggle-nav i, header#top #toggle-nav i{
 }
 }
 @media only screen and (max-width: 1024px){
-	#header-secondary-outer #social{display:none !important;}
+	#header-secondary-outer #social,
+	#header-secondary-outer #contacto
+	{display:none !important;}
+	#header-secondary-outer .contacto
 	.sf-menu{border-top:none !important;}
 	#mobile-menu br {display:none;}
 }
@@ -8929,6 +8936,19 @@ header#top nav .sub-menu li:first-child{
 }
 .bluetxt{
 	color:#2c3e50 !important;
+}
+
+.cs_list{
+	width:550px;
+	background-image:url(img/owenscorning_pp.png);
+	background-position:center right;
+	background-size:contain;
+	background-repeat:no-repeat;
+	margin:0 auto !important;
+	text-align:left;
+}
+.cs_list li{
+	margin:5px 0;
 }
 /*** MAIN NAV CENTER MENU LINKS  
 header#top nav .sf-menu [class^="icon-"]{
