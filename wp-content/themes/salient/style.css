@@ -8959,6 +8959,14 @@ header#top nav .sub-menu li:first-child{
 .cs_list li{
 	margin:5px 0;
 }
+.ie_list{
+	width:550px;
+	margin:0 auto !important;
+	text-align:left;
+}
+.ie_list li{
+	margin:5px 0;
+}
 @media only screen and (max-width: 640px){
 .cs_list{
 	width:85%;
@@ -8966,6 +8974,13 @@ header#top nav .sub-menu li:first-child{
 	font-size:18px !important;
 }
 .cs_list li{
+	margin:10px 0;
+}
+.ie_list{
+	width:85%;
+	font-size:18px !important;
+}
+.ie_list li{
 	margin:10px 0;
 }
 .desertproof{
