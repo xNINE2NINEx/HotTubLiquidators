@@ -71,8 +71,19 @@ if (isset($_POST['yrw_active']) && isset($_GET['yrw_active'])) {
 }
 
 if (isset($_POST['yrw_setting'])) {
-    update_option('yrw_api_key', trim(sanitize_text_field($_POST['yrw_api_key'])));
-    update_option('yrw_language', trim(sanitize_text_field($_POST['yrw_language'])));
+    $yrw_api_key = trim(sanitize_text_field($_POST['yrw_api_key']));
+    $yrw_language = trim(sanitize_text_field($_POST['yrw_language']));
+    update_option('yrw_api_key', $yrw_api_key);
+    update_option('yrw_language', $yrw_language);
+    if (strlen($yrw_api_key) > 0) {
+        $yelp_test_url = yrw_api_url('benjamin-steakhouse-new-york-2');
+        $yelp_response = rplg_json_urlopen($yelp_test_url, null, array(
+            'Authorization: Bearer ' . $yrw_api_key
+        ));
+        if (isset($yelp_response->error) && strlen($yelp_response->error->description) > 0) {
+            $yelp_api_key_error = $yelp_response->error->description;
+        }
+    }
     $yrw_setting_page = true;
 } else {
     $yrw_setting_page = false;
@@ -98,8 +109,8 @@ $yrw_api_key = get_option('yrw_api_key');
 $yrw_language = get_option('yrw_language');
 ?>
 
-<span class="version"><?php echo yrw_i('Free Version: %s', esc_html(YRW_VERSION)); ?></span>
-<div class="yrw-setting container-fluid">
+<span class="rplg-version"><?php echo yrw_i('Free Version: %s', esc_html(YRW_VERSION)); ?></span>
+<div class="rplg-setting container-fluid">
     <img src="<?php echo YRW_PLUGIN_URL . '/static/img/yelp-logo.png'; ?>" alt="Yelp" style="height:45px">
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"<?php if (!$yrw_setting_page) { ?> class="active"<?php } ?>>
@@ -197,7 +208,18 @@ $yrw_language = get_option('yrw_language');
                 <div class="form-group">
                     <label class="control-label" for="yrw_api_key"><?php echo yrw_i('API Key'); ?></label>
                     <input class="form-control" type="text" id="yrw_api_key" name="yrw_api_key" value="<?php echo esc_attr($yrw_api_key); ?>">
-                    <small><?php echo yrw_i('To fill this field, please go to Yelp developers and '); ?><a href="https://www.yelp.com/developers/v3/manage_app" target="_blank"><?php echo yrw_i('Create New App'); ?></a></small>
+                    <?php if (isset($yelp_api_key_error)) {?>
+                    <div class="alert alert-dismissible alert-danger">
+                        Error: <?php echo $yelp_api_key_error; ?><br>
+                        Please get the correct key by instruction below ↓
+                    </div>
+                    <?php } ?>
+                    <a href="#" data-toggle="collapse" data-target="#yelp_api_key_instruction">Instruction: how to get Yelp API Key</a>
+                    <div id="yelp_api_key_instruction" class="collapse">
+                        1. Please register a <a href="https://www.yelp.com/signup" target="_blank"><b>FREE</b> Yelp account</a> (not a Business)<br>
+                        2. After registration, go to <a href="https://www.yelp.com/developers/v3/manage_app" target="_blank">Yelp developers</a> and create new app<br>
+                        3. Copy 'API key' to plugin field and save the setting<br>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label"><?php echo yrw_i('Yelp Reviews API language'); ?></label>
@@ -303,10 +325,11 @@ jQuery(document).ready(function($) {
         $(this).parent('li').addClass('active').siblings().removeClass('active');
         e.preventDefault();
     });
-    $('button[data-toggle="collapse"]').click(function () {
+    $('[data-toggle="collapse"]').click(function (e) {
         $target = $(this);
         $collapse = $target.next();
         $collapse.slideToggle(500);
+        e.preventDefault();
     });
 });
 </script>

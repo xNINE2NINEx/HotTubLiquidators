@@ -1244,8 +1244,8 @@ and (max-width : 690px) {
 	}
 	
 	#header-secondary-outer nav ul.sf-menu {
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-top: 0px;
+		padding-bottom: 0px;
 	}
 	
 	body #header-secondary-outer ul#social {
@@ -2057,7 +2057,7 @@ and (min-width : 1px) and (max-width : 1024px) {
 	}
 	
 	#header-secondary-outer nav ul.sf-menu {
-		border-top: 1px solid #DDDDDD;
+		border-top:none;
 	}
 	
 	body[data-header-color="custom"] #header-secondary-outer ul#social {
