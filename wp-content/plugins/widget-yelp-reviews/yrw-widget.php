@@ -41,7 +41,7 @@ class Yelp_Reviews_Widget extends WP_Widget {
     }
 
     function yrw_widget_scripts($hook) {
-        if ($hook == 'widgets.php' || ($hook == 'customize.php' && defined('SITEORIGIN_PANELS_VERSION'))) {
+        if ($hook == 'widgets.php' || ($hook == 'post.php' && defined('SITEORIGIN_PANELS_VERSION'))) {
 
             wp_register_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
             wp_enqueue_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));

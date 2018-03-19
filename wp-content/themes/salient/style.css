@@ -8831,7 +8831,10 @@ header#top nav .sub-menu li:first-child{
 @media only screen and (max-width: 640px){
 	.smaller{font-size:25px !important;}
 	.drop {display:block !important;}
-	.footjunk span{display:none;}
+	.footjunk span, 
+	.swiper-slide .content{
+		display:none;
+	}
 	#footer-outer #social li {	
 	   margin:0 !important;
 	}
@@ -9073,9 +9076,12 @@ header#top nav .sf-menu li:nth-child(9) a{
 	width:50%;
 	float:none;
 	margin:0 auto !important;
-	padding:25px 0 0 0;
+	padding:0;
 	overflow: visible !important;
 	z-index:1000;
+}
+.home .container-wrap{
+	margin-top:0px !important;
 }
 .mainheader .headz{
 	width:100%;
