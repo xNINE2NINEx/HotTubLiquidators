@@ -8967,6 +8967,19 @@ header#top nav .sub-menu li:first-child{
 .ie_list li{
 	margin:5px 0;
 }
+.checkmark_list{
+	width:550px;
+	margin:0 auto !important;
+	text-align:left;
+}
+.checkmark_list li{
+	list-style:none !important;
+	background-image:url(img/checkmark.png);
+	background-position:left center;
+	background-repeat:no-repeat;
+	margin:5px 0;
+	padding-left:30px;
+}
 @media only screen and (max-width: 640px){
 .cs_list{
 	width:85%;
@@ -8981,6 +8994,13 @@ header#top nav .sub-menu li:first-child{
 	font-size:18px !important;
 }
 .ie_list li{
+	margin:10px 0;
+}
+.checkmark__list{
+	width:85%;
+	font-size:18px !important;
+}
+.checkmark__list li{
 	margin:10px 0;
 }
 .desertproof{
