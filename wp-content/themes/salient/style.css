@@ -9190,11 +9190,9 @@ small{font-size:60%;}
 /*==12.==*/
 
 /*================Button Colors======================*/
+.btncolor1_BS{background-color: #E2D7B9 !important;}
 .btncolor1 {
-        
-        
-        
-        margin-bottom:5px;
+		margin-bottom:5px;
         color: #000;
         background-color: #FAFAFA;
         cursor: pointer;
@@ -9207,30 +9205,17 @@ small{font-size:60%;}
      	font-weight: 200;
         font-size:1.0em;
         padding:5px 24px;
-        
-        
         width: 100%;
-        
-        
-    }
-    .btncolor1:hover {
+}
+.btncolor1:hover {
+		background-color: #E2D7B9;
+}
+.btncolor1:onclick {
+		background-color: #E2D7B9;
+}
 
-      background-color: #E2D7B9;
-   
-      
-    }
-    .btncolor1:onclick {
-          background-color: #E2D7B9;
-      
-    }
-
-
-
-
+.btncolor2_BS{background-color: #E6E7E8 !important;}
 .btncolor2 {
-        
-        
-        
         margin-bottom:5px;
         color: #000;
         background-color: #FAFAFA;
@@ -9244,39 +9229,21 @@ small{font-size:60%;}
      	font-weight: 200;
         font-size:1.0em;
         padding:5px 24px;
-        
-        
         width: 100%;
-        
-        
-    }
-    .btncolor2:hover {
-   
-      background-color: #E6E7E8;
- 
-      
-    }
-    .btncolor2:onclick {
-     background-color: #B0ACB0;
-     
- 
-    }
+}
+.btncolor2:hover {
+   		background-color: #E6E7E8;
+}
+.btncolor2:onclick {
+		background-color: #B0ACB0;
+}
 
 .elitecontainer {
-        
-        
- 
-        background-color: #FAFAFA;
-        
- 
-        
-        
-    }
+		background-color: #FAFAFA;
+  }
 
+.btncolor3_BS{background-color: #FFECAD !important;}
 .btncolor3 {
-        
-        
-        
         margin-bottom:5px;
         color: #000;
         background-color: #FAFAFA;
@@ -9290,27 +9257,17 @@ small{font-size:60%;}
      	font-weight: 200;
         font-size:1.0em;
         padding:5px 24px;
-        
-        
         width: 100%;
-        
-        
-    }
-    .btncolor3:hover {
-       
-      background-color: #FFECAD;
-        
-      
-    }
-    .btncolor3:onclick {
-     background-color: #FFECAD;
-     
-    }
+}
+.btncolor3:hover {
+		background-color: #FFECAD;
+}
+.btncolor3:onclick {
+		background-color: #FFECAD;
+}
 
+.btncolor4_BS{background-color: #27AAE1 !important;}
 .btncolor4 {
-        
-        
-        
         margin-bottom:5px;
         color: #000;
         background-color: #FAFAFA;
@@ -9324,22 +9281,14 @@ small{font-size:60%;}
      	font-weight: 200;
         font-size:1.0em;
         padding:5px 24px;
-        
-        
-        width: 100%;
-        
-        
-    }
-    .btncolor4:hover {
-       
+       width: 100%;
+ }
+.btncolor4:hover {
       background-color: #27AAE1;
-        
-      
-    }
-    .btncolor4:onclick {
+}
+.btncolor4:onclick {
      background-color: #27AAE1;
-     
-    }
+}
 
 /*================AdsUpNow Custom Code======================*/
 .sale-slide .content {top:5px; background:rgba(255,0,4,0.8); color: #fff!important;}
