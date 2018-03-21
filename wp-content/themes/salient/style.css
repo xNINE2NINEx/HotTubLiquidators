@@ -8982,7 +8982,7 @@ header#top nav .sub-menu li:first-child{
 }
 @media only screen and (max-width: 640px){
 .cs_list{
-	width:85%;
+	width:85% !important;
 	background-image:none !important;
 	font-size:18px !important;
 }
@@ -8990,17 +8990,17 @@ header#top nav .sub-menu li:first-child{
 	margin:10px 0;
 }
 .ie_list{
-	width:85%;
+	width:85% !important;
 	font-size:18px !important;
 }
 .ie_list li{
 	margin:10px 0;
 }
-.checkmark__list{
-	width:85%;
+.checkmark_list{
+	width:95% !important;
 	font-size:18px !important;
 }
-.checkmark__list li{
+.checkmark_list li{
 	margin:10px 0;
 }
 .desertproof{
