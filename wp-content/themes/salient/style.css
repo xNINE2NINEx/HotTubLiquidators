@@ -9188,6 +9188,159 @@ small{font-size:60%;}
 /*.page-id-2898 .swiper-wrapper .swiper-slide:nth-child(2){background-position:left;}*/
 
 /*==12.==*/
+
+/*================Button Colors======================*/
+.btncolor1 {
+        
+        
+        
+        margin-bottom:5px;
+        color: #000;
+        background-color: #FAFAFA;
+        cursor: pointer;
+        
+        border-right:1px solid #E2C675;
+        border-bottom:1px solid #E2C675;
+        border-left:10px solid #E2C675;
+        border-top:1px solid #E2C675;
+   
+     	font-weight: 200;
+        font-size:1.0em;
+        padding:5px 24px;
+        
+        
+        width: 100%;
+        
+        
+    }
+    .btncolor1:hover {
+
+      background-color: #E2D7B9;
+   
+      
+    }
+    .btncolor1:onclick {
+          background-color: #E2D7B9;
+      
+    }
+
+
+
+
+.btncolor2 {
+        
+        
+        
+        margin-bottom:5px;
+        color: #000;
+        background-color: #FAFAFA;
+        cursor: pointer;
+        
+        border-right:1px solid #B0ACB0;
+        border-bottom:1px solid #B0ACB0;
+        border-left:10px solid #B0ACB0;
+        border-top:1px solid #B0ACB0;
+   
+     	font-weight: 200;
+        font-size:1.0em;
+        padding:5px 24px;
+        
+        
+        width: 100%;
+        
+        
+    }
+    .btncolor2:hover {
+   
+      background-color: #E6E7E8;
+ 
+      
+    }
+    .btncolor2:onclick {
+     background-color: #B0ACB0;
+     
+ 
+    }
+
+.elitecontainer {
+        
+        
+ 
+        background-color: #FAFAFA;
+        
+ 
+        
+        
+    }
+
+.btncolor3 {
+        
+        
+        
+        margin-bottom:5px;
+        color: #000;
+        background-color: #FAFAFA;
+        cursor: pointer;
+        
+        border-right:1px solid #C28F2C;
+        border-bottom:1px solid #C28F2C;
+        border-left:10px solid #C28F2C;
+        border-top:1px solid #C28F2C;
+   
+     	font-weight: 200;
+        font-size:1.0em;
+        padding:5px 24px;
+        
+        
+        width: 100%;
+        
+        
+    }
+    .btncolor3:hover {
+       
+      background-color: #FFECAD;
+        
+      
+    }
+    .btncolor3:onclick {
+     background-color: #FFECAD;
+     
+    }
+
+.btncolor4 {
+        
+        
+        
+        margin-bottom:5px;
+        color: #000;
+        background-color: #FAFAFA;
+        cursor: pointer;
+        
+        border-right:1px solid #1B75BC;
+        border-bottom:1px solid #1B75BC;
+        border-left:10px solid #1B75BC;
+        border-top:1px solid #1B75BC;
+   
+     	font-weight: 200;
+        font-size:1.0em;
+        padding:5px 24px;
+        
+        
+        width: 100%;
+        
+        
+    }
+    .btncolor4:hover {
+       
+      background-color: #27AAE1;
+        
+      
+    }
+    .btncolor4:onclick {
+     background-color: #27AAE1;
+     
+    }
+
 /*================AdsUpNow Custom Code======================*/
 .sale-slide .content {top:5px; background:rgba(255,0,4,0.8); color: #fff!important;}
 .sale-slide .content h2 {background:rgba(255,0,4,0.8); color: #fff!important; font-size:48px!important;padding-top:25px; margin-top:-45px;}
