@@ -9316,6 +9316,22 @@ small{font-size:60%;}
 	.reviewsyelp iframe{width:49% !important;min-height:280px;}
 }
 
+.leftburst{position:absolute;left:-5%;bottom:0;height:250px;}
+.leftburst img{height:250px;width:auto;}
+.rightburst{position:absolute;right:-5%;bottom:0;height:250px;}
+.rightburst img{height:250px;width:auto;}
+
+@media screen and (max-width:1150px) {
+.leftburst,.rightburst{position:relative !important;width:50% !important;float:left;}
+	.leftburst{left:0 !important;}
+	.rightburst{right:0 !important;}
+}
+@media screen and (max-width:640px) {
+.leftburst,.rightburst{position:relative !important;width:100% !important;float:left;}
+	.leftburst{left:0 !important;}
+	.rightburst{right:0 !important;}
+}
+
 /*================AdsUpNow Custom Code======================*/
 .sale-slide .content {top:5px; background:rgba(255,0,4,0.8); color: #fff!important;}
 .sale-slide .content h2 {background:rgba(255,0,4,0.8); color: #fff!important; font-size:48px!important;padding-top:25px; margin-top:-45px;}
