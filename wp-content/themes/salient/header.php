@@ -205,7 +205,7 @@ if($using_secondary == 'header_with_secondary') { ?>
 								echo '<li><a href="">No menu assigned!</a></li>';
 							}
 							?>
-							<li id="search-btn"><div><a href=""><span class="icon-salient-search" aria-hidden="true"></span></a></div></li>
+							
 						</ul>
 					</nav>
 					
@@ -215,44 +215,7 @@ if($using_secondary == 'header_with_secondary') { ?>
 			
 		</div><!--/container-->
 		
-	</header>
-	
-	
-	<?php if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') { ?>
-		<?php
-		if ($woocommerce) { ?>
-			
-		<div class="cart-outer">
-			<div class="cart-menu-wrap">
-				<div class="cart-menu">
-					<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><div class="cart-icon-wrap"><i class="icon-shopping-cart"></i> <div class="cart-wrap"><span><?php echo $woocommerce->cart->cart_contents_count; ?> </span></div> </div></a>
-				</div>
-			</div>
-			
-			<div class="cart-notification">
-				<span class="item-name"></span> <?php echo __('was successfully added to your cart.'); ?>
-			</div>
-			
-			<?php
-				// Check for WooCommerce 2.0 and display the cart widget
-				if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) {
-					the_widget( 'WC_Widget_Cart', 'title= ' );
-				} else {
-					the_widget( 'WooCommerce_Widget_Cart', 'title= ' );
-				}
-			?>
-				
-		</div>
-		
-	 <?php } 
-	 
-   } ?>		
-	
-
-</div><!--/header-outer-->
-
-
-<div id="mobile-menu">
+        <div id="mobile-menu">
 	
 	<div class="container">
 		<ul>
@@ -273,4 +236,10 @@ if($using_secondary == 'header_with_secondary') { ?>
 		</ul>
 	</div>
 	
-</div>
+</div><!--/mobile-menu-->
+        
+	</header>
+	
+
+
+</div><!--/header-outer-->

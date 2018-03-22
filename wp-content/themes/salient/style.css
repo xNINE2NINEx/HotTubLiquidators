@@ -306,7 +306,6 @@ caption, th, td {
 	background-color: #fff;
 	position: relative;
 	z-index: 10;
-	padding-bottom: 40px;
 }
 
 .project-title {
@@ -779,7 +778,7 @@ header#top #logo img {
 }
 
 header#top {
-	background-color:#000;
+	background-color:#000 !important;
 	position: relative;
 	z-index: 9998;
 	width: 100%;
