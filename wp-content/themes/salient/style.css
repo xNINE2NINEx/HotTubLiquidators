@@ -8664,11 +8664,6 @@ label span {
 	max-width:90% !important;
 	margin:0 auto;
 }
-@media only screen and (min-width: 1300px){
-.container{
-	max-width:80% !important;
-}
-}
 
 @media only screen and (max-width: 740px){
 .home #cshover{
