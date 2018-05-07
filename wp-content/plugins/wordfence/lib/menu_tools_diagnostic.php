@@ -17,6 +17,7 @@ if (!isset($sendingDiagnosticEmail)) {
 	$sendingDiagnosticEmail = false;
 }
 ?>
+<?php if (!$sendingDiagnosticEmail): ?>
 <script type="application/javascript">
 	(function($) {
 		$(function() {
@@ -24,6 +25,7 @@ if (!isset($sendingDiagnosticEmail)) {
 		});
 	})(jQuery);
 </script>
+<?php endif; ?>
 <div id="wf-diagnostics">
 	<?php if (!$sendingDiagnosticEmail): ?>
 		<div class="wf-diagnostics-wrapper">
@@ -153,7 +155,7 @@ if (!isset($sendingDiagnosticEmail)) {
 											'em'     => array(),
 											'a'      => array('href' => true),
 										)) ?></div>
-									<div>
+									<div class="wf-right">
 									<?php if ($infoOnly): ?>
 										<div class="wf-result-info"><?php echo nl2br(esc_html($result['message'])); ?></div>
 									<?php elseif ($result['test']): ?>
