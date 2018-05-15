@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.ss-pg h1 {font-family: 'Helvetica Neue', serif!important; font-size: 36px; color: #FFFFFF;}
+.ss-pg h2 {font-family: 'Arial', serif!important; font-size: 24px; color: #FFFFFF;}
+.ss-pg h3 {font-family: 'Arial;', serif!important; font-size: 18px; color: #FFFFFF;}
+.ss-pg p {font-size: 16px; font-weight: 300; color: #FFFFFF;}
+
+.ss-pg {font-family: 'Helvetica Neue', sans-serif; background: url(http://hottubliquidators.com/wp-content/uploads/2018/02/ss_background.jpg) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;}
+.ss-pg #header-top {text-align: center; }
+.ss-pg .brand { width: 70%; max-width: 600px; margin: auto; display: block; -webkit-filter: drop-shadow(5px 5px 5px #222 ); filter: drop-shadow(5px 5px 5px #222);}
+.ss-pg .bg-grey {background:#e5e5e5; color:#FFFFFF;}
+.ss-pg .bg-blue {background:#153b67; color:#FFFFFF;}
+.ss-pg .bg-red {background:#E5001D; color:#FFFFFF;}
+.ss-pg .bg-header {background-image: url("http://hottubliquidators.com/wp-content/uploads/2018/03/ss_header_background.jpg"); background-repeat: no-repeat; background-size: cover;}
+.ss-pg .blink { position: absolute; display: block;right:0px; width:30%; float: right;
+}
+
+.ss-pg #hero-banner { padding: 20px;text-align: center; }
+.ss-pg .cs { padding: 20px;}
+.ss-pg .eco { padding: 20px;}
+.ss-pg #special {text-align: center;}
+.ss-pg #special h1 span {font-size:70px;}
+.ss-pg .carousel-caption { width: 20%;}
+.ss-pg .badge { width: 200px!important; position: absolute; top:0px; z-index: 1; background:none; }
+.ss-pg .badge-large { width: 300px!important; position: absolute; top:0px; z-index: 1; background:none; }
+.ss-pg .badge img {width:100%;}
+.ss-pg .video {
+	text-align: center;
+	padding: 20px;
+}
+.ss-pg .tag { width: 100%;}
+.ss-pg .tag img {width:100%; max-width:300px;}
+.ss-pg .tag-content {background:#E5001D; padding: 20px; box-sizing: border-box; display: block; text-align: center;}
+.ss-pg .date {
+	text-align: center; 
+	padding: 60px 0px;
+	color:#e5001c; 
+	display: block; 
+	font-size: 60px;
+	box-sizing: border-box;
+}
+.ss-pg .buffer {width: 100%; height: 20px;}
+.ss-pg .btn-warning { height: 70px; width: 90%; font-size: 30px; text-align: center; margin: 10px; }
+.ss-pg .red-tags {position:absolute; z-index: 1; top:0px; left: -100px; display: block; float: left; transform: rotate(-20deg); -webkit-transform: rotate(-20deg)}
+
+.ss-pg .tag-shift {position:absolute; z-index: 1; top:-50px; left: -10px; }
+.ss-pg .item img {width:100%; margin: auto;}
+.ss-pg .text-yellow{ color:#fcbb11;}
+.ss-pg .carousel-inner {margin-bottom: 20px;}
+/*-----------------Media---------------*/
+@media only screen and (max-width:1199px ) and (min-width:990px) {
+	
+	#hero-image {
+		margin-top: 4%;
+	}
+}
+@media only screen and (max-width: 990px) and (min-width:769px) {
+	   #hero-image {
+		margin-top: 12%;
+	}
+}
+	
+	
+@media only screen and (max-width: 768px) {
+   .ss-pg .red-tags-right{
+		position:absolute; 
+		z-index: 1; 
+		top:0; 
+		left: 520px; 
+		display: block; 
+		float: left; 
+		transform: rotate(20deg); 
+		-webkit-transform: rotate(20deg);
+		}
+	.ss-pg .tag-content {display: block;}
+	.ss-pg .tag img {display:none;}
+	.ss-pg .date {font-size: 36px;}
+	.ss-pg #special h1 span {font-size:inherit;}
+	.ss-pg .badge-large { width: 200px!important; position: absolute; top:0px; z-index: 1; background:none; }
+	.video { width: 100%; height: 100%;}
+
+}
+
+@media only screen and (max-width: 580px) {
+   .ss-pg .btn-warning { height: 70px; width: 90%; font-size: 20px; text-align: center;}
+	video { width: 100%; height: 100%;}
+}
