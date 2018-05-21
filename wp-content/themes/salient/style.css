@@ -3828,7 +3828,7 @@ body #bbpress-forums fieldset.bbp-form {
 	-moz-transition: height 0.85s cubic-bezier(0.725, 0.000, 0.000, 0.995);
 	-webkit-transition: height 0.85s cubic-bezier(0.725, 0.000, 0.000, 0.995); 
 	-o-transition: height 0.85s cubic-bezier(0.725, 0.000, 0.000, 0.995);
-	margin-top: -50px;
+	margin-top: 0px;
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
 }
