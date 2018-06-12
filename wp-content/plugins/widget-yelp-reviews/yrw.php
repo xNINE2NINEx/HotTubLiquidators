@@ -4,7 +4,7 @@ Plugin Name: Yelp Reviews Widget
 Plugin URI: https://richplugins.com
 Description: Instantly Yelp rating and reviews on your website to increase user confidence and SEO.
 Author: RichPlugins <support@richplugins.com>
-Version: 1.6.1
+Version: 1.6.2
 Author URI: https://richplugins.com
 */
 
@@ -15,7 +15,7 @@ require(ABSPATH . 'wp-includes/version.php');
 include_once(dirname(__FILE__) . '/api/urlopen.php');
 include_once(dirname(__FILE__) . '/helper/debug.php');
 
-define('YRW_VERSION',             '1.6.1');
+define('YRW_VERSION',             '1.6.2');
 define('YRW_API',                 'https://api.yelp.com/v3/businesses');
 define('YRW_PLUGIN_URL',          plugins_url(basename(plugin_dir_path(__FILE__ )), basename(__FILE__)));
 define('YRW_AVATAR',              YRW_PLUGIN_URL . '/static/img/yelp-avatar.png');
@@ -35,9 +35,12 @@ function yrw_init_widget() {
         require 'yrw-widget.php';
     }
 }
-
 add_action('widgets_init', 'yrw_init_widget');
-add_action('widgets_init', create_function('', 'register_widget("Yelp_Reviews_Widget");'));
+
+function yrw_register_widget() {
+    return register_widget("Yelp_Reviews_Widget");
+}
+add_action('widgets_init', 'yrw_register_widget');
 
 /*-------------------------------- Menu --------------------------------*/
 function yrw_setting_menu() {

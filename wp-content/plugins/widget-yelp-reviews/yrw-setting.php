@@ -321,7 +321,7 @@ $yrw_language = get_option('yrw_language');
 jQuery(document).ready(function($) {
     $('a[data-toggle="tab"]').on('click', function(e)  {
         var active = $(this).attr('href');
-        $('.tab-content ' + active).show().siblings().hide();
+        $('.tab-content ' + active).addClass('active').show().siblings().hide();
         $(this).parent('li').addClass('active').siblings().removeClass('active');
         e.preventDefault();
     });

@@ -4,7 +4,7 @@ Donate link: https://richplugins.com/yelp-reviews-pro-wordpress-plugin
 Tags: yelp, yelp widget, yelp shortcode, yelp api, yelp business listings, yelp reviews, yelp reviews widget, yelp business reviews, yelp widget pro, business reviews, google reviews, google places reviews, facebook reviews, facebook page reviews
 Requires at least: 2.8
 Tested up to: 4.9
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,10 @@ Why limit your reviews to just Yelp Business Reviews? Check out our other free b
 3. Yelp Reviews sidebar
 
 == Changelog ==
+
+= 1.6.2 =
+* Bugfix: remove deprecated function create_function()
+* Bugfix: fixed problem with tabs on the setting page
 
 = 1.6.1 =
 * Improve: instruction for getting Yelp API key was updated
