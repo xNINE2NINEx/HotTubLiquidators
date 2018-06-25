@@ -13,7 +13,7 @@
 .ss-pg #header-top {text-align: center; }
 .ss-pg .brand { width: 70%; max-width: 600px; margin: auto; display: block; -webkit-filter: drop-shadow(5px 5px 5px #222 ); filter: drop-shadow(5px 5px 5px #222);}
 .ss-pg .bg-grey {background:#e5e5e5; color:#FFFFFF;}
-.ss-pg .bg-blue {background:#153b67; color:#FFFFFF;}
+.ss-pg .bg-blue {background:#002249 !important; color:#FFFFFF;}
 .ss-pg .bg-red {background:#E5001D; color:#FFFFFF;}
 .ss-pg .bg-header {background-image: url("http://hottubliquidators.com/wp-content/uploads/2018/03/ss_header_background.jpg"); background-repeat: no-repeat; background-size: cover;}
 .ss-pg .blink { position: absolute; display: block;right:0px; width:30%; float: right;
