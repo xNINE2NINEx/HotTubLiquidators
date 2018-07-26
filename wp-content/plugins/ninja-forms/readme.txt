@@ -3,7 +3,7 @@ Contributors: wpninjasllc, kstover, jameslaws, kbjohnson90, klhall1987, krmoorho
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 3.3.10
+Stable tag: 3.3.11
 License: GPLv2 or later
 
 Drag and drop fields in an intuitive UI to create contact forms, email subscription forms, order forms, payment forms, send emails and more!
@@ -111,16 +111,19 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 3.3.10 (16 July 2018) =
+= 3.3.11 (23 July 2018) =
 
-*Bugs:*
+*Changes:*
 
-* (Beta) The Ninja Forms Gutenberg block should now work properly on the newest version of Gutenberg.
-* Min and max values for number fields should once more accept decimal values.
-* Resolved an issue that was sometimes causing a description text block to be output, even if it contained no text.
-* Radio lists should now properly display the default value when using our opinionated styles.
+* Updated save methods for form settings to reduce potential encoding errors.
 
 == Changelog ==
+
+= 3.3.11 (23 July 2018) =
+
+*Changes:*
+
+* Updated save methods for form settings to reduce potential encoding errors.
 
 = 3.3.10 (16 July 2018) =
 

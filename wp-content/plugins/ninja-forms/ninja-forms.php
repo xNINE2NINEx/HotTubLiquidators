@@ -3,7 +3,7 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://ninjaforms.com/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 3.3.10
+Version: 3.3.11
 Author: The WP Ninjas
 Author URI: http://ninjaforms.com
 Text Domain: ninja-forms
@@ -58,7 +58,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         /**
          * @since 3.0
          */
-        const VERSION = '3.3.10';
+        const VERSION = '3.3.11';
 
         const WP_MIN_VERSION = '4.7';
 
@@ -227,7 +227,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 // If we've not recorded our db version...
                 if ( ! get_option( 'ninja_forms_db_version' ) ) {
                     // Set it to the baseline (1.0).
-                    add_option( 'ninja_forms_db_version', '1.0', '', 'no' );
+                    add_option( 'ninja_forms_db_version', '1.1', '', 'no' );
                 }
 
                 /*
@@ -400,6 +400,13 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                     // Ensure all of our tables have been defined.
                     $migrations = new NF_Database_Migrations();
                     $migrations->migrate();
+                    // If our db version is below 1.1...
+                    if ( version_compare( get_option( 'ninja_forms_db_version' ), '1.1', '<' ) ) {
+                        // Do our stage 1 updates.
+                        $migrations->do_stage_one();
+                        // Update our db version.
+                        update_option( 'ninja_forms_db_version', '1.1' );
+                    }
                 }
             }
 
