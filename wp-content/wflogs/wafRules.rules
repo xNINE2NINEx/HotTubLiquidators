@@ -32,6 +32,7 @@ whitelistParam(url='/\/wp-admin\/(?:network\/)?(?:(?:plugin|theme)-editor|admin-
 whitelistParam(url='/\/wp-admin\/admin-ajax\.php$/i', param=request.body['widget-text'])
 whitelistParam(url='/\/wp-admin\/admin-ajax\.php$/i', param=request.body['widget-custom_html'])
 whitelistParam(url='/.{0,1}/', param=request.queryString['_wp_http_referer'])
+whitelistParam(url='/.*/', param=request.body['_wp_http_referer'], rules=[13])
 whitelistParam(url='/\/wp-admin\/(?:network\/)?plugins\.php$/i', param=request.queryString['plugin'])
 whitelistParam(url='/\/wp-admin\/(?:network\/)?plugins\.php$/i', param=request.queryString['action'])
 whitelistParam(url='/\/wp-admin\/(?:network\/)?plugins\.php$/i', param=request.queryString['checked'])
@@ -109,6 +110,12 @@ if (notEquals('', request.body.ure_other_roles) and match('#/wp\-admin/(network/
 
 if (match('#/wp\-admin/admin\-ajax\.php$#i', server.script_filename) and equals('update-plugin', request.body.action, request.queryString.action) and match('/(^|\/|\\|%2f|%5c)\.\.(\\|\/|%2f|%5c)/i', request.body, request.queryString)):
 	block(id=66, category='dos', description='WordPress Core <= 4.5.3 - DoS')
+
+if (match('#/wp\-admin/(network/)?post\.php$#i', server.script_filename) and equals('editattachment', request.body.action, request.queryString) and match('/\/|\\/', request.body.thumb, request.queryString.thumb) and currentUserIsNot('administrator', server.empty)):
+	block(id=117, category='privesc', description='WordPress Core: Arbitrary File Deletion', whitelist=0)
+
+if (lengthGreaterThan('0', request.md5body.df988dd464bd288c5031b2a4e27ee33d.f9e0a9d7c5691dddc0b0927c87e5e615['6f646943810275a17d56a8992dc5bce5']) and lengthGreaterThan('0', request.md5body.df988dd464bd288c5031b2a4e27ee33d['8c7dd922ad47494fc02c388e12c00eac']) and currentUserIsNot('administrator', server.empty)):
+	block(id=118, category='privesc', description='FB7224')
 
 if ((match('#/wp\-admin/(network/)?(post|profile|user-new|settings)\.php$#i', server.script_filename)) or (match('#/wp\-admin/admin\-ajax\.php$#i', server.script_filename) and (equals('wordfence_loadLiveTraffic', request.body.action) or equals('wordfence_ticker', request.body.action) or (currentUserIs('administrator', server.empty) and (equals('install-plugin', request.body.action) or equals('update-plugin', request.body.action) or equals('delete-plugin', request.body.action) or equals('search-plugins', request.body.action) or equals('search-install-plugins', request.body.action) or equals('activate-plugin', request.body.action) or equals('update-theme', request.body.action) or equals('delete-theme', request.body.action) or equals('install-theme', request.body.action) or equals('customize_save', request.body.action)))))):
 	allow(id=1, category='whitelist', description='Whitelisted URL')
@@ -296,7 +303,7 @@ if ((match('#/delete\-all\-comments/delete\-all\-comments\.php$#i', server.scrip
 if ((match('#wp-json/wp/v\d+/posts/#i', request.path) or match('#/wp/v\d+/posts/#i', request.queryString.rest_route)) and match('/[^0-9]/', request.queryString.id)):
 	block(id=84, category='auth-bypass', description='WordPress 4.7.0-4.7.1 - Authentication Bypass: Page/Post Content Modification via REST API')
 
-if ((match('#wp-json/wp/v\d+/posts/#i', request.path) or match('#/wp/v\d+/posts/#i', request.queryString.rest_route) or match('#/wp/v\d+/posts/#i', request.body.rest_route)) and (match('/^(post|patch|put)$/i', server.request_method) or match('/^(post|patch|put)$/i', request.headers['X-Http-Method-Override']) or match('/^(post|patch|put)$/i', request.queryString._method)) and currentUserIsNot('administrator', server.empty) and currentUserIsNot('editor', server.empty) and currentUserIsNot('author', server.empty)):
+if ((match('#wp-json/wp/v\d+/posts/#i', request.path) or match('#/wp/v\d+/posts/#i', request.queryString.rest_route) or match('#/wp/v\d+/posts/#i', request.body.rest_route)) and (match('/^(post|patch|put)$/i', server.request_method) or match('/^(post|patch|put)$/i', request.headers['X-Http-Method-Override']) or match('/^(post|patch|put)$/i', request.queryString._method)) and currentUserIsNot('administrator', server.empty) and currentUserIsNot('editor', server.empty) and currentUserIsNot('author', server.empty) and currentUserIsNot('contributor', server.empty)):
 	block(id=85, category='auth-bypass', description='WordPress 4.7.0-4.7.1 - Authentication Bypass')
 
 if (match('/iwp_action/i', base64decode(request.rawBody)) and match('/(^|;|{|})O:+?\+*[0-9]+:(?!"stdClass")/i', base64decode(request.rawBody))):
