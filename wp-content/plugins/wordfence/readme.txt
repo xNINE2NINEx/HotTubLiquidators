@@ -4,7 +4,7 @@ Tags: security, firewall, malware scanner, web application firewall, antivirus, 
 Requires at least: 3.9
 Requires PHP: 5.2
 Tested up to: 4.9.8
-Stable tag: 7.1.10
+Stable tag: 7.1.11
 
 Secure your website with the most comprehensive WordPress security plugin. Firewall, malware scan, blocking, live traffic, login security & more.
 
@@ -171,6 +171,16 @@ Secure your website with Wordfence.
 
 
 == Changelog ==
+
+= 7.1.11 =
+* Improvement: Added a custom message field that will show on all block pages.
+* Improvement: Improved the standard appearance for block pages.
+* Improvement: Live Traffic now better displays failed logins.
+* Improvement: Added a constant to prevent direct MySQLi use for hosts with unsupported DB configurations.
+* Improvement: Malware scan results have been modified to include both a public identifier and description.
+* Change: Description updated on the Live Traffic page.
+* Fix: Removed an empty file hash from the old Wordpress core file detection.
+* Fix: Update locking now works on multisites that have removed the original site.
 
 = 7.1.10 =
 * Improvement: Better labeling in Live Traffic for 301 and 302 redirects.

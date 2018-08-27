@@ -3,7 +3,7 @@ Contributors: wpninjasllc, kstover, jameslaws, kbjohnson90, klhall1987, krmoorho
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 3.3.13
+Stable tag: 3.3.14
 License: GPLv2 or later
 
 Drag and drop fields in an intuitive UI to create contact forms, email subscription forms, order forms, payment forms, send emails and more!
@@ -111,19 +111,31 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 3.3.13 (8 August 2018) =
+= 3.3.14 (27 August 2018) =
 
-*Changes:*
+*Security:*
 
-* Added the abililty to have no default value for Country and State fields. 
-* Added the Indian Rupee to the list of available currencies
-* Removed unnecessary comments from the main field template
+* Patched an XSS vulnerability that allowed javascript injection into the form import function. Many thanks to Adam Roberts for practicing responsible disclosure.
+* Patched a CSV injection vulnerability that allowed user values to run some scripts when opening exported CSV files with Excel.
 
 *Bugs:*
 
-* User Meta Tags will no longer print out the tag when users are not logged in
+* The selector in the add a form modal should now scroll properly instead of being cut off by the bottom of the browser when it contains a large number of forms.
+* Resolved an issue that sometimes caused the character limit option for paragraph fields to count words instead.
 
 == Changelog ==
+
+= 3.3.14 (27 August 2018) =
+
+*Security:*
+
+* Patched an XSS vulnerability that allowed javascript injection into the form import function. Many thanks to Adam Roberts for practicing responsible disclosure.
+* Patched a CSV injection vulnerability that allowed user values to run some scripts when opening exported CSV files with Excel.
+
+*Bugs:*
+
+* The selector in the add a form modal should now scroll properly instead of being cut off by the bottom of the browser when it contains a large number of forms.
+* Resolved an issue that sometimes caused the character limit option for paragraph fields to count words instead.
 
 = 3.3.13 (8 August 2018) =
 
