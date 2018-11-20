@@ -22,11 +22,9 @@ body, html{background:#002249 !important;}
 <body>
 <div class="ss-pg">
 <div class="container-fluid bg-blue">
-		<div class="row" style="padding: 5px 0 10px 0;">
+		<div class="row">
 			<div class="col-lg-12" id="header-top">
-				<h2>129 N. Gibson RD., Henderson | (702) 450-7727<br><strong style="color:#fcbb11;">COOL DOWN, LAS VEGAS, IN A SPECTACULAR SWIM SPA!
-
- </h2>
+				<h2>129 N. Gibson RD., Henderson | (702) 450-7727<br><strong style="color:#fcbb11; text-transform: uppercase;">Enjoy a Hot Tub or swim spa for the Holidays!</strong></h2>
 			</div>
 				<div class="container">
 					<div class="row">
@@ -41,33 +39,23 @@ body, html{background:#002249 !important;}
 	<div class="row">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12"><img class="blink" src="https://adsupnow.com/clientpreviews/hottubliquidators/images/Dont_Miss.gif">
+				<div class="col-lg-6"><img class="blink2" src="../wp-content/uploads/2018/11/Factory_Direct.gif">
+				</div>
+				
+				<div class="col-lg-6"><img class="blink" src="../wp-content/uploads/2018/11/Dont_Miss.gif">
 				</div>
 				<div class="col-sm-12" >
-					<img class="brand" src="https://hottubliquidators.com/wp-content/uploads/2018/05/ss_Logo_SpaShow_4.png" alt="Hot Tub Liquidators" />
+					<img class="brand" src="../wp-content/uploads/2018/05/ss_Logo_SpaShow_4.png" alt="Hot Tub Liquidators" />
 				</div>
 				<h1 style="color:#000000; text-align: center; padding-bottom: 20px;"><strong>This Thursday, Friday, Saturday, Sunday!</strong></h1>
-				<!--<div class="col-sm-6">
-					<!--<h1 class="date"><span style="color:#153b67;">NEVADA'S LARGEST HOT TUB & SWIM SPA SHOW!</span><!--<br>MARCH<br>8th - 11th.<span style="font-size: 20px; color:#153b67;"><br> 129 N. Gibson RD. Henderson, NV 89014</span--><!--</h1>-
-					
-	
-				</div>
 
-				<!--<div class="col-xs-12 col-sm-12">
-					<div class="tag">
-						<!--<img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_offer.png" alt="Hot Tub Liquidators" />
-						<div class="tag-content">
-						<h1><span class="text-yellow">Up To</span> 60% OFF!</h1>
-						</div>
-					</div>
-				</div>-->
 			</div>
 		</div>
 	</div>	
 </div>
 	<div class="ss-pg">
 <div class="container-fluid bg-blue">
-		<div class="row" style="padding:1% 0 2%;">
+		<div class="row">
 			<div class="col-lg-12" id="header-top">
 				<h1>NEVADA'S LARGEST SWIM SPA &amp; SPA SPECTACULAR!</h1>
 			</div>
@@ -82,14 +70,14 @@ body, html{background:#002249 !important;}
 	<div class="row">
 		<div class="container">
 			<div class="row">
-			  <div class="col-sm-4 special" id="special">
+			  <div class="col-sm-6 special" id="special">
 				  <h1><span style="font-size: 40px;">SAVE <br> THOUSANDS!</span></h1>
 					<h1>0% Financing!</h1>
-					<h2><strong style="color:#fcbb11;">HOT TUBS</strong> $3,880! <br><strong style="color:#fcbb11;">SWIM SPAS</strong> $11,880! <br><strong style="color:#fcbb11;">PAYMENTS</strong> as low as $69 mo.</h2>
+					<h2><strong style="color:#fcbb11;">HOT TUBS</strong> $2,880! <strong style="color:#fcbb11;">SWIM SPAS</strong> $10,880! <strong style="color:#fcbb11;">PAYMENTS</strong> as low as $69 mo.</h2>
 					<p>18 mos. OAC. See show for details.</p>
 				</div>
-				<div class="col-sm-8" id="hero-image">
-					<img style="width:100%;"  src="http://hottubliquidators.com/wp-content/uploads/2018/03/Hero_3-1.png">
+				<div class="col-sm-6" id="hero-image">
+					<img style="width:100%;"  src="../wp-content/uploads/2018/11/Hero_3.png">
 				</div>
 			</div>
 		</div>
@@ -99,15 +87,15 @@ body, html{background:#002249 !important;}
 	<div class="row">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h1>Save Thousands on the World's Best Built Spas!</h1>
+				<div class="col-md-9">
+					<h1>Save Thousands on the<br>World's Best Built Spas!</h1>
 					
-					<h1 class="text-yellow"><strong>Thursday, November 8th - Sunday, November 11th</strong></h1>
+					<h2 class="text-yellow"><strong>Thursday, Nov. 8th - Sunday, Nov. 11th</strong></h2>
 						
 
 				</div>
-				<div class="col-md-12" id="hero-logo">
-					<img class="cs" src="https://hottubliquidators.com/wp-content/uploads/2016/12/coastspas_logoDark.png" alt="Hot Tub Liquidators" width="360" />
+				<div class="col-md-3" id="hero-logo">
+					<img class="cs" src="../wp-content/uploads/2018/11/ss_event-logo.png" alt="Hot Tub Liquidators" />
 				</div>
 			</div>
 		</div>
@@ -132,32 +120,36 @@ body, html{background:#002249 !important;}
 			  <!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000"></div>
-				<div class="item active">
-							  <img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide15-1.jpg" alt="Hot Tub Liquidators">
+				  <div class="item active">
+					  <div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer11.png" alt="Hot Tub Liquidators"></div>
+					<img src="../wp-content/uploads/2018/11/ss_slide16.jpg" alt="Hot Tub Liquidators">
+				</div>
+				<div class="item">
+					<img src="../wp-content/uploads/2018/11/ss_slide2.jpg" alt="Hot Tub Liquidators">
 				</div>
 				 <div class="item">
-					<div class="badge-large"><img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide-offer8-1.png" alt="Hot Tub Liquidators"></div>
-				  	<img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_slide10.jpg" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer8.png" alt="Hot Tub Liquidators"></div>
+				  	<img src="../wp-content/uploads/2018/11/ss_slide10.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide-offer6.png" alt="Hot Tub Liquidators"></div>
-				  	<img src="http://hottubliquidators.com/wp-content/uploads/2018/02/ss_slide4.jpg" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer6.png" alt="Hot Tub Liquidators"></div>
+				  	<img src="../wp-content/uploads/2018/11/ss_slide4.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide-offer7.png" alt="Hot Tub Liquidators"></div>
-					<img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_slide11.jpg" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer7.png" alt="Hot Tub Liquidators"></div>
+					<img src="../wp-content/uploads/2018/11/ss_slide11.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide-offer9.png" alt="Hot Tub Liquidators"></div>
-					<img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide12.jpg" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer9.png" alt="Hot Tub Liquidators"></div>
+					<img src="../wp-content/uploads/2018/11/ss_slide12.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_slide-offer5-2.png" alt="Hot Tub Liquidators"></div>
-					<img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide13.jpg" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer5.png" alt="Hot Tub Liquidators"></div>
+					<img src="../wp-content/uploads/2018/11/ss_slide13.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide-offer10.png" alt="Hot Tub Liquidators"></div>
-					<img src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_slide14.jpg" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer10.png" alt="Hot Tub Liquidators"></div>
+					<img src="../wp-content/uploads/2018/11/ss_slide14.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 			  </div>
 
@@ -178,14 +170,14 @@ body, html{background:#002249 !important;}
 	<div class="row">
 		<div class="col-md-6">
 			<div class="thumbnail">
-			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_slide7.jpg" alt="Hot Tub Liquidators" />
-				<img class="red-tags" src="https://hottubliquidators.com/wp-content/uploads/2018/06/ss_red-tag4.png" alt="Hot Tub Liquidators" />
+			  <img src="../wp-content/uploads/2018/11/ss_slide7.jpg" alt="Hot Tub Liquidators" />
+				<img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag4.png" alt="Hot Tub Liquidators" />
 			</div>
 		  </div>
 		<div class="col-md-6">
 			<div class="thumbnail">
-			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_slide8.jpg" alt="Hot Tub Liquidators">
-				  <img class="red-tags tag-shift" src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_red-tag2.png" alt="Hot Tub Liquidators" />
+			  <img src="../wp-content/uploads/2018/11/ss_slide8.jpg" alt="Hot Tub Liquidators">
+				  <img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag2.png" alt="Hot Tub Liquidators" />
 			  </div>
 			</div>
 		  </div>
@@ -193,14 +185,14 @@ body, html{background:#002249 !important;}
 	<div class="row">
 		<div class="col-md-6">
 			<div class="thumbnail">
-			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/02/ss_slide3.jpg" alt="Hot Tub Liquidators">
-				  <img class="red-tags" src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_red-tag3.png" alt="Hot Tub Liquidators">
+			  <img src="../wp-content/uploads/2018/11/ss_slide3.jpg" alt="Hot Tub Liquidators">
+				  <img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag3.png" alt="Hot Tub Liquidators">
 			  </div>
 			</div>
 		<div class="col-md-6">
 			<div class="thumbnail">
-			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/03/ss_slide9.jpg" alt="Hot Tub Liquidators">
-				  <img class="red-tags tag-shift" src="http://hottubliquidators.com/wp-content/uploads/2018/05/ss_red-tag1-1.png	" alt="Hot Tub Liquidators">
+			  <img src="../wp-content/uploads/2018/11/ss_slide9.jpg" alt="Hot Tub Liquidators">
+				  <img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag1.png" alt="Hot Tub Liquidators">
 			</div>
 		 </div>
 	</div>
@@ -212,15 +204,15 @@ body, html{background:#002249 !important;}
 				<div class="col-lg-12">
 					
 					<div class="video">
-						<h2 >FREE REFRESHMENTS!  BRING YOUR SWIMSUIT &amp; TOWEL FOR A TEST SWIM!<br><strong class="text-yellow">  COOL OFF IN A REFRESHING HOT TUB LIQUIDATORS' SPA! </strong></h2>
+						<h2 style="font-size: 50px;">Nevadas #1 Spa Dealer</h2>
 						<video width="100%" height="auto" controls>
-  							<source src="https://adsupnow.com/clientpreviews/hottubliquidators/video/15HTLShow6-18A.mp4" type="video/mp4">
-  							<source src="https://adsupnow.com/clientpreviews/hottubliquidators/video/15HTLShow6-18A.ogv" type="video/ogg">
+  							<source src="../wp-content/uploads/2018/11/video/1118-hottub-video.mp4" type="video/mp4">
+  							<source src="../wp-content/uploads/2018/11/video/1118-hottub-video.mp4" type="video/ogg">
 						</video>
 
 					<h1>One Block North of I-215 &amp; Gibson RD Exit #2!</h1>
 					<h2> (Between the 215 &amp; The Valley Auto Mall on Gibson RD) </h2>
-					<h1 class="text-yellow">Nov. 8th -  Nov. 11th</h1>
+					<h1 class="text-yellow">Thursday, Nov. 8th - Sunday, Nov. 11th</h1>
 						<h2>Hours: 10am - 7pm</h2>
 						<h1> Factory Reps On Hand!</h1>
 						<h1>For more information click here</h1>
@@ -273,7 +265,7 @@ body, html{background:#002249 !important;}
 
 <div class="container-fluid">
 	<div class="row">
-<iframe class="actAsDiv" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25810.62165658611!2d-115.04743846211397!3d36.03670731800031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8d113eb8b1d5b%3A0xbf9b30f732e066fe!2s129+N+Gibson+Rd%2C+Henderson%2C+NV+89014!5e0!3m2!1sen!2sus!4v1519775573518"></iframe>
+<iframe class="actAsDiv" width="100%" height="322" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25810.62165658611!2d-115.04743846211397!3d36.03670731800031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8d113eb8b1d5b%3A0xbf9b30f732e066fe!2s129+N+Gibson+Rd%2C+Henderson%2C+NV+89014!5e0!3m2!1sen!2sus!4v1519775573518"></iframe>
 	</div>	
 </div>
 	

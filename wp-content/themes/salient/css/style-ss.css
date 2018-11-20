@@ -13,12 +13,14 @@
 .ss-pg #header-top {text-align: center; }
 .ss-pg .brand { width: 70%; max-width: 600px; margin: auto; display: block; -webkit-filter: drop-shadow(5px 5px 5px #222 ); filter: drop-shadow(5px 5px 5px #222);}
 .ss-pg .bg-grey {background:#e5e5e5; color:#FFFFFF;}
-.ss-pg .bg-blue {background:#002249 !important; color:#FFFFFF;}
+.ss-pg .bg-blue {background:#153b67; color:#FFFFFF;}
 .ss-pg .bg-red {background:#E5001D; color:#FFFFFF;}
 .ss-pg .bg-header {background-image: url("http://hottubliquidators.com/wp-content/uploads/2018/03/ss_header_background.jpg"); background-repeat: no-repeat; background-size: cover;}
-.ss-pg .blink { position: absolute; display: block;right:0px; width:30%; float: right;
+.ss-pg .blink { position: absolute; display: block;right:0px; width:40%; float: right; max-width:300px;
 }
-
+.ss-pg .blink2 { position: absolute; display: block; width:40%; float: left; max-width:300px;
+}
+.ss-pg .carousel-control 
 .ss-pg #hero-banner { padding: 20px;text-align: center; }
 .ss-pg .cs { padding: 20px;}
 .ss-pg .eco { padding: 20px;}
@@ -88,4 +90,9 @@
 @media only screen and (max-width: 580px) {
    .ss-pg .btn-warning { height: 70px; width: 90%; font-size: 20px; text-align: center;}
 	video { width: 100%; height: 100%;}
+	.ss-pg .blink { position: relative; display: block; margin:-80px auto 0px auto; width:90%; float: none; max-width:300px;
+}
+.ss-pg .blink2 { position: relative; display: block; margin:0px auto; width:90%; float: none; max-width:300px;
+}
+
 }
