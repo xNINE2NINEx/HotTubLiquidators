@@ -89,6 +89,10 @@ if (isset($_POST['yrw_setting'])) {
     $yrw_setting_page = false;
 }
 
+if (isset($_GET['setting_tab'])) {
+    $yrw_setting_page = true;
+}
+
 if (isset($_POST['yrw_install_db'])) {
     yrw_install_db();
 }
@@ -214,11 +218,13 @@ $yrw_language = get_option('yrw_language');
                         Please get the correct key by instruction below ↓
                     </div>
                     <?php } ?>
-                    <a href="#" data-toggle="collapse" data-target="#yelp_api_key_instruction">Instruction: how to get Yelp API Key</a>
-                    <div id="yelp_api_key_instruction" class="collapse">
-                        1. Please register a <a href="https://www.yelp.com/signup" target="_blank"><b>FREE</b> Yelp account</a> (not a Business)<br>
-                        2. After registration, go to <a href="https://www.yelp.com/developers/v3/manage_app" target="_blank">Yelp developers</a> and create new app<br>
-                        3. Copy 'API key' to plugin field and save the setting<br>
+                    <div style="margin-top:10px">
+                        <p><b>Instruction: how to create Yelp API key</b></p>
+                        <p>1. If you do not have a <b>free Yelp account</b> (not a business), please <a href="https://www.yelp.com/signup" target="_blank">Sign Up Here</a></p>
+                        <p>2. Under the free Yelp account, go to the <a href="https://www.yelp.com/developers/v3/manage_app" target="_blank">Yelp developers</a> page and create new app</p>
+                        <p>3. Copy <b>API Key</b> to this setting and <b>Save</b></p>
+                        <p><b>Video instruction</b></p>
+                        <iframe src="//www.youtube.com/embed/GFhGN36Wf7Q?rel=0" allowfullscreen=""></iframe>
                     </div>
                 </div>
                 <div class="form-group">
@@ -282,7 +288,7 @@ $yrw_language = get_option('yrw_language');
             <form method="POST" action="?page=yrw&amp;yrw_active=<?php echo (string)((int)($yrw_enabled != true)); ?>">
                 <?php wp_nonce_field('yrw-wpnonce_yrw_active', 'yrw-form_nonce_yrw_active'); ?>
                 <span class="status">
-                    <?php echo yrw_i('Yelp Reviews Widget are currently <b>'). ($yrw_enabled ? yrw_i('enable') : yrw_i('disable')) . '</b>'; ?>
+                    <?php echo yrw_i('Yelp Reviews Widget is currently <b>'). ($yrw_enabled ? yrw_i('enabled') : yrw_i('disabled')) . '</b>'; ?>
                 </span>
                 <input type="submit" name="yrw_active" class="button" value="<?php echo $yrw_enabled ? yrw_i('Disable') : yrw_i('Enable'); ?>" />
             </form>

@@ -33,7 +33,7 @@ class Yelp_Reviews_Widget extends WP_Widget {
 
         add_action('admin_enqueue_scripts', array($this, 'yrw_widget_scripts'));
 
-        wp_register_script('yrw_time_js', plugins_url('/static/js/wpac-time.js', __FILE__));
+        wp_register_script('yrw_time_js', plugins_url('/static/js/wpac-time.js', __FILE__), array(), YRW_VERSION);
         wp_enqueue_script('yrw_time_js', plugins_url('/static/js/wpac-time.js', __FILE__));
 
         wp_register_style('yrw_widget_css', plugins_url('/static/css/yrw-widget.css', __FILE__));
@@ -48,10 +48,10 @@ class Yelp_Reviews_Widget extends WP_Widget {
 
             wp_enqueue_script('jquery');
 
-            wp_register_script('yrw_wpac_js', plugins_url('/static/js/wpac.js', __FILE__));
+            wp_register_script('yrw_wpac_js', plugins_url('/static/js/wpac.js', __FILE__), array(), YRW_VERSION);
             wp_enqueue_script('yrw_wpac_js', plugins_url('/static/js/wpac.js', __FILE__));
 
-            wp_register_script('yrw_finder_js', plugins_url('/static/js/yrw-finder.js', __FILE__));
+            wp_register_script('yrw_finder_js', plugins_url('/static/js/yrw-finder.js', __FILE__), array(), YRW_VERSION);
             wp_localize_script('yrw_finder_js', 'finderVars', array(
                 'YELP_AVATAR' => YRW_AVATAR,
                 'handlerUrl' => admin_url('options-general.php?page=yrw'),
@@ -102,8 +102,8 @@ class Yelp_Reviews_Widget extends WP_Widget {
         wp_nonce_field('yrw_wpnonce', 'yrw_nonce');
 
         $yrw_api_key = get_option('yrw_api_key');
-        if ($yrw_api_key) { ?>
-
+        if ($yrw_api_key) {
+            ?>
             <div id="<?php echo $this->id; ?>">
                 <?php
                 if (!$business_id) {
@@ -116,43 +116,46 @@ class Yelp_Reviews_Widget extends WP_Widget {
                 include(dirname(__FILE__) . '/yrw-options.php'); ?>
                 <br>
             </div>
-
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-widget-id="<?php echo $this->id; ?>"
-              onload="yrw_sidebar_init({
-                  widgetId: this.getAttribute('data-widget-id'),
-                  cb: function(el, businessId) {
-                      var businessIdEl = document.querySelector('#<?php echo $this->get_field_id("business_id"); ?>');
-                      businessIdEl.value = businessId;
-                      show_tooltip(el);
-                  }
-              })" style="display:none"> <?php
-
-        } else { ?>
-            <h4 class="text-left"><?php echo yrw_i('First configure Yelp API Key'); ?></h4>
-            <ul style="line-height:20px">
-                <li><?php echo yrw_i('1. Go to Yelp developers and '); ?><a href="https://www.yelp.com/developers/v3/manage_app" target="_blank"><?php echo yrw_i('Create New App'); ?></a></li>
-                <li>
-                    <?php echo yrw_i('2. Enter \'API Key\':'); ?>
-                    <input type="text" class="yrw-app" name="api_key" placeholder="<?php echo yrw_i('API Key'); ?>" />
-                </li>
-                <li><?php echo yrw_i('3. Save the widget'); ?></li>
-            </ul>
-
-            <script type="text/javascript">
-                var appinputs = document.querySelectorAll('.yrw-app');
-                if (appinputs) {
-                    WPacFastjs.onall(appinputs, 'change', function() {
-                        if (!this.value) return;
-                        jQuery.post('<?php echo admin_url('options-general.php?page=yrw'); ?>&cf_action=yrw_' + this.getAttribute('name'), {
-                            app_key: this.value,
-                            yrw_wpnonce: jQuery('#yrw_nonce').val()
-                        }, function(res) {
-                            console.log('RESPONSE', res);
-                        }, 'json');
-                    });
-                }
-            </script> <?php
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onload="(function(el) { var t = setInterval(function () {if (window.yrw_sidebar_init){yrw_sidebar_init({el: el});clearInterval(t);}}, 200); })(this.parentNode);" style="display:none">
+            <?php
+        } else {
+            ?>
+            <h4 class="text-left">First of all, please create and save the Yelp API Key on <a href="<?php echo admin_url('options-general.php?page=yrw&setting_tab=active'); ?>">the setting page</a> of the plugin</h4>
+            <?php
         }
+        ?>
+        <script type="text/javascript">
+            function yrw_load_js(src, cb) {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = src;
+                script.async = 'true';
+                if (cb) {
+                    script.addEventListener('load', function (e) { cb(null, e); }, false);
+                }
+                document.getElementsByTagName('head')[0].appendChild(script);
+            }
+
+            function yrw_load_css(href) {
+                var link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                document.getElementsByTagName('head')[0].appendChild(link);
+            }
+
+            if (!window.yrw_sidebar_init) {
+                yrw_load_css('<?php echo plugins_url('/static/css/rplg-wp.css?ver=' . YRW_VERSION, __FILE__); ?>');
+                yrw_load_js('<?php echo plugins_url('/static/js/wpac.js?ver=' . YRW_VERSION, __FILE__); ?>', function() {
+                    window.finderVars = {
+                        YELP_AVATAR : '<?php echo YRW_AVATAR; ?>',
+                        handlerUrl    : '<?php echo admin_url('options-general.php?page=yrw'); ?>',
+                        actionPrefix  : 'yrw'
+                    };
+                    yrw_load_js('<?php echo plugins_url('/static/js/yrw-finder.js?ver=' . YRW_VERSION, __FILE__); ?>');
+                });
+            }
+        </script>
+        <?php
     }
 }
 ?>

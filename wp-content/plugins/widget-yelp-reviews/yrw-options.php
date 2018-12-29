@@ -6,7 +6,7 @@
 
 <?php if (isset($business_id)) { ?>
 <div class="form-group">
-    <input type="text" id="<?php echo $this->get_field_id('business_id'); ?>" name="<?php echo $this->get_field_name('business_id'); ?>" value="<?php echo $business_id; ?>" placeholder="<?php echo yrw_i('Business ID (e.g. benjamin-steakhouse-white-plains)'); ?>" readonly />
+    <input type="text" id="<?php echo $this->get_field_id('business_id'); ?>" name="<?php echo $this->get_field_name('business_id'); ?>" value="<?php echo $business_id; ?>" class="yrw-business-id" placeholder="<?php echo yrw_i('Business ID'); ?>" readonly />
 </div>
 <?php } ?>
 

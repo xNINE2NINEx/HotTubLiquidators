@@ -16,7 +16,7 @@ if (!$business) {
     return;
 }
 
-$reviews = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "yrw_yelp_review WHERE yelp_business_id = %d", $business->id));
+$reviews = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "yrw_yelp_review WHERE yelp_business_id = %d ORDER BY time DESC", $business->id));
 
 $rating = number_format((float)$business->rating, 1, '.', '');
 ?>

@@ -1,7 +1,51 @@
 function yrw_sidebar_init(data) {
 
-    var el = document.querySelector('#' + data.widgetId);
+    var el = data.el;
     if (!el) return;
+
+    var connectBtn = el.querySelector('.yrw-connect-btn');
+    WPacFastjs.on(connectBtn, 'click', function() {
+        var linkEL  = el.querySelector('.yrw-biz-id'),
+            errorEl = el.querySelector('.yrw-error');
+
+        if (!linkEL.value) {
+            linkEL.focus();
+            return false;
+        }
+
+        var bizId = '';
+        try {
+            bizId  = /.+\/biz\/(.*?)(\?|\/|$)/.exec(linkEL.value)[1];
+            errorEl.innerHTML = '';
+        } catch (e) {
+            errorEl.innerHTML = 'Link to the Yelp business page is incorrect';
+            return false;
+        }
+
+        connectBtn.innerHTML = 'Please wait...';
+        connectBtn.disabled = true;
+
+        jQuery.post(finderVars.handlerUrl + '&cf_action=' + finderVars.actionPrefix + '_save', {
+            business_id: decodeURIComponent(bizId),
+            yrw_wpnonce: jQuery('#yrw_nonce').val()
+        }, function(res) {
+
+            connectBtn.innerHTML = 'Connect Yelp';
+            connectBtn.disabled = false;
+
+            if (res.id) {
+                var businessIdEl = el.querySelector('.yrw-business-id');
+                businessIdEl.value = res.id;
+                show_tooltip(el);
+
+                jQuery(businessIdEl).change();
+            } else {
+                errorEl.innerHTML = 'Some error occurred, please check the Yelp API key';
+            }
+        }, 'json');
+
+        return false;
+    });
 
     var searchBtn = el.querySelector('.yrw-search-business');
     WPacFastjs.on(searchBtn, 'click', function() {
