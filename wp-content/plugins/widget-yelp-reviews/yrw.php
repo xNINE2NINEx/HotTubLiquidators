@@ -4,7 +4,7 @@ Plugin Name: Yelp Reviews Widget
 Plugin URI: https://richplugins.com
 Description: Instantly Yelp rating and reviews on your website to increase user confidence and SEO.
 Author: RichPlugins <support@richplugins.com>
-Version: 1.6.3
+Version: 1.6.5
 Author URI: https://richplugins.com
 */
 
@@ -15,10 +15,10 @@ require(ABSPATH . 'wp-includes/version.php');
 include_once(dirname(__FILE__) . '/api/urlopen.php');
 include_once(dirname(__FILE__) . '/helper/debug.php');
 
-define('YRW_VERSION',             '1.6.3');
-define('YRW_API',                 'https://api.yelp.com/v3/businesses');
-define('YRW_PLUGIN_URL',          plugins_url(basename(plugin_dir_path(__FILE__ )), basename(__FILE__)));
-define('YRW_AVATAR',              YRW_PLUGIN_URL . '/static/img/yelp-avatar.png');
+define('YRW_VERSION',            '1.6.5');
+define('YRW_API',                'https://api.yelp.com/v3/businesses');
+define('YRW_PLUGIN_URL',         plugins_url(basename(plugin_dir_path(__FILE__ )), basename(__FILE__)));
+define('YRW_AVATAR',             YRW_PLUGIN_URL . '/static/img/yelp-avatar.png');
 
 function yrw_options() {
     return array(
@@ -78,7 +78,7 @@ function yrw_plugin_row_meta($input, $file) {
 
     $links = array(
         //'<a href="' . esc_url('https://richplugins.com') . '" target="_blank">' . yrw_i('View Documentation') . '</a>',
-        '<a href="' . esc_url('https://richplugins.com/yelp-reviews-pro-wordpress-plugin') . '" target="_blank">' . yrw_i('Upgrade to Pro') . ' &raquo;</a>',
+        '<a href="' . esc_url('https://richplugins.com/business-reviews-bundle-wordpress-plugin') . '" target="_blank">' . yrw_i('Upgrade to Business') . ' &raquo;</a>',
     );
     $input = array_merge($input, $links);
     return $input;
@@ -86,40 +86,47 @@ function yrw_plugin_row_meta($input, $file) {
 add_filter('plugin_row_meta', 'yrw_plugin_row_meta', 10, 2);
 
 /*-------------------------------- Database --------------------------------*/
-function yrw_activation($network_wide) {
+function yrw_activation($network_wide = false) {
+    add_option('yrw_is_multisite', $network_wide);
     if (yrw_does_need_update()) {
-        yrw_install($network_wide);
+        yrw_install();
     }
 }
 register_activation_hook(__FILE__, 'yrw_activation');
 
-function yrw_install($network_wide, $allow_db_install=true) {
-    global $wpdb;
+function yrw_install() {
 
     $version = (string)get_option('yrw_version');
     if (!$version) {
         $version = '0';
     }
 
-    if ($allow_db_install) {
-        if (function_exists('is_multisite') && is_multisite() && $network_wide) {
-            $current_blog_id = get_current_blog_id();
-            $blog_ids = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
-            foreach ($blog_ids as $blog_id) {
-                switch_to_blog($blog_id);
-                yrw_install_db();
-            }
-            switch_to_blog($current_blog_id);
-        } else {
-            yrw_install_db();
+    $network_wide = get_option('yrw_is_multisite');
+
+    if ($network_wide) {
+        $site_ids = get_sites(array(
+            'fields'     => 'ids',
+            'network_id' => get_current_network_id()
+        ));
+        foreach($site_ids as $site_id) {
+            switch_to_blog($site_id);
+            yrw_install_single_site($version);
+            restore_current_blog();
         }
+    } else {
+        yrw_install_single_site($version);
     }
+}
+
+function yrw_install_single_site($version) {
+    yrw_install_db();
 
     if (version_compare($version, YRW_VERSION, '=')) {
         return;
     }
 
     add_option('yrw_active', '1');
+    add_option('yrw_api_key', '');
     update_option('yrw_version', YRW_VERSION);
 }
 
@@ -187,8 +194,8 @@ function yrw_reset_data($reset_db) {
         delete_option($opt);
     }
     if ($reset_db) {
-        $wpdb->query("DROP TABLE " . $wpdb->prefix . "yrw_yelp_business;");
-        $wpdb->query("DROP TABLE " . $wpdb->prefix . "yrw_yelp_review;");
+        $wpdb->query("DROP TABLE IF EXISTS " . $wpdb->prefix . "yrw_yelp_business;");
+        $wpdb->query("DROP TABLE IF EXISTS " . $wpdb->prefix . "yrw_yelp_review;");
     }
 }
 

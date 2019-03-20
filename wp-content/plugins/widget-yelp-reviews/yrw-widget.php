@@ -17,6 +17,13 @@ class Yelp_Reviews_Widget extends WP_Widget {
         'title'                => '',
         'business_id'          => '',
         'dark_theme'           => '',
+        'view_mode'            => 'list',
+        'pagination'           => '',
+        'text_size'            => '',
+        'read_on_yelp'         => false,
+        'max_width'            => '',
+        'max_height'           => '',
+        'centered'             => false,
         'open_link'            => true,
         'nofollow_link'        => true,
     );
@@ -33,10 +40,10 @@ class Yelp_Reviews_Widget extends WP_Widget {
 
         add_action('admin_enqueue_scripts', array($this, 'yrw_widget_scripts'));
 
-        wp_register_script('yrw_time_js', plugins_url('/static/js/wpac-time.js', __FILE__), array(), YRW_VERSION);
-        wp_enqueue_script('yrw_time_js', plugins_url('/static/js/wpac-time.js', __FILE__));
+        wp_register_script('wpac_time_js', plugins_url('/static/js/wpac-time.js', __FILE__), array(), YRW_VERSION);
+        wp_enqueue_script('wpac_time_js', plugins_url('/static/js/wpac-time.js', __FILE__));
 
-        wp_register_style('yrw_widget_css', plugins_url('/static/css/yrw-widget.css', __FILE__));
+        wp_register_style('yrw_widget_css', plugins_url('/static/css/yrw-widget.css', __FILE__), array(), YRW_VERSION);
         wp_enqueue_style('yrw_widget_css', plugins_url('/static/css/yrw-widget.css', __FILE__));
     }
 
@@ -120,7 +127,7 @@ class Yelp_Reviews_Widget extends WP_Widget {
             <?php
         } else {
             ?>
-            <h4 class="text-left">First of all, please create and save the Yelp API Key on <a href="<?php echo admin_url('options-general.php?page=yrw&setting_tab=active'); ?>">the setting page</a> of the plugin</h4>
+            <h4 class="text-left">First of all, please create and save the Yelp API Key on <a href="<?php echo admin_url('options-general.php?page=yrw&yrw_tab=setting'); ?>">the setting page</a> of the plugin</h4>
             <?php
         }
         ?>

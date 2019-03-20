@@ -22,23 +22,42 @@ function yrw_page($business, $rating, $open_link, $nofollow_link) {
     <?php
 }
 
-function yrw_page_reviews($reviews, $open_link, $nofollow_link) {
+function yrw_page_reviews($reviews, $text_size, $pagination, $read_on_yelp, $open_link, $nofollow_link) {
     ?>
     <div class="wp-yelp-reviews">
     <?php
+    $hr = false;
     if (count($reviews) > 0) {
-        foreach ($reviews as $review) { ?>
-        <div class="wp-yelp-review">
+        $i = 0;
+        foreach ($reviews as $review) {
+            if ($pagination > 0 && $pagination <= $i++) {
+                $hr = true;
+            }
+        ?>
+        <div class="wp-yelp-review<?php if ($hr) { ?> wp-yelp-hide<?php } ?>">
             <div class="wp-yelp-left">
-                <img src="<?php echo $review->author_img; ?>" alt="<?php echo $review->author_name; ?>" onerror="if(this.src!='<?php echo YRW_AVATAR; ?>')this.src='<?php echo YRW_AVATAR; ?>';">
+                <?php
+                if (strlen($review->author_img) > 0) {
+                    $author_img = str_replace('o.jpg', 'ms.jpg', $review->author_img);
+                } else {
+                    $author_img = YRW_AVATAR;
+                }
+                ?>
+                <img src="<?php echo $author_img; ?>" alt="<?php echo $review->author_name; ?>" onerror="if(this.src!='<?php echo YRW_AVATAR; ?>')this.src='<?php echo YRW_AVATAR; ?>';">
             </div>
             <div class="wp-yelp-right">
                 <?php yrw_anchor($review->url, 'wp-yelp-name', $review->author_name, $open_link, $nofollow_link); ?>
                 <div class="wp-yelp-time" data-time="<?php echo $review->time; ?>"><?php echo $review->time; ?></div>
                 <div class="wp-yelp-feedback">
                     <span class="wp-yelp-stars"><?php echo yrw_stars($review->rating); ?></span>
-                    <?php if (isset($review->text)) { ?>
-                    <span class="wp-yelp-text"><?php echo yrw_trim_text($review->text, 0); ?></span>
+                    <?php
+                    if (isset($review->text)) {
+                        $review_text = $review->text;
+                        if ($read_on_yelp) {
+                            $review_text .= " <a class=\"wp-yelp-link\" href=\"" . $review->url . "\" target=\"_blank\">" . yrw_i('read more') . "</a>";
+                        }
+                    ?>
+                    <span class="wp-yelp-text"><?php echo yrw_trim_text($review_text, $text_size); ?></span>
                     <?php } ?>
                 </div>
             </div>
@@ -48,7 +67,11 @@ function yrw_page_reviews($reviews, $open_link, $nofollow_link) {
     }
     ?>
     </div>
-    <?php
+    <?php if ($pagination > 0 && $hr) { ?>
+    <a class="wp-yelp-url" href="#" onclick="return rplg_next_reviews.call(this, 'yelp', <?php echo $pagination; ?>);">
+        <?php echo yrw_i('Next Reviews'); ?>
+    </a>
+    <?php }
 }
 
 function yrw_stars($rating) {

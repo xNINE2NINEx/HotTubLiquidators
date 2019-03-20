@@ -1,10 +1,10 @@
 === Yelp Reviews Widget ===
 Contributors: richplugins
-Donate link: https://richplugins.com/yelp-reviews-pro-wordpress-plugin
+Donate link: https://richplugins.com/business-reviews-bundle-wordpress-plugin
 Tags: yelp, yelp widget, yelp shortcode, yelp api, yelp business listings, yelp reviews, yelp reviews widget, yelp business reviews, yelp widget pro, business reviews, google reviews, google places reviews, facebook reviews, facebook page reviews
 Requires at least: 2.8
-Tested up to: 5.0
-Stable tag: 1.6.3
+Tested up to: 5.1
+Stable tag: 1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Yelp Reviews Widget show Yelp Business Reviews on your WordPress website to incr
 
 == Description ==
 
-`To get more unique features we have <a href="https://richplugins.com/yelp-reviews-pro-wordpress-plugin">Yelp Reviews Pro</a> plugin`
+`To get more unique features we have <a href="https://richplugins.com/business-reviews-bundle-wordpress-plugin">Business version</a> of the plugin`
 
 This plugin display Yelp Business Reviews on your websites in sidebar widget. A unique feature of the plugin is that it save reviews in WordPress database and have no depend on any services like Yelp to show these reviews.
 
@@ -26,11 +26,13 @@ The plugin requires Yelp API key to work. To get the key, please <a href="https:
 
 * Free!
 * SEO
-* Possibility to add multiple locations
+* Trim long reviews with "read more" link
 * Keep all reviews in  WordPress database
 * Display up to 3 Yelp business reviews per location
 * Shows real reviews from Yelp users to increase user confidence
-* Easy search of business and instantly show reviews
+* Easy connect of business and instantly show reviews
+* Review list theme
+* Pagination
 * Support dark websites
 * Nofollow, target="_blank"
 * Zero load time regardless of your site
@@ -38,26 +40,26 @@ The plugin requires Yelp API key to work. To get the key, please <a href="https:
 
 = Get More Features with Google Reviews Pro! =
 
-[Upgrade to Google Reviews Pro](https://richplugins.com/yelp-reviews-pro-wordpress-plugin)
+[Upgrade to Google Reviews Pro](https://richplugins.com/business-reviews-bundle-wordpress-plugin)
 
-* Try to get more then 3 reviews
-* Supports Google Rich Snippets (schema.org)
-* Support shortcode and powerful <b>Shortcode Builder</b>
-* Grid theme to show Yelp reviews in testimonials section
-* Yelp Trust Badge (right/left fixed or inner label)
-* Trim long reviews and add "read more" link
-* Change business place photo
-* Minimum review rating filter
-* Pagination, Sorting (by default, recent, oldest, highest score, lowest score)
-* Hide/Show business photo, user avatars
+* Merge reviews between each other from different platforms (Google, Facebook, Yelp) and places
+* Google Rich Snippets (schema.org)
+* Support shortcode, powerful <b>Shortcode Builder</b>
+* Slider/Grid themes to show G+ reviews like testimonials
+* Yelp Trust Badge (right/left fixed or embedded)
+* 'Write a review' button to available leave Yelp review directly on your website
+* Show/hide any elements (business, reviews, avatars, names, time and etc)
+* Any Sorting: recent, oldest, rating, striped
+* Include/Exclude words filter
+* Minimum rating filter
 * Priority support
 
-= Additional Business Reviews Plugins =
+= Additional Free Reviews Plugins =
 
-Why limit your reviews to just Yelp Business Reviews? Check out our other free business reviews plugins to add to your site as well:
+Why limit your reviews to just Yelp Reviews? Check out our other free reviews plugins to add to your site as well:
 
-* [Google Reviews Pro](https://richplugins.com/google-reviews-pro-wordpress-plugin "Google Reviews Pro")
-* [Facebook Reviews Pro](https://richplugins.com/facebook-reviews-pro-wordpress-plugin "Facebook Reviews Pro")
+* [Google Reviews Widget](https://wordpress.org/plugins/widget-google-reviews/ "Google Reviews Widget")
+* [Facebook Reviews Widget](https://wordpress.org/plugins/fb-reviews-widget/ "Facebook Reviews Widget")
 
 == Installation ==
 
@@ -70,6 +72,21 @@ Why limit your reviews to just Yelp Business Reviews? Check out our other free b
 3. Yelp Reviews sidebar
 
 == Changelog ==
+
+= 1.6.5 =
+* Bugfix: avoid duplicate the time-ago library
+* Update readme and links to the business version
+
+= 1.6.4 =
+* Update plugin to WordPress 5.1
+* Improve: reviewer profile photo reduce size to 100x100 (ms.jpg)
+* Improve: 'read more' feature
+* Improve: 'read more' on Yelp feature
+* Improve: added pagination feature
+* Improve: added centered option
+* Improve: added width & height options
+* Improve: update widget design
+* Improve: update setting page design
 
 = 1.6.3 =
 * Update plugin to WordPress 5.0
