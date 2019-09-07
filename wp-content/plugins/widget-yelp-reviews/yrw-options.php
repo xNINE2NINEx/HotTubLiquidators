@@ -11,76 +11,58 @@
 <?php } ?>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label><?php echo yrw_i('Pagination'); ?></label>
-        <input type="text" id="<?php echo $this->get_field_id('pagination'); ?>" name="<?php echo $this->get_field_name('pagination'); ?>" value="<?php echo $pagination; ?>" class="form-control"/>
-    </div>
+    <label><?php echo yrw_i('Pagination'); ?></label>
+    <input type="text" id="<?php echo $this->get_field_id('pagination'); ?>" name="<?php echo $this->get_field_name('pagination'); ?>" value="<?php echo $pagination; ?>"/>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label><?php echo yrw_i('Characters before \'read more\' link'); ?></label>
-        <input type="text" id="<?php echo $this->get_field_id('text_size'); ?>" name="<?php echo $this->get_field_name('text_size'); ?>" value="<?php echo $text_size; ?>" class="form-control"/>
-    </div>
+    <label><?php echo yrw_i('Characters before \'read more\' link'); ?></label>
+    <input type="text" id="<?php echo $this->get_field_id('text_size'); ?>" name="<?php echo $this->get_field_name('text_size'); ?>" value="<?php echo $text_size; ?>"/>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label for="<?php echo $this->get_field_id('max_width'); ?>"><?php echo yrw_i('Widget width'); ?></label>
-        <input id="<?php echo $this->get_field_id('max_width'); ?>" name="<?php echo $this->get_field_name('max_width'); ?>" value="<?php echo $max_width; ?>" class="form-control" type="text" />
-    </div>
+    <label for="<?php echo $this->get_field_id('max_width'); ?>"><?php echo yrw_i('Widget width'); ?></label>
+    <input id="<?php echo $this->get_field_id('max_width'); ?>" name="<?php echo $this->get_field_name('max_width'); ?>" value="<?php echo $max_width; ?>" type="text" />
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label for="<?php echo $this->get_field_id('max_height'); ?>"><?php echo yrw_i('Widget height'); ?></label>
-        <input id="<?php echo $this->get_field_id('max_height'); ?>" name="<?php echo $this->get_field_name('max_height'); ?>" value="<?php echo $max_height; ?>" class="form-control" type="text" />
-    </div>
+    <label for="<?php echo $this->get_field_id('max_height'); ?>"><?php echo yrw_i('Widget height'); ?></label>
+    <input id="<?php echo $this->get_field_id('max_height'); ?>" name="<?php echo $this->get_field_name('max_height'); ?>" value="<?php echo $max_height; ?>" type="text" />
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label>
-            <input id="<?php echo $this->get_field_id('read_on_yelp'); ?>" name="<?php echo $this->get_field_name('read_on_yelp'); ?>" type="checkbox" value="1" <?php checked('1', $read_on_yelp); ?> class="form-control" />
-            <?php echo yrw_i('Add \'read more\' link to Yelp after ellipsis'); ?>
-        </label>
-    </div>
+    <label>
+        <input id="<?php echo $this->get_field_id('read_on_yelp'); ?>" name="<?php echo $this->get_field_name('read_on_yelp'); ?>" type="checkbox" value="1" <?php checked('1', $read_on_yelp); ?>/>
+        <?php echo yrw_i('Add \'read more\' link to Yelp after ellipsis'); ?>
+    </label>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label>
-            <input id="<?php echo $this->get_field_id('centered'); ?>" name="<?php echo $this->get_field_name('centered'); ?>" type="checkbox" value="1" <?php checked('1', $centered); ?> class="form-control" />
-            <?php echo yrw_i('Place by center (only if Width is set)'); ?>
-        </label>
-    </div>
+    <label>
+        <input id="<?php echo $this->get_field_id('centered'); ?>" name="<?php echo $this->get_field_name('centered'); ?>" type="checkbox" value="1" <?php checked('1', $centered); ?>/>
+        <?php echo yrw_i('Place by center (only if Width is set)'); ?>
+    </label>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label>
-            <input id="<?php echo $this->get_field_id('dark_theme'); ?>" name="<?php echo $this->get_field_name('dark_theme'); ?>" type="checkbox" value="1" <?php checked('1', $dark_theme); ?> class="form-control" />
-            <?php echo yrw_i('Dark background'); ?>
-        </label>
-    </div>
+    <label>
+        <input id="<?php echo $this->get_field_id('dark_theme'); ?>" name="<?php echo $this->get_field_name('dark_theme'); ?>" type="checkbox" value="1" <?php checked('1', $dark_theme); ?>/>
+        <?php echo yrw_i('Dark background'); ?>
+    </label>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label>
-            <input id="<?php echo $this->get_field_id('open_link'); ?>" name="<?php echo $this->get_field_name('open_link'); ?>" type="checkbox" value="1" <?php checked('1', $open_link); ?> class="form-control" />
-            <?php echo yrw_i('Open links in new Window'); ?>
-        </label>
-    </div>
+    <label>
+        <input id="<?php echo $this->get_field_id('open_link'); ?>" name="<?php echo $this->get_field_name('open_link'); ?>" type="checkbox" value="1" <?php checked('1', $open_link); ?>/>
+        <?php echo yrw_i('Open links in new Window'); ?>
+    </label>
 </div>
 
 <div class="form-group">
-    <div class="col-sm-12">
-        <label>
-            <input id="<?php echo $this->get_field_id('nofollow_link'); ?>" name="<?php echo $this->get_field_name('nofollow_link'); ?>" type="checkbox" value="1" <?php checked('1', $nofollow_link); ?> class="form-control" />
-            <?php echo yrw_i('Use no follow links'); ?>
-        </label>
-    </div>
+    <label>
+        <input id="<?php echo $this->get_field_id('nofollow_link'); ?>" name="<?php echo $this->get_field_name('nofollow_link'); ?>" type="checkbox" value="1" <?php checked('1', $nofollow_link); ?>/>
+        <?php echo yrw_i('Use no follow links'); ?>
+    </label>
 </div>
 
 <div class="form-group">

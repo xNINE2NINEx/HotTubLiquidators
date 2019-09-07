@@ -30,7 +30,8 @@ $search = addslashes(addslashes(sanitize_text_field($search)));
 $formArr = explode(",", $formIds);
 
 foreach($formArr as $key=>$val){
-	if(empty(trim($val))) unset($formArr[$key]);
+	$val = (int) trim($val);
+	if(empty($val)) unset($formArr[$key]);
 }
 
 //Get all existing contact form list
@@ -182,6 +183,9 @@ if(!empty($formArr)){
 					}
 				}
 				
+				// Make sure that $fid will contain integer value only.
+				$fid = (int) $fid;
+				
 				$query = "SELECT * FROM `".VSZ_CF7_DATA_ENTRY_TABLE_NAME."` WHERE `cf7_id` = ".$fid." AND data_id IN(
 							SELECT * FROM (
 								SELECT data_id FROM `".VSZ_CF7_DATA_ENTRY_TABLE_NAME."` WHERE 1 = 1 AND `cf7_id` = ".$fid. ((!empty($search)) ? " AND `value` LIKE '%%".$search."%%'" : "") . ((!empty($search_date_query)) ? $search_date_query : "") ." 
@@ -220,8 +224,7 @@ if(!empty($formArr)){
 							$html .= !empty($headerForForm) ? '<h2>'.esc_html($headerForForm).'</h2>' : '<h2>'.esc_html($form->title()).'</h2>';
 							$html .= '<table id="'.$table_id.'" class="'.$table_class.'" style="overflow: auto; '.$table_style.'">
 										<thead>
-											<tr>
-												<td></td>';
+											<tr>';
 							
 							//Define table header section here
 							foreach ($fields as $k => $v){
@@ -234,10 +237,7 @@ if(!empty($formArr)){
 					
 							foreach ($data_sorted as $k => $v) {
 								$k = (int)$k;
-								$html .= '<tr>
-											<th class="check-column" scope="row">
-												<input id="cb-select-'.$k.'" type="checkbox" title="Check" name="del_id[]" value="'.$k.'" />
-											</th>';
+								$html .= '<tr>';
 								foreach ($fields as $k2 => $v2) {
 									//Get fields related values
 									$_value = ((isset($v[$k2])) ? $v[$k2] : '&nbsp;');

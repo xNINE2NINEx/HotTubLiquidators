@@ -3,8 +3,8 @@ Contributors: richplugins
 Donate link: https://richplugins.com/business-reviews-bundle-wordpress-plugin
 Tags: yelp, yelp widget, yelp shortcode, yelp api, yelp business listings, yelp reviews, yelp reviews widget, yelp business reviews, yelp widget pro, business reviews, google reviews, google places reviews, facebook reviews, facebook page reviews
 Requires at least: 2.8
-Tested up to: 5.1
-Stable tag: 1.6.5
+Tested up to: 5.2
+Stable tag: 1.6.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,10 @@ Why limit your reviews to just Yelp Reviews? Check out our other free reviews pl
 3. Yelp Reviews sidebar
 
 == Changelog ==
+
+= 1.6.6 =
+* Update to WordPress 5.2
+* Bugfix: conflict with a Bootstrap css in the widget
 
 = 1.6.5 =
 * Bugfix: avoid duplicate the time-ago library
