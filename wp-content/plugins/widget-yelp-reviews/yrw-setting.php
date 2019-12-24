@@ -155,7 +155,7 @@ $yrw_api_key = get_option('yrw_api_key');
             <div class="nav-tab-wrapper">
                 <a href="#about"     class="nav-tab<?php if ($tab == 'about')     { ?> nav-tab-active<?php } ?>"><?php echo yrw_i('About'); ?></a>
                 <a href="#setting"   class="nav-tab<?php if ($tab == 'setting')   { ?> nav-tab-active<?php } ?>"><?php echo yrw_i('Settings'); ?></a>
-                <a href="#shortcode" class="nav-tab<?php if ($tab == 'shortcode') { ?> nav-tab-active<?php } ?>"><?php echo yrw_i('Shortcode Builder'); ?></a>
+                <a href="#shortcode" class="nav-tab<?php if ($tab == 'shortcode') { ?> nav-tab-active<?php } ?>"><?php echo yrw_i('Shortcode'); ?></a>
                 <a href="#support"   class="nav-tab<?php if ($tab == 'support')   { ?> nav-tab-active<?php } ?>"><?php echo yrw_i('Support'); ?></a>
                 <a href="#advance"   class="nav-tab<?php if ($tab == 'advance')   { ?> nav-tab-active<?php } ?>"><?php echo yrw_i('Advance'); ?></a>
             </div>
@@ -250,8 +250,20 @@ $yrw_api_key = get_option('yrw_api_key');
             </div>
 
             <div id="shortcode" class="tab-content" style="display:<?php echo $tab == 'shortcode' ? 'block' : 'none'?>;">
-                <h3>Shortcode Builder is available in the Business version of the plugin</h3>
-                <a href="https://richplugins.com/business-reviews-bundle-wordpress-plugin" target="_blank" style="color:#00bf54;font-size:16px;text-decoration:underline;"><?php echo yrw_i('Upgrade to Business'); ?></a>
+                <h3>Shortcode</h3>
+                <div class="rplg-flex-row">
+                    <div class="rplg-flex-col3">
+                        <div class="widget-content">
+                            <?php $yrw_widget = new Yelp_Reviews_Widget; $yrw_widget->form(array()); ?>
+                        </div>
+                    </div>
+                    <div class="rplg-flex-col6">
+                        <div class="shortcode-content">
+                            <textarea id="rplg_shortcode" style="display:block;width:100%;height:200px;padding:10px" onclick="window.rplg_shortcode.select();document.execCommand('copy');window.rplg_shortcode_msg.innerHTML='Shortcode copied, please paste it to the page content';" readonly>Connect Yelp business to show the shortcode</textarea>
+                            <p id="rplg_shortcode_msg"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="support" class="tab-content" style="display:<?php echo $tab == 'support' ? 'block' : 'none'?>;">
@@ -361,6 +373,32 @@ jQuery(document).ready(function($) {
         $(activeId).show().siblings('.tab-content').hide();
         $this.addClass('nav-tab-active').siblings().removeClass('nav-tab-active');
         e.preventDefault();
+    });
+
+    var el = document.body.querySelector('.widget-content'),
+        elms = '.widget-content input[type="text"][name],' +
+               '.widget-content input[type="hidden"][name],' +
+               '.widget-content input[type="checkbox"][name]';
+
+    $(elms).change(function() {
+        if (!this.getAttribute('name')) return;
+        if (!el.querySelector('.yrw-business-id').value) return;
+
+        var args = '',
+            ctrls = el.querySelectorAll(elms);
+        for (var i = 0; i < ctrls.length; i++) {
+            var ctrl = ctrls[i],
+                match = ctrl.getAttribute('name').match(/\[\]\[(.*?)\]/);
+            if (match && match.length > 1) {
+                var name = match[1];
+                if (ctrl.type == 'checkbox') {
+                    if (ctrl.checked) args += ' ' + name + '=true';
+                } else {
+                    if (ctrl.value) args += ' ' + name + '=' + '"' + ctrl.value + '"';
+                }
+            }
+        }
+        window.rplg_shortcode.value = '[yrw' + args + ']';
     });
 });
 </script>

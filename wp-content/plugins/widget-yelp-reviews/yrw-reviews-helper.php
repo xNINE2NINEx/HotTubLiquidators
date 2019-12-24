@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) exit;
 function yrw_page($business, $rating, $open_link, $nofollow_link) {
     ?>
     <div class="wp-yelp-left">
-        <img src="<?php echo $business->photo; ?>" alt="<?php echo $business->name; ?>">
+        <img src="<?php echo $business->photo; ?>" alt="<?php echo $business->name; ?>" width="50" height="50" title="<?php echo $business->name; ?>">
     </div>
     <div class="wp-yelp-right">
         <div class="wp-yelp-name">
@@ -16,7 +16,7 @@ function yrw_page($business, $rating, $open_link, $nofollow_link) {
         </div>
         <div class="wp-yelp-powered">Based on <?php echo $business->review_count; ?> Reviews</div>
         <div class="wp-yelp-logo">
-            <?php echo yrw_anchor($business->url, '', '<img src="' . YRW_PLUGIN_URL . '/static/img/yelp-logo.png" alt="Yelp logo">', $open_link, $nofollow_link); ?>
+            <?php echo yrw_anchor($business->url, '', '<img src="' . YRW_PLUGIN_URL . '/static/img/yelp-logo.png" alt="Yelp logo" width="60" height="31" title="Yelp logo">', $open_link, $nofollow_link); ?>
         </div>
     </div>
     <?php
@@ -43,7 +43,7 @@ function yrw_page_reviews($reviews, $text_size, $pagination, $read_on_yelp, $ope
                     $author_img = YRW_AVATAR;
                 }
                 ?>
-                <img src="<?php echo $author_img; ?>" alt="<?php echo $review->author_name; ?>" onerror="if(this.src!='<?php echo YRW_AVATAR; ?>')this.src='<?php echo YRW_AVATAR; ?>';">
+                <img src="<?php echo $author_img; ?>" alt="<?php echo $review->author_name; ?>" width="50" height="50" title="<?php echo $review->author_name; ?>" onerror="if(this.src!='<?php echo YRW_AVATAR; ?>')this.src='<?php echo YRW_AVATAR; ?>';">
             </div>
             <div class="wp-yelp-right">
                 <?php yrw_anchor($review->url, 'wp-yelp-name', $review->author_name, $open_link, $nofollow_link); ?>
@@ -54,7 +54,7 @@ function yrw_page_reviews($reviews, $text_size, $pagination, $read_on_yelp, $ope
                     if (isset($review->text)) {
                         $review_text = $review->text;
                         if ($read_on_yelp) {
-                            $review_text .= " <a class=\"wp-yelp-link\" href=\"" . $review->url . "\" target=\"_blank\">" . yrw_i('read more') . "</a>";
+                            $review_text .= " <a class=\"wp-yelp-link\" href=\"" . $review->url . "\" target=\"_blank\" rel=\"noopener\">" . yrw_i('read more') . "</a>";
                         }
                     ?>
                     <span class="wp-yelp-text"><?php echo yrw_trim_text($review_text, $text_size); ?></span>
@@ -97,12 +97,12 @@ function yrw_trim_text($text, $size) {
             $idx = $size;
         }
         if ($idx > 0) {
-            $visible_text = substr($text, 0, $idx);
-            $invisible_text = substr($text, $idx, strlen($text));
+            $visible_text = substr($text, 0, $idx - 1);
+            $invisible_text = substr($text, $idx - 1, strlen($text));
         }
         echo $visible_text;
         if (strlen($invisible_text) > 0) {
-            ?><span class="wp-more"><?php echo $invisible_text; ?></span><span class="wp-more-toggle" onclick="this.previousSibling.className='';this.textContent='';"><?php echo yrw_i('read more'); ?></span><?php
+            ?><span>... </span><span class="wp-more"><?php echo $invisible_text; ?></span><span class="wp-more-toggle"><?php echo yrw_i('read more'); ?></span><?php
         }
     } else {
         echo $text;
@@ -110,6 +110,6 @@ function yrw_trim_text($text, $size) {
 }
 
 function yrw_anchor($url, $class, $text, $open_link, $nofollow_link) {
-    ?><a href="<?php echo $url; ?>" class="<?php echo $class; ?>" <?php if ($open_link) { ?>target="_blank"<?php } ?> <?php if ($nofollow_link) { ?>rel="nofollow"<?php } ?>><?php echo $text; ?></a><?php
+    ?><a href="<?php echo $url; ?>" class="<?php echo $class; ?>" <?php if ($open_link) { ?>target="_blank"<?php } ?> rel="<?php if ($nofollow_link) { ?>nofollow <?php } ?>noopener"><?php echo $text; ?></a><?php
 }
 ?>

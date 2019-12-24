@@ -36,7 +36,11 @@ function yrw_sidebar_init(data) {
             if (res.id) {
                 var businessIdEl = el.querySelector('.yrw-business-id');
                 businessIdEl.value = res.id;
-                show_tooltip(el);
+
+                var controlEl = el.parentNode.parentNode.querySelector('.widget-control-actions');
+                if (controlEl) {
+                    show_tooltip(el);
+                }
 
                 jQuery(businessIdEl).change();
             } else {
@@ -90,7 +94,7 @@ function yrw_sidebar_init(data) {
     });
 
     jQuery(document).ready(function($) {
-        $('.rplg-options-toggle', el).unbind('click').click(function () {
+        $('.rplg-toggle', el).unbind('click').click(function () {
             $(this).toggleClass('toggled');
             $(this).next().slideToggle();
         });

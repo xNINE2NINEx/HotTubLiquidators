@@ -4,7 +4,7 @@ Plugin Name: Yelp Reviews Widget
 Plugin URI: https://richplugins.com
 Description: Instantly Yelp rating and reviews on your website to increase user confidence and SEO.
 Author: RichPlugins <support@richplugins.com>
-Version: 1.6.6
+Version: 1.7
 Author URI: https://richplugins.com
 */
 
@@ -15,7 +15,7 @@ require(ABSPATH . 'wp-includes/version.php');
 include_once(dirname(__FILE__) . '/api/urlopen.php');
 include_once(dirname(__FILE__) . '/helper/debug.php');
 
-define('YRW_VERSION',            '1.6.6');
+define('YRW_VERSION',            '1.7');
 define('YRW_API',                'https://api.yelp.com/v3/businesses');
 define('YRW_PLUGIN_URL',         plugins_url(basename(plugin_dir_path(__FILE__ )), basename(__FILE__)));
 define('YRW_AVATAR',             YRW_PLUGIN_URL . '/static/img/yelp-avatar.png');
@@ -26,6 +26,9 @@ function yrw_options() {
         'yrw_active',
         'yrw_api_key',
         'yrw_language',
+        'yrw_activation_time',
+        'yrw_rev_notice_hide',
+        'rplg_rev_notice_show',
     );
 }
 
@@ -87,6 +90,9 @@ add_filter('plugin_row_meta', 'yrw_plugin_row_meta', 10, 2);
 
 /*-------------------------------- Database --------------------------------*/
 function yrw_activation($network_wide = false) {
+    $now = time();
+    update_option('yrw_activation_time', $now);
+
     add_option('yrw_is_multisite', $network_wide);
     if (yrw_does_need_update()) {
         yrw_install();
@@ -198,6 +204,35 @@ function yrw_reset_data($reset_db) {
         $wpdb->query("DROP TABLE IF EXISTS " . $wpdb->prefix . "yrw_yelp_review;");
     }
 }
+
+/*-------------------------------- Shortcode --------------------------------*/
+function yrw_shortcode($atts) {
+    global $wpdb;
+
+    if (!yrw_enabled()) return '';
+
+    $shortcode_atts = array();
+    foreach (Yelp_Reviews_Widget::$widget_fields as $field => $value) {
+        $shortcode_atts[$field] = isset($atts[$field]) ? strip_tags(stripslashes($atts[$field])) : '';
+    }
+
+    foreach ($shortcode_atts as $variable => $value) {
+        ${$variable} = esc_attr($shortcode_atts[$variable]);
+    }
+
+    ob_start();
+    if (empty($business_id)) {
+        ?>
+        <div class="yrw-error" style="padding:10px;color:#b94a48;background-color:#f2dede;border-color:#eed3d7;max-width:200px;">
+            <?php echo yrw_i('<b>Google Reviews Business</b>: required attribute business_id is not defined'); ?>
+        </div>
+        <?php
+    } else {
+        include(dirname(__FILE__) . '/yrw-reviews.php');
+    }
+    return preg_replace('/[\n\r]/', '', ob_get_clean());
+}
+add_shortcode("yrw", "yrw_shortcode");
 
 /*-------------------------------- Request --------------------------------*/
 function yrw_request_handler() {
@@ -318,11 +353,55 @@ function yrw_save_reviews($business, $reviews) {
     }
 }
 
+/*-------------------------------- Init language --------------------------------*/
 function yrw_lang_init() {
     $plugin_dir = basename(dirname(__FILE__));
     load_plugin_textdomain('yrw', false, basename( dirname( __FILE__ ) ) . '/languages');
 }
 add_action('plugins_loaded', 'yrw_lang_init');
+
+/*-------------------------------- Leave review --------------------------------*/
+function yrw_admin_notice() {
+    if (!is_admin()) return;
+
+    $activation_time = get_option('yrw_activation_time');
+
+    if ($activation_time == '') {
+        $activation_time = time() - 86400*28;
+        update_option('yrw_activation_time', $activation_time);
+    }
+
+    $rev_notice = isset($_GET['yrw_rev_notice']) ? $_GET['yrw_rev_notice'] : '';
+    if ($rev_notice == 'later') {
+        $activation_time = time() - 86400*23;
+        update_option('yrw_activation_time', $activation_time);
+        update_option('yrw_rev_notice_hide', 'later');
+    } else if ($rev_notice == 'never') {
+        update_option('yrw_rev_notice_hide', 'never');
+    }
+
+    $rev_notice_hide = get_option('yrw_rev_notice_hide');
+    $rev_notice_show = get_option('rplg_rev_notice_show');
+
+    if ($rev_notice_show == '' || $rev_notice_show == 'yrw') {
+
+        if ($rev_notice_hide != 'never' && $activation_time < (time() - 86400*30)) {
+            update_option('rplg_rev_notice_show', 'yrw');
+            $class = 'notice notice-info is-dismissible';
+            $url = remove_query_arg(array('taction', 'tid', 'sortby', 'sortdir', 'opt'));
+            $url_later = esc_url(add_query_arg('yrw_rev_notice', 'later', $url));
+            $url_never = esc_url(add_query_arg('yrw_rev_notice', 'never', $url));
+
+            $notice = '<p style="font-weight:normal;color:#156315">Hey, I noticed you have been using my <b>Yelp Reviews Widget</b> plugin for a while now – that’s awesome!<br>Could you please do me a BIG favor and give it a 5-star rating on WordPress?<br><br>--<br>Thanks!<br>Daniel K.<br></p><ul style="font-weight:bold;"><li><a href="https://wordpress.org/support/plugin/widget-yelp-reviews/reviews/#new-post" target="_blank">OK, you deserve it</a></li><li><a href="' . $url_later . '">Not now, maybe later</a></li><li><a href="' . $url_never . '">Do not remind me again</a></li></ul><p>By the way, if you have been thinking about upgrading to the <a href="https://richplugins.com/business-reviews-bundle-wordpress-plugin" target="_blank">Business</a> version, here is a 25% off coupon you can use! ->  <b>business25off</b></p>';
+
+            printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $notice);
+        } else {
+            update_option('rplg_rev_notice_show', '');
+        }
+
+    }
+}
+add_action('admin_notices', 'yrw_admin_notice');
 
 /*-------------------------------- Helpers --------------------------------*/
 function yrw_enabled() {

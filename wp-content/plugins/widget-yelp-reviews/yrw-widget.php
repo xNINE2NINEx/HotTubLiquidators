@@ -10,10 +10,7 @@ if (!defined('ABSPATH')) exit;
 
 class Yelp_Reviews_Widget extends WP_Widget {
 
-    public $options;
-    public $api_key;
-
-    public $widget_fields = array(
+    public static $widget_fields = array(
         'title'                => '',
         'business_id'          => '',
         'dark_theme'           => '',
@@ -48,7 +45,7 @@ class Yelp_Reviews_Widget extends WP_Widget {
     }
 
     function yrw_widget_scripts($hook) {
-        if ($hook == 'widgets.php' || ($hook == 'post.php' && defined('SITEORIGIN_PANELS_VERSION'))) {
+        if ($hook == 'widgets.php' || $hook == 'settings_page_yrw' || ($hook == 'post.php' && defined('SITEORIGIN_PANELS_VERSION'))) {
 
             wp_register_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
             wp_enqueue_style('rplg_wp_css', plugins_url('/static/css/rplg-wp.css', __FILE__));
@@ -73,8 +70,8 @@ class Yelp_Reviews_Widget extends WP_Widget {
 
         if (yrw_enabled()) {
             extract($args);
-            foreach ($this->widget_fields as $variable => $value) {
-                ${$variable} = !isset($instance[$variable]) ? $this->widget_fields[$variable] : esc_attr($instance[$variable]);
+            foreach (self::$widget_fields as $variable => $value) {
+                ${$variable} = !isset($instance[$variable]) ? self::$widget_fields[$variable] : esc_attr($instance[$variable]);
             }
 
             echo $before_widget;
@@ -94,15 +91,15 @@ class Yelp_Reviews_Widget extends WP_Widget {
 
     function update($new_instance, $old_instance) {
         $instance = $old_instance;
-        foreach ($this->widget_fields as $field => $value) {
-            $instance[$field] = strip_tags(stripslashes($new_instance[$field]));
+        foreach (self::$widget_fields as $field => $value) {
+            $instance[$field] = isset($new_instance[$field]) ? strip_tags(stripslashes($new_instance[$field])) : '';
         }
         return $instance;
     }
 
     function form($instance) {
         global $wp_version;
-        foreach ($this->widget_fields as $field => $value) {
+        foreach (self::$widget_fields as $field => $value) {
             ${$field} = !isset($instance[$field]) ? $value : esc_attr($instance[$field]);
         }
 

@@ -3,12 +3,12 @@ Contributors: richplugins
 Donate link: https://richplugins.com/business-reviews-bundle-wordpress-plugin
 Tags: yelp, yelp widget, yelp shortcode, yelp api, yelp business listings, yelp reviews, yelp reviews widget, yelp business reviews, yelp widget pro, business reviews, google reviews, google places reviews, facebook reviews, facebook page reviews
 Requires at least: 2.8
-Tested up to: 5.2
-Stable tag: 1.6.6
+Tested up to: 5.3
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Yelp Reviews Widget show Yelp Business Reviews on your WordPress website to increase user confidence and SEO.
+Yelp reviews widget and shortcode! Shows Yelp business reviews on your WordPress website to increase user trust and SEO.
 
 == Description ==
 
@@ -26,7 +26,9 @@ The plugin requires Yelp API key to work. To get the key, please <a href="https:
 
 * Free!
 * SEO
+* Shortcode support!
 * Trim long reviews with "read more" link
+* Support page builders: Elementor, Page Origin, Beaver Builder, WPBakery, Divi
 * Keep all reviews in  WordPress database
 * Display up to 3 Yelp business reviews per location
 * Shows real reviews from Yelp users to increase user confidence
@@ -44,7 +46,7 @@ The plugin requires Yelp API key to work. To get the key, please <a href="https:
 
 * Merge reviews between each other from different platforms (Google, Facebook, Yelp) and places
 * Google Rich Snippets (schema.org)
-* Support shortcode, powerful <b>Shortcode Builder</b>
+* Powerful <b>Collection Builder</b>
 * Slider/Grid themes to show G+ reviews like testimonials
 * Yelp Trust Badge (right/left fixed or embedded)
 * 'Write a review' button to available leave Yelp review directly on your website
@@ -72,6 +74,23 @@ Why limit your reviews to just Yelp Reviews? Check out our other free reviews pl
 3. Yelp Reviews sidebar
 
 == Changelog ==
+
+= 1.7 =
+* Update to WordPress 5.3
+* Improve: added dots for read more link
+* Improve: added width, height, title for img elements (SEO)
+* Improve: added rel="noopener" option
+
+= 1.6.9 =
+* Bugfix: is_admin checks for notice
+
+= 1.6.8 =
+* Improve: shortcode support
+* Improve: admin notie
+* Bugfix: undefined widget property in Elementor
+
+= 1.6.7 =
+* Bugfix: some style fixes
 
 = 1.6.6 =
 * Update to WordPress 5.2

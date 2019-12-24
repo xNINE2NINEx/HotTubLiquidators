@@ -110,6 +110,9 @@
     .rplg-flex-col3 {
         width: 33.3%;
     }
+    .rplg-flex-col6 {
+        width: 66.7%;
+    }
 }
 
 .rplg-support-question {
@@ -151,4 +154,15 @@
 
 .rplg-socials > * {
     vertical-align: middle!important;
+}
+
+.rplg-setting .widget-content,
+.rplg-setting .shortcode-content {
+    padding: 0 20px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+}
+
+.rplg-setting .shortcode-content {
+    padding: 20px 20px 0;
 }
