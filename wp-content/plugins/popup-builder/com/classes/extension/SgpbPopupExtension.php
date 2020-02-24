@@ -41,15 +41,7 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 				'reviewUrl' => SG_POPUP_RATE_US_URL
 			)
 		);
-
-		$defaultData = ConfigDataHelper::defaultData();
-		$defaultData = $defaultData['customEditorContent']['css'];
-		$localizeData[] = array(
-			'handle' => 'Backend.js',
-			'name' => 'SGPB_CSS_EDITOR_DEFAULT_CONTENT',
-			'data' => $defaultData
-		);
-
+		
 		$allowPages = array(
 			'popupType',
 			'editpage',

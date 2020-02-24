@@ -284,7 +284,8 @@ SGPBPopup.prototype.onceListener = function()
 				var nextObj = popups[nextIndex];
 
 				if (typeof nextObj == 'undefined') {
-					jQuery('html, body').removeClass('sgpb-overflow-hidden');
+					jQuery('html').removeClass('sgpb-overflow-hidden');
+					jQuery('body').removeClass('sgpb-overflow-hidden-body');
 					break;
 				}
 
@@ -293,16 +294,19 @@ SGPBPopup.prototype.onceListener = function()
 				}
 				var options = SGPBPopup.getPopupOptionsById(nextObj.popupId);
 				if (typeof options['sgpb-disable-page-scrolling'] == 'undefined') {
-					jQuery('html, body').removeClass('sgpb-overflow-hidden');
+					jQuery('html').removeClass('sgpb-overflow-hidden');
+					jQuery('body').removeClass('sgpb-overflow-hidden-body');
 				}
 				else {
-					jQuery('html, body').addClass('sgpb-overflow-hidden');
+					jQuery('html').addClass('sgpb-overflow-hidden');
+					jQuery('body').addClass('sgpb-overflow-hidden-body');
 				}
 				break;
 			}
 		}
 		else {
-			jQuery('html, body').addClass('sgpb-overflow-hidden');
+			jQuery('html').addClass('sgpb-overflow-hidden');
+			jQuery('body').addClass('sgpb-overflow-hidden-body');
 		}
 	});
 };
@@ -1358,7 +1362,8 @@ SGPBPopup.prototype.popupTriggeringListeners = function()
 			jQuery('.sgpb-theme-1-overlay').css({'background-image': 'none'});
 		}
 		if (SGPBPopup.varToBool(disablePageScrolling)) {
-			jQuery('html, body').addClass('sgpb-overflow-hidden');
+			jQuery('html').addClass('sgpb-overflow-hidden');
+			jQuery('body').addClass('sgpb-overflow-hidden-body');
 		}
 	});
 
@@ -1603,6 +1608,13 @@ SGPBPopup.prototype.contentCloseBehavior = function()
 			jQuery('.sgpb-content-'+popupId).addClass('sgpb-cursor-pointer');
 		}
 		jQuery('.sgpb-content-'+e.detail.popupId).on('click', function(event) {
+			/* we need this settings in analytics */
+			var settings = {
+				popupId: popupId,
+				eventName: 'sgpbPopupContentClick'
+			};
+			jQuery(window).trigger('sgpbPopupContentClick', settings);
+
 			if (contentClickBehavior == 'redirect') {
 
 				if (redirectToNewTab) {
@@ -2208,7 +2220,7 @@ SGPBPopup.setCookie = function(cName, cValue, exDays, cPageLevel)
 		}
 	}
 
-	if ((typeof cPageLevel == 'boolean' && cPageLevel == false) || cPageLevel == '') {
+	if ((typeof cPageLevel == 'boolean' && cPageLevel == false) || cPageLevel == '' || typeof cPageLevel == 'undefined') {
 		cookiePageLevel = 'path=/;';
 	}
 

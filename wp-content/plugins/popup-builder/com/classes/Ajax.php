@@ -109,7 +109,8 @@ class Ajax
 	public function dontShowReviewPopup()
 	{
 		check_ajax_referer(SG_AJAX_NONCE, 'nonce');
-		update_option('SGPBCloseReviewPopup-1', true);
+		update_option('SGPBCloseReviewPopup-notification', true);
+		do_action('sgpbGetNotifications');
 		wp_die();
 	}
 
@@ -197,14 +198,15 @@ class Ajax
 	public function closeMainRateUsBanner()
 	{
 		check_ajax_referer(SG_AJAX_NONCE, 'nonce');
-		update_option('SGPB_PROMOTIONAL_BANNER_CLOSED', 'SGPB_PROMOTIONAL_BANNER_CLOSED');
+		update_option('sgpb-hide-support-banner', 1);
+		do_action('sgpbGetNotifications');
 		wp_die();
 	}
 
 	public function closeLicenseNoticeBanner()
 	{
 		check_ajax_referer(SG_AJAX_NONCE, 'nonce');
-		update_option('sgpb-hide-license-notice-banner', 'sgpb-hide-license-notice-banner');
+		update_option('sgpb-hide-license-notice-banner', 1);
 		wp_die();
 	}
 

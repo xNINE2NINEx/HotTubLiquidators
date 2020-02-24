@@ -1,4 +1,5 @@
 <?php
+
 class SgpbPopupConfig
 {
 	public static function addDefine($name, $value)
@@ -21,7 +22,7 @@ class SgpbPopupConfig
 		self::addDefine('SG_POPUP_EXTENSIONS_URL', 'https://popup-builder.com/#extensions');
 		self::addDefine('SG_POPUP_SUPPORT_URL', 'https://wordpress.org/support/plugin/popup-builder');
 		self::addDefine('SG_POPUP_TICKET_URL', 'https://help.popup-builder.com');
-		self::addDefine('SG_POPUP_RATE_US_URL', 'https://wordpress.org/support/plugin/popup-builder/reviews/?filter=5');
+		self::addDefine('SG_POPUP_RATE_US_URL', 'http://bit.ly/sgpbPluginSource');
 		self::addDefine('SG_POPUP_IFRAME_URL', 'https://popup-builder.com/downloads/iframe/');
 		self::addDefine('SG_POPUP_SCROLL_URL', 'https://popup-builder.com/downloads/scroll/');
 		self::addDefine('SG_POPUP_AD_BLOCK_URL', 'https://popup-builder.com/downloads/adblock/');
@@ -101,7 +102,6 @@ class SgpbPopupConfig
 		self::addDefine('SGPB_SUBSCRIBERS_ERROR_TABLE_NAME', 'sgpb_subscription_error_log');
 		self::addDefine('SGPB_CRON_REPEAT_INTERVAL', 1);
 		self::addDefine('SGPB_NOTIFICATIONS_CRON_REPEAT_INTERVAL', 1);
-		self::addDefine('SGPB_BANNER_CRON_TEXT_URL', 'https://popup-builder.com/sgpb-banner.php?banner=main');
 		self::addDefine('SGPB_METABOX_BANNER_CRON_TEXT_URL', 'https://popup-builder.com/sgpb-banner.php?banner=sidebar1');
 		self::addDefine('SGPB_FACEBOOK_APP_ID', 540547196484707);
 		self::addDefine('SGPB_POPUP_TYPE_RESTRICTION', 'ageRestriction');
@@ -135,6 +135,9 @@ class SgpbPopupConfig
 		self::addDefine('SGPB_TRANSIENT_POPUPS_LOAD', 'sgpbLoadPopups');
 		self::addDefine('SGPB_TRANSIENT_POPUPS_TERMS', 'sgpbGetPopupsByTermSlug');
 		self::addDefine('SGPB_TRANSIENT_POPUPS_ALL_CATEGORIES', 'sgpbGetPostsAllCategories');
+		self::addDefine('SGPB_REGISTERED_PLUGINS_PATHS_MODIFIED', 'sgpbModifiedRegisteredPluginsPaths1');
+		self::addDefine('SGPB_RATE_US_NOTIFICATION_ID', 'sgpbMainRateUsNotification');
+		self::addDefine('SGPB_SUPPORT_BANNER_NOTIFICATION_ID', 'sgpbMainSupportBanner');
 		self::popupTypesInit();
 	}
 

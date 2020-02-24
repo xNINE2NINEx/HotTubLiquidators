@@ -69,7 +69,74 @@ class Filters
 		return $content;
 	}
 
-	public function sgpbExtraNotifications($notifications)
+	public function sgpbExtraNotifications($notifications = array())
+	{
+		$license = self::licenseNotification();
+		if (!empty($license)) {
+			$notifications[] = $license;
+		}
+
+		$promotional = self::promotionalNotifications();
+		if (!empty($promotional)) {
+			$notifications[] = $promotional;
+		}
+
+		$supportBanner = self::supportBannerNotifcations();
+		if (!empty($supportBanner)) {
+			$notifications[] = $supportBanner;
+		}
+
+		return $notifications;
+	}
+
+	public static function supportBannerNotifcations()
+	{
+		$hideSupportBanner = get_option('sgpb-hide-support-banner');
+		if (!empty($hideSupportBanner)) {
+			return array();
+		}
+		$message = AdminHelper::supportBannerNotification();
+		$notification['id'] = SGPB_SUPPORT_BANNER_NOTIFICATION_ID;
+		$notification['priority'] = 1;
+		$notification['type'] = 1;
+		$notification['message'] = $message;
+
+		return $notification;
+	}
+
+	public static function promotionalNotifications()
+	{
+		$alreadyDone = get_option('SGPBCloseReviewPopup-notification');
+		if (!empty($alreadyDone)) {
+			return array();
+		}
+		$id = SGPB_RATE_US_NOTIFICATION_ID;
+		$type = 1;
+		$priority = 1;
+
+		$maxOpenPopupStatus = AdminHelper::shouldOpenForMaxOpenPopupMessage();
+		// popup opening count notification
+		if ($maxOpenPopupStatus) {
+			$message = AdminHelper::getMaxOpenPopupsMessage();
+		}
+
+		$shouldOpenForDays = AdminHelper::shouldOpenReviewPopupForDays();
+		if ($shouldOpenForDays && !$maxOpenPopupStatus) {
+			$message = AdminHelper::getMaxOpenDaysMessage();
+		}
+		if (empty($message)) {
+			return array();
+		}
+
+		$alternateNotification['priority'] = $priority;
+		$alternateNotification['type'] = $type;
+		$alternateNotification['id'] = $id;
+		$alternateNotification['message'] = $message;
+
+		return $alternateNotification;
+	}
+
+	public function licenseNotification()
 	{
 		$inactiveExtensionNotice = array();
 		$dontShowLicenseBanner = get_option('sgpb-hide-license-notice-banner');
@@ -99,14 +166,12 @@ class Filters
 			$message .= '<b>'.$partOfContent.'</b>';
 
 			$inactiveExtensionNotice['priority'] = 1;
-			$inactiveExtensionNotice['type'] = 1;
+			$inactiveExtensionNotice['type'] = 2;
 			$inactiveExtensionNotice['id'] = 'sgpbMainActiveInactiveLicense';
 			$inactiveExtensionNotice['message'] = $message;
-
-			$notifications[] = $inactiveExtensionNotice;
 		}
 
-		return $notifications;
+		return $inactiveExtensionNotice;
 	}
 
 	public function excludeSitemapsYoast($exclude = false, $postType)

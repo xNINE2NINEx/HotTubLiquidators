@@ -37,7 +37,7 @@ class Style
 		if (!$registeredPlugins) {
 			return;
 		}
-	
+
 		$registeredPlugins = json_decode($registeredPlugins, true);
 
 		if (empty($registeredPlugins)) {
@@ -55,9 +55,7 @@ class Style
 			}
 
 			$classPath = $pluginData['classPath'];
-			if (!strpos($classPath, 'wp-content/plugins/')) {
-				$classPath = SG_POPUP_PLUGIN_PATH.$classPath;
-			}
+			$classPath = SG_POPUP_PLUGIN_PATH.$classPath;
 
 			if (!file_exists($classPath)) {
 				continue;

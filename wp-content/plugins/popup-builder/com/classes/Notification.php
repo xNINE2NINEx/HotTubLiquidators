@@ -70,7 +70,10 @@ class Notification
 		$message = $this->getMessage();
 		$btnHtml = $this->getCloseBtnById($id);
 		$content = '<div class="sgpb-single-notification-wrapper">
-						<div class="sgpb-single-notification"'.$style.'>'.$message.'</div>
+						<div class="sgpb-single-notification"'.$style.'>
+						<span class="dashicons dashicons-no-alt sgpb-hide-notification-at-all" data-id="'.$id.'"></span>
+						'.$message.'
+						</div>
 						<div class="sgpb-single-notification-close-btn">
 							'.$btnHtml.'
 						</div>
@@ -82,6 +85,10 @@ class Notification
 	public function getCloseBtnById($id)
 	{
 		$dismissedNotification = SGPBNotificationCenter::getAllDismissedNotifications();
-		return '<button data-id="'.$id.'" class="button dismiss sgpb-dismiss-notification-js"><span class="dashicons dashicons-no-alt"></span></button>';
+		if (isset($dismissedNotification[$id])) {
+			return '<button data-id="'.$id.'" class="button dismiss sgpb-activate-notification-js"><span class="dashicons dashicons-hidden"></span></button>';
+		}
+
+		return '<button data-id="'.$id.'" class="button dismiss sgpb-dismiss-notification-js"><span class="dashicons dashicons-visibility"></span></button>';
 	}
 }

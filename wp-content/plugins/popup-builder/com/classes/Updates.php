@@ -63,13 +63,11 @@ class Updates
 		$licenses = $this->getLicenses();
 
 		foreach ($licenses as $license) {
-			$key = $license['key'];
-			$storeURL = $license['storeURL'];
-			$pluginMainFilePath = $license['file'];
+			$key = @$license['key'];
+			$storeURL = @$license['storeURL'];
+			$pluginMainFilePath = @$license['file'];
+			$pluginMainFilePath = SG_POPUP_PLUGIN_PATH.$pluginMainFilePath;
 
-			if (!strpos($pluginMainFilePath, 'wp-content/plugins/')) {
-				$pluginMainFilePath = SG_POPUP_PLUGIN_PATH.$pluginMainFilePath;
-			}
 			$licenseKey = trim(get_option('sgpb-license-key-'.$key));
 			$status = get_option('sgpb-license-status-'.$key);
 
@@ -124,10 +122,10 @@ class Updates
 		$licenses = $this->getLicenses();
 
 		foreach ($licenses as $license) {
-			$key = $license['key'];
-			$itemId = $license['itemId'];
-			$itemName = $license['itemName'];
-			$storeURL = $license['storeURL'];
+			$key = @$license['key'];
+			$itemId = @$license['itemId'];
+			$itemName = @$license['itemName'];
+			$storeURL = @$license['storeURL'];
 			$this->licenseKey = $key;
 
 			if (isset($_POST['sgpb-license-key-'.$key])) {

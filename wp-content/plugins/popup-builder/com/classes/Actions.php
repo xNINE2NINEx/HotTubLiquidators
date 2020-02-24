@@ -28,7 +28,6 @@ class Actions
 		add_action('admin_post_sgpbSaveSettings', array($this, 'saveSettings'), 10, 1);
 		add_action('admin_init', array($this, 'userRolesCaps'));
 		add_action('admin_notices', array($this, 'pluginNotices'));
-		add_action('admin_notices', array($this, 'promotionalBanner'), 10);
 		add_action('admin_init', array($this, 'pluginLoaded'));
 		add_action('transition_post_status', array($this, 'deletePopup'), 100, 3);
 		// activate extensions
@@ -171,12 +170,8 @@ class Actions
 
 	public function getBannerContent()
 	{
-		// main banner content
-		$bannerContent = AdminHelper::getFileFromURL(SGPB_BANNER_CRON_TEXT_URL);
-		update_option('sgpb-banner-remote-get', $bannerContent);
 		// right metabox banner content
 		$metaboxBannerContent = AdminHelper::getFileFromURL(SGPB_METABOX_BANNER_CRON_TEXT_URL);
-
 		update_option('sgpb-metabox-banner-remote-get', $metaboxBannerContent);
 
 		return true;
@@ -260,19 +255,6 @@ class Actions
 		$query = apply_filters('sgpbPreGetPosts', $query);
 
 		return true;
-	}
-
-	public function promotionalBanner()
-	{
-		global $post_type;
-
-		if (!get_option('SGPB_PROMOTIONAL_BANNER_CLOSED')) {
-			require_once(SG_POPUP_VIEWS_PATH.'mainRateUsBanner.php');
-		}
-
-		/*if (!get_option('SGPB_ASK_FOR_REVIEW_BANNER_CLOSED') && $post_type == SG_POPUP_POST_TYPE) {
-			echo AdminHelper::showReviewPopup();
-		}*/
 	}
 
 	public function pluginNotices()

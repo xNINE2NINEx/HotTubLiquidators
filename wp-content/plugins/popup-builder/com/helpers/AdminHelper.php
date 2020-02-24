@@ -849,15 +849,11 @@ class AdminHelper
 	public static function getImageDataFromUrl($imageUrl, $shouldNotConvertBase64 = false)
 	{
 		$remoteData = wp_remote_get($imageUrl);
-		$originalImageUrl = $imageUrl;
-		if (is_wp_error($remoteData) || (isset($remoteData['response']) && $remoteData['response']['code'] == 404)) {
-			if ($shouldNotConvertBase64) {
-				$imageUrl = SG_POPUP_IMG_URL.'NoImage.png';
-			}
+		$headers = wp_remote_retrieve_headers($remoteData);
+		if (is_wp_error($remoteData) && $shouldNotConvertBase64) {
+			return SG_POPUP_IMG_URL.'NoImage.png';
 		}
-		else if (is_wp_error($remoteData) && empty($remoteData->error_data)) {
-			$imageUrl = $originalImageUrl;
-		}
+
 		if (!$shouldNotConvertBase64) {
 			$imageData = wp_remote_retrieve_body($remoteData);
 			$imageUrl = base64_encode($imageData);
@@ -865,7 +861,6 @@ class AdminHelper
 
 		return $imageUrl;
 	}
-
 
 	public static function deleteUserFromSubscribers($params = array())
 	{
@@ -1008,30 +1003,24 @@ class AdminHelper
 		return $result;
 	}
 
-	public static function showReviewPopup()
+	public static function supportBannerNotification()
 	{
-		$popupContent = '';
-		$maxOpenPopupStatus = self::shouldOpenForMaxOpenPopupMessage();
+		$content = '<div class="sgpb-support-notification-wrapper sgpb-wrapper"><h4 class="sgpb-support-notification-title">'.__('Need some help?', SG_POPUP_TEXT_DOMAIN).'</h4>';
+		$content .= '<h4 class="sgpb-support-notification-title">'.__('Let us know what you think.', SG_POPUP_TEXT_DOMAIN).'</h4>';
+		$content .= '<a class="btn btn-info" target="_blank" href="'.SG_POPUP_RATE_US_URL.'"><span class="dashicons sgpb-dashicons-heart sgpb-info-text-white"></span><span class="sg-info-text">'.__('Rate Us', SG_POPUP_TEXT_DOMAIN).'</span></a>';
+		$content .= '<a class="btn btn-info" target="_blank" href="'.SG_POPUP_TICKET_URL.'"><span class="dashicons sgpb-dashicons-megaphone sgpb-info-text-white"></span>'.__('Support Potal', SG_POPUP_TEXT_DOMAIN).'</a>';
+		$content .= '<a class="btn btn-info" target="_blank" href="https://wordpress.org/support/plugin/popup-builder"><span class="dashicons sgpb-dashicons-admin-plugins sgpb-info-text-white"></span>'.__('Support Forum', SG_POPUP_TEXT_DOMAIN).'</a>';
+		$content .= '<a class="btn btn-info" target="_blank" href="'.SG_POPUP_STORE_URL.'"><span class="dashicons sgpb-dashicons-editor-help sgpb-info-text-white"></span>'.__('LIVE chat', SG_POPUP_TEXT_DOMAIN).'</a>';
+		$content .= '<a class="btn btn-info" target="_blank" href="mailto:support@popup-builder.com?subject=Hello"><span class="dashicons sgpb-dashicons-email-alt sgpb-info-text-white"></span>'.__('Email', SG_POPUP_TEXT_DOMAIN).'</a></div>';
+		$content .= '<div class="sgpb-support-notification-dont-show">'.__('Bored of this?').'<a class="sgpb-dont-show-again-support-notification" href="javascript:void(0)">'.__(' Press here ').'</a>'.__('and we will not show it again!').'</div>';
 
-		/*if ($maxOpenPopupStatus) {
-			$popupContent = self::getMaxOpenPopupsMessage();
-			self::addContentToFooter($popupContent);
-			return;
-		}*/
-
-		$shouldOpenForDays = self::shouldOpenReviewPopupForDays();
-
-		if ($shouldOpenForDays) {
-			$popupContent = self::getMaxOpenDaysMessage();
-			self::addContentToBanner($popupContent);
-			return;
-		}
+		return $content;
 	}
 
 	public static function getMaxOpenDaysMessage()
 	{
 		$getUsageDays = self::getPopupUsageDays();
-		$firstHeader = '<h1 class="sgpb-review-h1"><strong class="sgrb-review-strong">'.__('Wow!', SG_POPUP_TEXT_DOMAIN).'</strong>'.__('You have been using Popup Builder on your site for '.$getUsageDays.' days', SG_POPUP_TEXT_DOMAIN).'</h1>';
+		$firstHeader = __('<h1 class="sgpb-review-h1"><strong class="sgrb-review-strong">This is great!</strong> We have noticed that you are using Popup Builder plugin on your site for '.$getUsageDays.' days, we are thankful for that.</h1>', SG_POPUP_TEXT_DOMAIN);
 		$popupContent = self::getMaxOpenPopupContent($firstHeader, 'days');
 
 		return $popupContent;
@@ -1110,86 +1099,9 @@ class AdminHelper
 				<p class="sgrb-review-mt20"><?php _e('Have your input in the development of our plugin, and we’ll provide better conversions for your site!<br /> Leave your 5-star positive review and help us go further to the perfection!', SG_POPUP_TEXT_DOMAIN); ?></p>
 			</div>
 			<div class="sgpb-buttons-wrapper">
-				<button class="press press-grey sgpb-button-1 sg-already-did-review"><?php _e('I already did', SG_POPUP_TEXT_DOMAIN); ?></button>
-				<button class="press press-lightblue sgpb-button-3 sg-you-worth-it"><?php _e('You worth it!', SG_POPUP_TEXT_DOMAIN); ?></button>
-				<button class="press press-grey sgpb-button-2 sg-show-popup-period" data-message-type="<?php echo $type; ?>"><?php _e('Maybe later', SG_POPUP_TEXT_DOMAIN); ?></button></div>
-			<div> </div>
-		</div>
-		<?php
-		$popupContent = ob_get_clean();
-
-		return $popupContent;
-	}
-
-	public static function getReviewBannerContent()
-	{
-		ob_start();
-		?>
-		<style>
-			.sgpb-buttons-wrapper .press{
-				box-sizing:border-box;
-				cursor:pointer;
-				display:inline-block;
-				font-size:1em;
-				margin:0;
-				padding:0.5em 0.75em;
-				text-decoration:none;
-				transition:background 0.15s linear
-			}
-			.sgpb-buttons-wrapper .press-grey {
-				background-color:#9E9E9E;
-				border:2px solid #9E9E9E;
-				color: #FFF;
-			}
-			.sgpb-buttons-wrapper .press-lightblue {
-				background-color:#03A9F4;
-				border:2px solid #03A9F4;
-				color: #FFF;
-			}
-			.sgpb-review-wrapper .sgpb-buttons-wrapper {
-				text-align: center;
-			}
-			.sgpb-review-wrapper{
-				text-align: center;
-				padding: 20px;
-				padding-top: 0;
-			}
-			.sgpb-review-wrapper p {
-				color: black;
-			}
-			.sgpb-review-h1 {
-				font-size: 22px;
-				font-weight: normal;
-				line-height: 1.384;
-			}
-			.sgrb-review-h2 {
-				font-size: 20px;
-				font-weight: normal;
-				margin-top: 0 !important;
-			}
-			:root {
-				--main-bg-color: #1ac6ff;
-			}
-			.sgrb-review-strong{
-				color: var(--main-bg-color);
-			}
-			.sgrb-review-mt20{
-				margin-top: 20px
-			}
-			.sgpb-review-description h1:first-child {
-				font-size: 30px !important;
-			}
-		</style>
-		<div class="sgpb-review-wrapper">
-			<div class="sgpb-review-description">
-				<h1 class="sgpb-review-h1"><strong class="sgrb-review-strong"><?php _e('Wow!', SG_POPUP_TEXT_DOMAIN); ?></strong></h1>
-				<h1 class="sgpb-review-h1"><?php _e('You\'ve got a lot of conversion with Popup Builder! Congratulations!', SG_POPUP_TEXT_DOMAIN); ?></h1>
-				<h2 class="sgrb-review-h2"><?php _e('Share your positive feedback to keep our service up for better results!', SG_POPUP_TEXT_DOMAIN); ?></h2>
-			</div>
-			<div class="sgpb-buttons-wrapper">
-				<button class="press press-grey sgpb-button-1 sg-already-did-review"><?php _e('I already did', SG_POPUP_TEXT_DOMAIN); ?></button>
-				<button class="press press-lightblue sgpb-button-3 sg-you-worth-it"><?php _e('You worth it!', SG_POPUP_TEXT_DOMAIN); ?></button>
-				<button class="press press-grey sgpb-button-2 sg-show-popup-period" data-message-type="hide"><?php _e('Maybe later', SG_POPUP_TEXT_DOMAIN); ?></button></div>
+				<button class="press press-grey sgpb-button-1 sgpb-close-promo-notification" data-action="sg-already-did-review"><?php _e('I already did', SG_POPUP_TEXT_DOMAIN); ?></button>
+				<button class="press press-lightblue sgpb-button-3 sgpb-close-promo-notification" data-action="sg-you-worth-it"><?php _e('You worth it!', SG_POPUP_TEXT_DOMAIN); ?></button>
+				<button class="press press-grey sgpb-button-2 sgpb-close-promo-notification" data-action="sg-show-popup-period" data-message-type="<?php echo $type; ?>"><?php _e('Maybe later', SG_POPUP_TEXT_DOMAIN); ?></button></div>
 			<div> </div>
 		</div>
 		<?php
@@ -1201,15 +1113,14 @@ class AdminHelper
 	public static function shouldOpenReviewPopupForDays()
 	{
 		$shouldOpen = true;
-		$dontShowAgain = get_option('SGPBCloseReviewPopup-1');
+		$dontShowAgain = get_option('SGPBCloseReviewPopup-notification');
 		$periodNextTime = get_option('SGPBOpenNextTime');
-
-		if (!$dontShowAgain) {
+		/*if (!$dontShowAgain) {
 			return true;
 		}
 		else {
 			return false;
-		}
+		}*/
 		// When period next time does not exits it means the user is old
 		if (!$periodNextTime) {
 			$usageDays = self::getPopupMainTableCreationDate();
@@ -1263,35 +1174,6 @@ class AdminHelper
 		return $days;
 	}
 
-	public static function addContentToBanner($popupContent)
-	{
-		$popupContent = self::getReviewBannerContent();
-		echo '<div class="sgpb-wrapper sgpb-review-popup-banner-wrapper">'.$popupContent.'</div>';
-	}
-
-	public static function addContentToFooter($popupContent)
-	{
-		if (function_exists('get_current_screen')) {
-			$screen = get_current_screen();
-			if ($screen->base == 'post') {
-				self::addContentToBanner($popupContent);
-				return;
-			}
-		}
-		add_action('admin_footer', function() use ($popupContent) {
-				$popupId = 0;
-				$events = array(array('onload'));
-				$events = json_encode($events);
-				$popupContent = '<div style="position:absolute;top: -999999999999999999999px;">
-							<div class="sg-popup-builder-content" id="sg-popup-content-wrapper-'.$popupId.'" data-id="'.esc_attr($popupId).'" data-events="'.esc_attr($events).'" data-options="">
-								<div class="sgpb-popup-builder-content-'.esc_attr($popupId).' sgpb-popup-builder-content-html">'.$popupContent.'</div>
-							</div>
-						  </div>';
-
-			echo $popupContent;
-		});
-	}
-
 	public static function shouldOpenForMaxOpenPopupMessage()
 	{
 		$counterMaxPopup = self::getMaxOpenPopupId();
@@ -1299,7 +1181,7 @@ class AdminHelper
 		if (empty($counterMaxPopup)) {
 			return false;
 		}
-		$dontShowAgain = get_option('SGPBCloseReviewPopup-1');
+		$dontShowAgain = get_option('SGPBCloseReviewPopup-notification');
 		$maxCountDefine = get_option('SGPBMaxOpenCount');
 
 		if (!$maxCountDefine) {
@@ -1339,7 +1221,7 @@ class AdminHelper
 			$maxCountDefine = $counterMaxPopup['maxCount'];
 		}
 
-		$firstHeader = __('<h1 class="sgpb-review-h1"><strong class="sgrb-review-strong">Wow!</strong> <b>Popup Builder</b> plugin helped you to share your message via <strong class="sgrb-review-strong">'.$popupTitle.'</strong> popup with your users for <strong class="sgrb-review-strong">'.$maxCountDefine.' times!</strong></h1>', SG_POPUP_TEXT_DOMAIN);
+		$firstHeader = __('<h1 class="sgpb-review-h1"><strong class="sgrb-review-strong">Awesome news!</strong> <b>Popup Builder</b> plugin helped you to share your message via <strong class="sgrb-review-strong">'.$popupTitle.'</strong> popup with your visitors for <strong class="sgrb-review-strong">'.$maxCountDefine.' times!</strong></h1>', SG_POPUP_TEXT_DOMAIN);
 		$popupContent = self::getMaxOpenPopupContent($firstHeader, 'count');
 
 		return $popupContent;
@@ -1655,12 +1537,14 @@ class AdminHelper
 	 */
 	public static function makeRegisteredPluginsStaticPathsToDynamic()
 	{
-		$hasModifiedPaths = get_option('sgpbModifiedRegisteredPluginsPaths');
+		$hasModifiedPaths = AdminHelper::getOption('SGPB_REGISTERED_PLUGINS_PATHS_MODIFIED');
 
 		if ($hasModifiedPaths) {
 			return false;
 		}
-		update_option('sgpbModifiedRegisteredPluginsPaths', 1);
+		// remove old outdated option sgpbModifiedRegisteredPluginsPaths
+		delete_option('sgpbModifiedRegisteredPluginsPaths');
+		update_option(SGPB_REGISTERED_PLUGINS_PATHS_MODIFIED, 1);
 
 		$registeredPlugins = AdminHelper::getOption('SG_POPUP_BUILDER_REGISTERED_PLUGINS');
 
@@ -1678,20 +1562,9 @@ class AdminHelper
 			if (empty($registeredPlugin['classPath'])) {
 				continue;
 			}
-
-			$excludeClassPath =  explode('wp-content/plugins/', $registeredPlugin['classPath']);
-
-			// where 1 means dynamic path
-			if (!empty($excludeClassPath[1])) {
-				$registeredPlugins[$key]['classPath'] = $excludeClassPath[1];
-			}
-
+			$registeredPlugins[$key]['classPath'] = str_replace(WP_PLUGIN_DIR, '', $registeredPlugin['classPath']);
 			if (!empty($registeredPlugin['options']['licence']['file'])) {
-				$excludeLicencePath =  explode('wp-content/plugins/', $registeredPlugin['options']['licence']['file']);
-				// where 1 means dynamic path
-				if (!empty($excludeLicencePath[1])) {
-					$registeredPlugins[$key]['options']['licence']['file'] = $excludeLicencePath[1];
-				}
+				$registeredPlugins[$key]['options']['licence']['file'] = $registeredPlugin['options']['licence']['file'];
 			}
 		}
 		$registeredPlugins = json_encode($registeredPlugins);
@@ -1717,10 +1590,6 @@ class AdminHelper
 				continue;
 			}
 			$extensionKey = $registeredPlugin['options']['licence']['file'];
-			if (strpos($extensionKey, 'wp-content/plugins/')) {
-				$explodedPaths = explode('wp-content/plugins/', $extensionKey);
-				$extensionKey = $explodedPaths[1];
-			}
 			$isPluginActive = is_plugin_active($extensionKey);
 			$pluginKey = $registeredPlugin['options']['licence']['key'];
 			$isValidLicense = get_option('sgpb-license-status-'.$pluginKey);
@@ -1803,18 +1672,18 @@ class AdminHelper
 
 		// get scripts
 		$jsPostMeta = @$postMeta['js'];
-		$jsDefaultData = $defaultData['customEditorContent']['js'];
-		$customScripts = '<script id="sgpb-custom-script-'.$popupId.'">';
+		$jsDefaultData = $defaultData['customEditorContent']['js']['helperText'];
 		$finalContent = '';
 		if (!empty($jsPostMeta)) {
+			$customScripts = '<script id="sgpb-custom-script-'.$popupId.'">';
 			foreach ($jsDefaultData as $key => $value) {
 				$eventName = 'sgpb'.$key;
-				$content = @$jsPostMeta['sgpb-'.$key];
-				if (empty($content) || $key == 'ShouldOpen' || $key == 'ShouldClose') {
+				if ((!isset($jsPostMeta['sgpb-'.$key]) || empty($jsPostMeta['sgpb-'.$key])) || $key == 'ShouldOpen' || $key == 'ShouldClose') {
 					continue;
 				}
+				$content = @$jsPostMeta['sgpb-'.$key];
 				$content = str_replace('popupId', $popupId, $content);
-				$content = html_entity_decode($content);
+				$content = html_entity_decode($content, ENT_QUOTES, 'UTF-8');
 
 				$finalContent .= 'sgAddEvent(window, "'.$eventName.'", function(e) {';
 				$finalContent .= 'if (e.detail.popupId == "'.$popupId.'") {';
@@ -1822,23 +1691,26 @@ class AdminHelper
 				$finalContent .= '};';
 				$finalContent .= '});';
 			}
+			$customScripts .= $finalContent;
+			$customScripts .= '</script>';
+			$finalResult .= $customScripts;
 		}
-		$customScripts .= $finalContent;
-		$customScripts .= '</script>';
 
 		// get styles
-		$cssPostMeta = @$postMeta['css'];
-		$customStyles = '<style id="sgpb-custom-style-'.$popupId.'">';
+		if (isset($postMeta['css'])) {
+			$cssPostMeta = $postMeta['css'];
+		}
 		$finalContent = '';
 		if (!empty($cssPostMeta)) {
+			$customStyles = '<style id="sgpb-custom-style-'.$popupId.'">';
 			$finalContent = str_replace('popupId', $popupId, $cssPostMeta);
-			$finalContent = html_entity_decode($finalContent);
-		}
-		$customStyles .= $finalContent;
-		$customStyles .= '</style>';
+			$finalContent = html_entity_decode($finalContent, ENT_QUOTES, 'UTF-8');
 
-		$finalResult .= $customScripts;
-		$finalResult .= $customStyles;
+			$customStyles .= $finalContent;
+			$customStyles .= '</style>';
+			$finalResult .= $customStyles;
+		}
+
 
 		return $finalResult;
 	}
@@ -1941,7 +1813,7 @@ class AdminHelper
 			foreach ($registered as $singleExntensionData) {
 				$key = $singleExntensionData['options']['licence']['key'];
 				$name = $singleExntensionData['options']['licence']['itemName'];
-				$licenseKey = 'No license';
+				$licenseKey = __('No license');
 				if (!empty(self::getOption('sgpb-license-key-'.$key))) {
 					$licenseKey = self::getOption('sgpb-license-key-'.$key);
 				}

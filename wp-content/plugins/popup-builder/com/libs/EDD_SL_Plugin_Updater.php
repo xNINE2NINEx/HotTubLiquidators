@@ -115,7 +115,7 @@ class EDD_SL_Plugin_Updater {
 		// Remove our filter on the site transient
 		remove_filter( 'pre_set_site_transient_update_plugins', array( $this, 'check_update' ), 10 );
 		$update_cache = get_site_transient( 'update_plugins' );
-		$update_cache = is_object( $update_cache ) ? $update_cache : new stdClass();
+		$update_cache = is_object( $update_cache ) ? $update_cache : new \stdClass();
 		if ( empty( $update_cache->response ) || empty( $update_cache->response[ $this->name ] ) ) {
 			$version_info = $this->get_cached_version_info();
 			if ( false === $version_info ) {

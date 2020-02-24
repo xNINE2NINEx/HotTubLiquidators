@@ -1,21 +1,18 @@
 === Sticky Menu (or Anything!) on Scroll ===
-Contributors: senff
-Donate link: http://www.senff.com/donate
+Contributors: senff, webfactory, wpreset, underconstructionpage
 Tags: sticky header, sticky menu, sticky, header, menu
-Plugin URI: http://www.senff.com/plugins/sticky-anything-wp
+Plugin URI: https://wordpress.org/plugins/sticky-menu-or-anything-on-scroll/
 Requires at least: 3.6
-Tested up to: 4.9
-Stable tag: 2.1.1
+Tested up to: 5.3
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Sticky Menu (Or Anything!) On Scroll will let you choose any element on your page that will be "sticky" at the top once you scroll down.
+Sticky Menu (Or Anything) On Scroll lets you choose any element that will be "sticky" at the top once you scroll down.
 
 == Description ==
 
-= Summary =
-
-The Sticky Menu (Or Anything) On Scroll plugin for WordPress allows you to make any element on your pages "sticky" as soon as it hits the top of the page when you scroll down. Although this is commonly used to keep menus at the top of your page, the plugin allows you to make ANY element sticky (such as a Call To Action box, a logo, etc.)
+The Sticky Menu (Or Anything) On Scroll plugin for WordPress allows you to **make any element on your pages "sticky"** as soon as it hits the top of the page when you scroll down. Although this is commonly used to keep menus at the top of your page, the plugin allows you to make ANY element sticky (such as a Call To Action box, a logo, etc.)
 
 A little bit of basic HTML/CSS knowledge is required. You just need to know how to pick the right selector for the element you want to make sticky, and you need to be sure it's a unique selector. Sometimes a simple selector like "nav", "#main-menu", ".menu-main-menu-1" is enough. Other times you will have to be more detailed and use a more specific selector such as "header > ul:first-child" or "nav.top .menu-header ul.main".
 
@@ -23,7 +20,7 @@ A little bit of basic HTML/CSS knowledge is required. You just need to know how 
 
 * **Any element can stick**: although common use is for navigation menus, the plugin will let you pick any unique element with a name, class or ID to stick at the top of the page once you scroll past it. Use it for a sidebar, Call-to-action box, banner ad, etc.
 * **Positioning from top**: optionally, you can add any amount of space between the sticky element and the top of the page, so that the element is not always stuck at the "ceiling" of the page.
-* **Enable for certain screen sizes only**: optionally, you can set a minimum and/or maximum screen size where the stickiness should work. This can be handy if you have a responsive site and you don't want your element to be sticky on smaller screens, for example. 
+* **Enable for certain screen sizes only**: optionally, you can set a minimum and/or maximum screen size where the stickiness should work. This can be handy if you have a responsive site and you don't want your element to be sticky on smaller screens, for example.
 * **Push-up element**: optionally, you can pick any other element lower on the page that will push the sticky element up again (for example a sidebar widget).
 * **Admin Bar aware**: checks if the current user has an Admin Toolbar at the top of the page. If it has, the sticky element will not obscure it (or be obscured by it).
 * **Z-index**: in case there are other elements on the page that obscure or peek through your sticky element, you can add a Z-index easily.
@@ -44,7 +41,7 @@ A little bit of basic HTML/CSS knowledge is required. You just need to know how 
 == Frequently Asked Questions ==
 
 = I selected a class/ID in the settings screen, but the element doesn't stick when I scroll down. Why not? =
-First, make sure that if you select the element by its classname, it is preceded by a dot (e.g. ".main-menu"), and if you select it by its ID, that it's preceded by a pound/hash/number sign (e.g. "#main-menu"). Also, make sure there is only ONE element on the page with the selector you're using. If there is none, or more than one element that matches your selector, nothing will happen.
+First, make sure that if you select the element by its class name, it is preceded by a dot (e.g. ".main-menu"), and if you select it by its ID, that it's preceded by a pound/hash/number sign (e.g. "#main-menu"). Also, make sure there is only ONE element on the page with the selector you're using. If there is none, or more than one element that matches your selector, nothing will happen.
 
 = Once the element becomes sticky, it's not positioned/sized properly at all. =
 Due to the nature of CSS, there are situations where an element will not stick properly, usually if it has specific properties that are used to manipulate its location and/or dimensions. If your sticky element has any of the following properties, this could cause conflicts:
@@ -59,11 +56,11 @@ Try to avoid all this where possible, but if you can't, using the plugin in Lega
 Another situation that can cause trouble, is when any parent of your sticky element has the "transform" CSS property applied to it.
 
 = Once the element becomes sticky, it's not responsive and doesn't resize when I change the browser size.
-This is a known (and annoying) bug in the plugin that I haven't been able to solve properly yet. For some sites (when the element does not contain any Javascript interactivity, usually), it sometimes helps to use the plugin in Legacy Mode (see below).
+This is a known (and annoying) bug in the plugin that I haven't been able to solve properly yet. For some sites (when the element does not contain any JavaScript interactivity, usually), it sometimes helps to use the plugin in Legacy Mode (see below).
 
 = Is it possible to add some styles to the element but only when it's sticky?
-To add styles to your sticky element when it's not sticky, use classname ".element-is-not-sticky".
-To add styles to your sticky element only when it's sticky, use classname ".element-is-sticky"
+To add styles to your sticky element when it's not sticky, use class name ".element-is-not-sticky".
+To add styles to your sticky element only when it's sticky, use class name ".element-is-sticky"
 
 The following code would give your element a red background only when it's not sticky, and blue only when it is:
 
@@ -102,7 +99,7 @@ NOTE: new installs of the plugin will have the Legacy Mode turned off by default
 = What is this Dynamic Mode thing exactly? =
 This mode is only available in Legacy Mode, and to properly explain this, we'll need to go a little deeper in the plugin's functionality. So bear with me...
 
-In Legacy Mode, when an element becomes sticky at the top of the page (and keeps its place regardless of the scrolling), it's actually not the element itself you see, but a cloned copy of it, while the actuak original element is out of view and invisible.
+In Legacy Mode, when an element becomes sticky at the top of the page (and keeps its place regardless of the scrolling), it's actually not the element itself you see, but a cloned copy of it, while the actual original element is out of view and invisible.
 
 The original element always stays where it originally is on the page, while the cloned element is always at the top of the browser viewport screen. However, you will never see them both at the same time; depending on your scroll position, it always just shows either one or the other.
 
@@ -121,17 +118,20 @@ Phew!
 = I'll need more help please! =
 Please go to the plugin's [support forum on WordPress.org](https://wordpress.org/support/plugin/sticky-menu-or-anything-on-scroll) and post a message (include a link to your site if possible). Repsonse time is usually within a few hours maximum.
 
-= I need some functionality that the plugin currently doesn't support. Can you help make a custom version? =
-If the customization is fairly minor, I can probably help out right away. However, if the requested customization is of a more complex nature, I won't be able to do it quickly/free and it may take a number of hours. If you're interested in that, please go to the plugin's [support forum on WordPress.org](https://wordpress.org/support/plugin/sticky-menu-or-anything-on-scroll) and let me know that you'll need some custom work (include a link to your site if possible). 
-
 
 == Screenshots ==
 
-1. Basic Settings screen
-2. Advanced Settings screen
+1. Basic Sticky Menu Settings screen
+2. Advanced Sticky Menu Settings screen
 
 
 == Changelog ==
+
+= 2.2 =
+* 2020-02-01
+* bug fixes
+* minor GUI improvements
+* 100,000 users hit on 2020-01-31
 
 = 2.1.1 =
 * Fixed minification bug
@@ -201,7 +201,7 @@ If the customization is fairly minor, I can probably help out right away. Howeve
 * Bug fixes
 
 = 2.1 =
-* Functionality for targeting sticky/non-sticky classnames added
+* Functionality for targeting sticky/non-sticky class names added
 
 = 2.0.1 =
 * A few small bug fixes

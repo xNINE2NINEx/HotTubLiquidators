@@ -18,20 +18,24 @@ class SGPBNotificationCenter
 		add_filter('sgpbCronTimeoutSettings', array($this, 'cronAddMinutes'), 10, 1);
 		add_action('sgpbGetNotifications', array($this, 'updateNotificationsArray'));
 		add_action('wp_ajax_sgpb_dismiss_notification', array($this, 'dismissNotification'));
+		add_action('wp_ajax_sgpb_remove_notification', array($this, 'removeNotification'));
+		add_action('wp_ajax_sgpb_reactivate_notification', array($this, 'reactivateNotification'));
 		add_action('admin_head', array($this, 'menuItemCounter'));
 	}
 
 	public function menuItemCounter()
 	{
-		$count = count(self::getAllActiveNotifications());
-		if (!empty($count)) {
-			echo "<script>
+		$count = count(self::getAllActiveNotifications(true));
+		$hidden = '';
+		if (empty($count)) {
+			$hidden = ' sgpb-hide-add-button';
+		}
+		echo "<script>
 				jQuery(document).ready(function() {
 					jQuery('.sgpb-menu-item-notification').remove();
-					jQuery('.dashicons-menu-icon-sgpb').next().append('<span class=\"sgpb-menu-item-notification\">".$count."</span>');
+					jQuery('.dashicons-menu-icon-sgpb').next().append('<span class=\"sgpb-menu-item-notification".$hidden."\">".$count."</span>');
 				});
 			</script>";
-		}
 	}
 
 	public function setCronTimeout($cronTimeout)
@@ -60,6 +64,10 @@ class SGPBNotificationCenter
 		$content = AdminHelper::getFileFromURL($requestUrl);
 		$content = json_decode($content, true);
 		$content = apply_filters('sgpbExtraNotifications', $content);
+		// check later
+		/*if (empty($content)) {
+			update_option('sgpb-all-dismissed-notifications', array());
+		}*/
 		$content = json_encode($content);
 		update_option('sgpb-all-notifications-data', $content);
 	}
@@ -92,7 +100,7 @@ class SGPBNotificationCenter
 		return $schedules;
 	}
 
-	public static function getAllActiveNotifications()
+	public static function getAllActiveNotifications($hideDismissed = false)
 	{
 		$activeNotifications = array();
 		$notifications = get_option('sgpb-all-notifications-data');
@@ -105,10 +113,24 @@ class SGPBNotificationCenter
 		$dismissedNotifications = json_decode($dismissedNotifications, true);
 		foreach ($notifications as $notification) {
 			$id = @$notification['id'];
-			if (isset($dismissedNotifications[$id])) {
-				continue;
+			if ($hideDismissed) {
+				if (isset($dismissedNotifications[$id])) {
+					continue;
+				}
 			}
 			$activeNotifications[] = $notification;
+		}
+		$removedNotifications = get_option('sgpb-all-removed-notifications');
+		$removedNotifications = json_decode($removedNotifications, true);
+		
+		if (is_array($removedNotifications)) {
+			foreach ($removedNotifications as $removedNotificationId) {
+				foreach ($activeNotifications as $key => $activeNotification) {
+					if ($activeNotification['id'] == $removedNotificationId) {
+						unset($activeNotifications[$key]);
+					}
+				}
+			}
 		}
 
 		return $activeNotifications;
@@ -124,6 +146,16 @@ class SGPBNotificationCenter
 		return json_decode($notifications, true);
 	}
 
+	public static function getAllRemovedNotifications()
+	{
+		$notifications = get_option('sgpb-all-removed-notifications');
+		if (empty($notifications)) {
+			$notifications = '';
+		}
+
+		return json_decode($notifications, true);
+	}
+
 	public static function displayNotifications($withoutWrapper = false)
 	{
 		$content = '';
@@ -132,7 +164,7 @@ class SGPBNotificationCenter
 			return $content;
 		}
 
-		$count = count($allNotifications);
+		$count = count(self::getAllActiveNotifications(true));
 
 		foreach ($allNotifications as $notification) {
 			$newNotification = new Notification();
@@ -143,6 +175,7 @@ class SGPBNotificationCenter
 			$content .= $newNotification->render();
 		}
 		$count = '(<span class="sgpb-notifications-count-span">'.$count.'</span>)';
+
 		if ($withoutWrapper) {
 			return $content;
 		}
@@ -174,7 +207,41 @@ class SGPBNotificationCenter
 		update_option('sgpb-all-dismissed-notifications', $allDismissedNotifications);
 		$result = array();
 		$result['content'] = self::displayNotifications(true);
-		$result['count'] = count(self::getAllActiveNotifications());
+		$result['count'] = count(self::getAllActiveNotifications(true));
+
+		echo json_encode($result);
+		wp_die();
+	}
+
+	public function removeNotification()
+	{
+		check_ajax_referer(SG_AJAX_NONCE, 'nonce');
+
+		$notificationId = sanitize_text_field($_POST['id']);
+		$allRemovedNotifications = self::getAllRemovedNotifications();
+		$allRemovedNotifications[$notificationId] = $notificationId;
+		$allRemovedNotifications = json_encode($allRemovedNotifications);
+
+		update_option('sgpb-all-removed-notifications', $allRemovedNotifications);
+
+		wp_die(true);
+	}
+
+	public function reactivateNotification()
+	{
+		check_ajax_referer(SG_AJAX_NONCE, 'nonce');
+
+		$notificationId = sanitize_text_field($_POST['id']);
+		$allDismissedNotifications = self::getAllDismissedNotifications();
+		if (isset($allDismissedNotifications[$notificationId])) {
+			unset($allDismissedNotifications[$notificationId]);
+		}
+		$allDismissedNotifications = json_encode($allDismissedNotifications);
+
+		update_option('sgpb-all-dismissed-notifications', $allDismissedNotifications);
+		$result = array();
+		$result['content'] = self::displayNotifications(true);
+		$result['count'] = count(self::getAllActiveNotifications(true));
 
 		echo json_encode($result);
 		wp_die();

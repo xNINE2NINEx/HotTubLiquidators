@@ -9,7 +9,7 @@ Tags: popup, pop up, wordpress popup, popup maker, exit popup, popup builder, wo
 Requires at least: 3.8
 Tested up to: 5.3
 Requires PHP: 5.3.3
-Stable tag: 3.59
+Stable tag: 3.62.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -184,6 +184,33 @@ Go to the Popup Builder settings and set your desired options.
 13. Facebook popup
 
 == Changelog ==
+
+= Version 3.62.1 =
+* Hot fix related to PHP Warning.
+
+= Version 3.62 =
+* Improvement related to image upload inside the Image Popup.
+* Empty notification removed.
+* Notices fixed related to custom CSS/JS.
+* Close button issue fixed when the button was not clickable.
+* Improvement related to cookie saving.
+
+= Version 3.61.1 =
+* Minor fix related to image popup.
+
+= Version 3.61 =
+* Improvement: No code content will be loaded if the custom JS/CSS doesn't contain any code.
+* Improvement: Relative plugin path has been used.
+* Bug fixed related to class namepsace.
+* Improvement: Popup data migration functionality has been modified.
+* Minor fixes and improvements.
+
+= Version 3.60 =
+* Bug fixed related to image popup saving issue.
+* Cron Job task improvements.
+* Using a dynamic plugin path when loading resources.
+* Improvement related to 'Disable Page Scrolling' when page scrolls to top after the popup opened.
+* Minor fixes and improvements.
 
 = Version 3.59 =
 * Speed improvements.
@@ -1114,7 +1141,7 @@ Leave us a good review :)
 
 == Upgrade Notice ==
 
-Current Version of Popup Builder is 3.59
+Current Version of Popup Builder is 3.62
 
 == Other Notes ==
 

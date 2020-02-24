@@ -254,6 +254,10 @@ class Functions
 	{
 		global $SGPB_TRANSIENT_CONFIG;
 
+		if (empty($SGPB_TRANSIENT_CONFIG)) {
+			return true;
+		}
+
 		foreach ($SGPB_TRANSIENT_CONFIG as $eachTransient) {
 			delete_transient($eachTransient);
 		}

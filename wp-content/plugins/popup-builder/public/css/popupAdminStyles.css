@@ -1480,7 +1480,7 @@ input:checked + .sgpb-slider:before {
 }
 
 .sgpb-hide-add-button {
-	display: none;
+	display: none !important;
 }
 
 .sgpb-tab-content-options label {
@@ -2405,14 +2405,14 @@ input:checked + .sgpb-slider:before {
 
 /* notification center styles */
 .sgpb-notification-center-wrapper {
-	display: inline-block;
-	max-width: 1240px;
-	width: 98%;
-	margin: 20px 0 1px;
-	/*padding: 20px 20px 0;*/
-	border: 1px solid #e5e5e5;
-	background-color: #fdfdfd;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+	margin-right: 21px;
+	padding: 20px 20px 0 !important;
+	border: 1px solid
+	#e5e5e5;
+	background-color:
+	#fdfdfd;
+	box-shadow: 0 1px 1px
+	rgba(0, 0, 0, .04);
 }
 
 .sgpb-notification-center-wrapper h3 {
@@ -2496,4 +2496,39 @@ input:checked + .sgpb-slider:before {
 	line-height: 1.5;
 	text-align: center;
 	z-index: 26;
+}
+
+.sgpb-support-notification-wrapper {
+	text-align: center;
+}
+
+.sgpb-support-notification-wrapper .btn-info {
+	margin-right: 10px;
+}
+
+.sgpb-support-notification-wrapper h4:nth-child(2) {
+	margin-bottom: 25px;
+}
+
+.sgpb-support-notification-dont-show {
+	font-size: 12px !important;
+	text-align: right;
+	margin-top: 10px;
+}
+
+.sgpb-support-notification-dont-show a {
+	font-size: 12px !important;
+}
+
+.sgpb-review-description .sgrb-review-h2 {
+	margin-top: 0 !important;
+}
+
+.sgpb-hide-notification-at-all {
+	float: right;
+}
+
+.sgpb-hide-notification-at-all:hover {
+	cursor: pointer;
+	background-color: #cccccca3;
 }

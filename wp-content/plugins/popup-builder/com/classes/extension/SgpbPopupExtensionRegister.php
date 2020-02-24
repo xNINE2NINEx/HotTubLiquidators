@@ -29,6 +29,7 @@ class SgpbPopupExtensionRegister
 
 			return;
 		}
+		$classPath = str_replace(SG_POPUP_PLUGIN_PATH, '', $classPath);
 		$pluginData['classPath'] = $classPath;
 		$pluginData['className'] = $className;
 		$pluginData['options'] = $options;

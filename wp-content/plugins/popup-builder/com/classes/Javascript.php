@@ -53,9 +53,7 @@ class Javascript
 				continue;
 			}
 			$classPath = $pluginData['classPath'];
-			if (!strpos($classPath, 'wp-content/plugins/')) {
-				$classPath = SG_POPUP_PLUGIN_PATH.$classPath;
-			}
+			$classPath = SG_POPUP_PLUGIN_PATH.$classPath;
 
 			if (!file_exists($classPath))  {
 				continue;

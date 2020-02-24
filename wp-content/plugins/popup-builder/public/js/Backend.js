@@ -109,7 +109,7 @@ SGPBBackend.prototype.downloadSystemInfoFile = function() {
 }
 
 SGPBBackend.prototype.resetCssEditorContent = function() {
-	jQuery('.editor-content-css').val(SGPB_CSS_EDITOR_DEFAULT_CONTENT[0]);
+	jQuery('.editor-content-css').val('');
 }
 
 SGPBBackend.prototype.popupBuilderButton = function()

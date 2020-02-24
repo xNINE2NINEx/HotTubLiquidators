@@ -305,7 +305,7 @@ class Installer
 	public static function registerPlugin()
 	{
 		$pluginName = SG_POPUP_FILE_NAME;
-		$classPath = SG_POPUP_EXTENSION_PATH.'/SgpbPopupExtension.php';
+		$classPath = SG_POPUP_EXTENSION_PATH.'SgpbPopupExtension.php';
 		$className = 'SgpbPopupExtension';
 		$options = array();
 

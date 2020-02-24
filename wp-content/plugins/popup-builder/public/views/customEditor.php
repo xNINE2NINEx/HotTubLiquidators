@@ -8,13 +8,10 @@ $jsDefaultData = $defaultData['customEditorContent']['js'];
 $cssDefaultData = $defaultData['customEditorContent']['css'];
 
 $savedData = get_post_meta($popupId , 'sg_popup_scripts', true);
-$editorStaticText = array(
-	__('If you need the popup id number in the custom code, you may use the following variable to get the ID: <code>popupId</code>', SG_POPUP_TEXT_DOMAIN)
-);
 ?>
 
-<p><?php _e('This section is for adding custom codes (CSS or JS) for the popup, it requires some coding knowledge', SG_POPUP_TEXT_DOMAIN);?></p>.
-<p><?php _e('You may use your custom codes for extra actions connected to the popup opening (before, after, etc.) in the fields below', SG_POPUP_TEXT_DOMAIN);?></p>.
+<p><?php _e('This section is for adding custom codes (CSS or JS) for the popup, it requires some coding knowledge', SG_POPUP_TEXT_DOMAIN);?>.</p>
+<p><?php _e('You may use your custom codes for extra actions connected to the popup opening (before, after, etc.) in the fields below', SG_POPUP_TEXT_DOMAIN);?>.</p>
 
 <div class="sgpb-wrapper">
 	<!-- editor buttons -->
@@ -28,13 +25,13 @@ $editorStaticText = array(
 		<div id="sgpb-editor-options-tab-content-wrapper-1" class="sgpb-editor-options-tab-content-wrapper" style="display: block;">
 			<div class="editor-static-text">
 			<?php
-				foreach ($editorStaticText as $text) { ?>
+				foreach ($jsDefaultData['description'] as $text) { ?>
 					<div><?php echo $text; ?></div>
 				<?php }
 			?></div>
 			<br>
 
-			<?php foreach ($jsDefaultData as $key => $value) {?>
+			<?php foreach ($jsDefaultData['helperText'] as $key => $value) {?>
 					<div class="editor-static-text"><div><?php echo $value; ?></div></div>
 					<div class="editor-static-text"><div>
 						<textarea   class="wp-editor-area editor-content"
@@ -54,29 +51,23 @@ $editorStaticText = array(
 		<div id="sgpb-editor-options-tab-content-wrapper-2" class="sgpb-editor-options-tab-content-wrapper" style="display: none;">
 			<div class="editor-static-text">
 			<?php
-				foreach ($editorStaticText as $text) { ?>
+				foreach ($cssDefaultData['description'] as $text) { ?>
 					<div><?php echo $text; ?></div>
 				<?php }
 			?></div>
 			<br>
 
-			<input class="btn reset-button col-md-1" data-attr-custom-tab="reset" value="Reset" readonly onclick="SGPBBackend.prototype.resetCssEditorContent()">
+			<input class="btn reset-button col-md-1" data-attr-custom-tab="reset" value="Clear" readonly onclick="SGPBBackend.prototype.resetCssEditorContent()">
 			<div class="editor-static-text"><div></div></div>
+
 			<div class="editor-static-text"><div>
 				<textarea class="wp-editor-area editor-content editor-content-css"
 							placeholder=" #... type your code"
 							mode="<?php echo $editorModeCss; ?>"
-							name="sgpb-css-editor"
-				><?php
-					if (!isset($savedData['css'])) {
-						foreach ($cssDefaultData as $value) {
-							echo $value;
-						}
-					}
-					else {
-						echo $savedData['css'];
-					}
-				 ?></textarea>
+							name="sgpb-css-editor"><?php 
+							if (isset($savedData['css'])) {
+								echo $savedData['css'];
+							}?></textarea>
 				</div></div>
 		</div>
 	</div>

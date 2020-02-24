@@ -550,16 +550,22 @@ abstract class SGPopup
 		$popupContent = $this->getContent();
 
 		$defaultData = ConfigDataHelper::defaultData();
-		$defaultDataJs = $defaultData['customEditorContent']['js'];
-		$defaultDataCss = $defaultData['customEditorContent']['css'];
+		$defaultDataJs = $defaultData['customEditorContent']['js']['helperText'];
+		$defaultDataCss = $defaultData['customEditorContent']['css']['oldDefaultValue'];
 
 		$finalData = array('js' => array(), 'css' => array());
 		$alreadySavedData = get_post_meta($popupId, 'sg_popup_scripts', true);
 
 		// get styles
-		$finalData['css'] = htmlspecialchars($data['sgpb-css-editor']);
+		$finalData['css'] = $data['sgpb-css-editor'];
+		$defaultDataCss = $defaultDataCss[0];
+
+		$defaultDataCss = preg_replace('/\s/', '', $defaultDataCss);
+		$temp = preg_replace('/\s/', '', $finalData['css']);
+
 		unset($data['sgpb-css-editor']);
-		if ($finalData['css'] === $defaultDataCss[0]) {
+
+		if ($temp == $defaultDataCss) {
 			unset($finalData['css']);
 		}
 
@@ -627,7 +633,7 @@ abstract class SGPopup
 					if (!$isNotPostType) {
 						$args = array(
 							'post__in' => array_values($ruleData['value']),
-							'posts_per_page' => 10,
+							'posts_per_page' => 100,
 							'post_type'      => $postType
 						);
 
@@ -798,7 +804,10 @@ abstract class SGPopup
 			}
 		}
 
-		$popupSavedData = array_merge($popupSavedData, self::getPopupOptionsById($popupId, $saveMode));
+		$popupOptions = self::getPopupOptionsById($popupId, $saveMode);
+		if (is_array($popupOptions) && is_array($popupSavedData)) {
+			$popupSavedData = array_merge($popupSavedData, $popupOptions);
+		}
 
 		return $popupSavedData;
 	}
@@ -1231,7 +1240,6 @@ abstract class SGPopup
 	{
 		ob_start();
 		$wrap = 'a';
-
 		if (!empty($args['wrap'])) {
 			if ($args['wrap'] == $wrap) {
 				$args['href'] = 'javascript:void(0)';
@@ -1244,6 +1252,9 @@ abstract class SGPopup
 		$attr = AdminHelper::createAttrs($args);
 		?>
 		<<?php echo $wrap; ?>
+		<?php if ($wrap == 'a') : ?>
+		href="javascript:void(0)"
+		<?php endif ?>
 		class="sg-show-popup <?php echo 'sgpb-popup-id-'.$popupId; ?>"
 		data-sgpbpopupid="<?php echo esc_attr($popupId); ?>"
 		data-popup-event="<?php echo $event; ?>"
