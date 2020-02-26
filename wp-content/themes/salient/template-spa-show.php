@@ -205,7 +205,7 @@ body, html{background:#002249 !important;}
 					
 					<div class="video">
 						<h2 style="font-size: 50px;">Nevadas #1 Spa Dealer</h2>
-						<video width="100%" height="auto" controls>
+						<video width="100%" height="auto" controls="" autoplay="false"> 
   							<source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4">
   							<source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg">
 						</video>
