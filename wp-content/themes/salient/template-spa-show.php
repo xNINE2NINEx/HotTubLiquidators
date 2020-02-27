@@ -18,8 +18,73 @@ body, html{background:#002249 !important;}
 .ss-pg h1{font-size:34px !important;}
 .ss-pg h2{font-size:25px !important;}
 	}
+	.popup {
+ 
+  position: fixed;
+  padding: 10px;
+  width: 50%;
+  left: 35%;
+  margin-left: -150px;
+  height:auto;
+  top:35%;
+  margin-top: -100px;
+  background: #FFF;
+  z-index: 20;
+}
+
+
+#popup2:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: -2;
+}
+
+#popup2:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+#popup2 .fa {
+	background-color: #fff;
+	float:right;
+	margin:-40px -20px 0 0;
+	color:#900;
+	font-size:30px;
+	border-radius:25px;
+}
 </style>
+<script>
+	$ = function(id) {
+  return document.getElementById(id);
+}
+
+var show = function(id) {
+	$(id).style.display ='block';
+}
+var hide = function(id) {
+	$(id).style.display ='none';
+}
+</script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
+
+<div class="popup" id="popup2">
+	<h3><a href="#" onclick="hide('popup2')"><i class="fa fa-times-circle" aria-hidden="true"></i></a></h3>
+<div class="video">
+<video width="100%" height="100%" controls="" autoplay="" style="visibility: visible;"><source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4"><source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg"></video><p></p>
+</div>
+</div>
+
 <div class="ss-pg">
 <div class="container-fluid bg-blue">
 		<div class="row">
@@ -205,7 +270,7 @@ body, html{background:#002249 !important;}
 					
 					<div class="video">
 						<h2 style="font-size: 50px;">Nevadas #1 Spa Dealer</h2>
-						<video width="100%" height="auto" controls="" autoplay="false"> 
+						<video width="100%" height="auto" controls> 
   							<source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4">
   							<source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg">
 						</video>
@@ -262,6 +327,8 @@ body, html{background:#002249 !important;}
 			<div class="buffer">
 					</div>
 </div><!--end bottom video section-->
+
+
 
 <div class="container-fluid">
 	<div class="row">
