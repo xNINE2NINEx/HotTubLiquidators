@@ -63,28 +63,7 @@ body, html{background:#002249 !important;}
 	border-radius:25px;
 }
 </style>
-<script>
-	$ = function(id) {
-  return document.getElementById(id);
-}
-
-var show = function(id) {
-	$(id).style.display ='block';
-}
-var hide = function(id) {
-	$(id).style.display ='none';
-}
-</script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
-
-<div class="popup" id="popup2">
-	<h3><a href="#" onclick="hide('popup2')"><i class="fa fa-times-circle" aria-hidden="true"></i></a></h3>
-<div class="video">
-<video width="100%" height="100%" controls="" autoplay="" style="visibility: visible;"><source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4"><source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg"></video><p></p>
-</div>
-</div>
-
 <div class="ss-pg">
 <div class="container-fluid bg-blue">
 		<div class="row">
