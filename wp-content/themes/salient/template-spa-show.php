@@ -77,7 +77,7 @@ body, html{background:#002249 !important;}
 				  <h1><span style="font-size: 40px;">SAVE <br> THOUSANDS!</span></h1>
 					<h2><strong style="color:#fcbb11;">6-Month Zero Interest</strong> w/payments and <br><strong style="color:#fcbb11;">12-Month Zero Interest</strong> w/payments.</h2>
 					<h2><span style="color:#002249;">We also offer Credit Union Low Rate financing with no pre-payment penalty!</span></h2>
-					<h2><strong style="color:#fcbb11;">HOT TUBS</strong> $2,880! <strong style="color:#fcbb11;">SWIM SPAS</strong> $10,880! <strong style="color:#fcbb11;">PAYMENTS</strong> as low as $69 mo.</h2>
+					<!--h2><strong style="color:#fcbb11;">HOT TUBS</strong> $2,880! <strong style="color:#fcbb11;">SWIM SPAS</strong> $10,880! <strong style="color:#fcbb11;">PAYMENTS</strong> as low as $69 mo.</h2-->
 					<p>OAC. See show for details.</p>
 				</div>
 				<div class="col-sm-6" id="hero-image">
