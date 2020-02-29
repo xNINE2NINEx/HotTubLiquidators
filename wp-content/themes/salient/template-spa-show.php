@@ -119,7 +119,7 @@ body, html{background:#002249 !important;}
 					<h2><strong style="color:#fcbb11;">6-Month Zero Interest</strong> w/payments and <br><strong style="color:#fcbb11;">12-Month Zero Interest</strong> w/payments.</h2>
 					<h2><span style="color:#002249;">We also offer Credit Union Low Rate financing with no pre-payment penalty!</span></h2>
 					<h2><strong style="color:#fcbb11;">HOT TUBS</strong> $2,880! <strong style="color:#fcbb11;">SWIM SPAS</strong> $10,880! <strong style="color:#fcbb11;">PAYMENTS</strong> as low as $69 mo.</h2>
-					<p>18 mos. OAC. See show for details.</p>
+					<p>OAC. See show for details.</p>
 				</div>
 				<div class="col-sm-6" id="hero-image">
 					<img style="width:100%;"  src="../wp-content/uploads/2018/11/Hero_3.png">
@@ -189,7 +189,7 @@ body, html{background:#002249 !important;}
 					<img src="../wp-content/uploads/2018/11/ss_slide12.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer5.png" alt="Hot Tub Liquidators"></div>
+					<!--div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer5.png" alt="Hot Tub Liquidators"></div-->
 					<img src="../wp-content/uploads/2018/11/ss_slide13.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
@@ -216,13 +216,13 @@ body, html{background:#002249 !important;}
 		<div class="col-md-6">
 			<div class="thumbnail">
 			  <img src="../wp-content/uploads/2018/11/ss_slide7.jpg" alt="Hot Tub Liquidators" />
-				<img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag4.png" alt="Hot Tub Liquidators" />
+				<!--img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag4.png" alt="Hot Tub Liquidators" /-->
 			</div>
 		  </div>
 		<div class="col-md-6">
 			<div class="thumbnail">
 			  <img src="../wp-content/uploads/2018/11/ss_slide8.jpg" alt="Hot Tub Liquidators">
-				  <img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag2.png" alt="Hot Tub Liquidators" />
+				  <!--img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag2.png" alt="Hot Tub Liquidators" /-->
 			  </div>
 			</div>
 		  </div>
@@ -231,13 +231,13 @@ body, html{background:#002249 !important;}
 		<div class="col-md-6">
 			<div class="thumbnail">
 			  <img src="../wp-content/uploads/2018/11/ss_slide3.jpg" alt="Hot Tub Liquidators">
-				  <img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag3.png" alt="Hot Tub Liquidators">
+				  <!--img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag3.png" alt="Hot Tub Liquidators" /-->
 			  </div>
 			</div>
 		<div class="col-md-6">
 			<div class="thumbnail">
 			  <img src="../wp-content/uploads/2018/11/ss_slide9.jpg" alt="Hot Tub Liquidators">
-				  <img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag1.png" alt="Hot Tub Liquidators">
+				  <!--img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag1.png" alt="Hot Tub Liquidators"/-->
 			</div>
 		 </div>
 	</div>
