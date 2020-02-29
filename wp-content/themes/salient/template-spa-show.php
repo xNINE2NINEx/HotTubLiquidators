@@ -17,51 +17,10 @@ body, html{background:#002249 !important;}
 .ss-pg .btn-warning{font-size:29px !important;}
 .ss-pg h1{font-size:34px !important;}
 .ss-pg h2{font-size:25px !important;}
-	}
-	.popup {
- 
-  position: fixed;
-  padding: 10px;
-  width: 50%;
-  left: 35%;
-  margin-left: -150px;
-  height:auto;
-  top:35%;
-  margin-top: -100px;
-  background: #FFF;
-  z-index: 20;
 }
-
-
-#popup2:after {
-  position: fixed;
-  content: "";
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: -2;
-}
-
-#popup2:before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: #FFF;
-  z-index: -1;
-}
-#popup2 .fa {
-	background-color: #fff;
-	float:right;
-	margin:-40px -20px 0 0;
-	color:#900;
-	font-size:30px;
-	border-radius:25px;
-}
+.aboveL{z-index:9999;color:#fff;position:absolute;font-size:33px;line-height:36px;font-weight:bold;text-align:center;transform:rotate(-22deg);margin-left:30px;}
+.aboveR{z-index:9999;color:#fff;position:absolute;font-size:33px;line-height:36px;font-weight:bold;text-align:center;transform:rotate(-22deg);}
+.pullUp{margin-top:-5px;margin-left:-7px;}
 </style>
 <body>
 <div class="ss-pg">
@@ -83,13 +42,13 @@ body, html{background:#002249 !important;}
 	<div class="row">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6"><img class="blink2" src="../wp-content/uploads/2018/11/Factory_Direct.gif">
+				<div class="col-lg-6"><img class="blink2" src="http://hottubliquidators.com/wp-content/uploads/2018/11/Factory_Direct.gif">
 				</div>
 				
-				<div class="col-lg-6"><img class="blink" src="../wp-content/uploads/2018/11/Dont_Miss.gif">
+				<div class="col-lg-6"><img class="blink" src="http://hottubliquidators.com/wp-content/uploads/2018/11/Dont_Miss.gif">
 				</div>
 				<div class="col-sm-12" >
-					<img class="brand" src="../wp-content/uploads/2018/05/ss_Logo_SpaShow_4.png" alt="Hot Tub Liquidators" />
+					<img class="brand" src="http://hottubliquidators.com/wp-content/uploads/2018/05/ss_Logo_SpaShow_4.png" alt="Hot Tub Liquidators" />
 				</div>
 				<h1 style="color:#000000; text-align: center; padding-bottom: 20px;"><strong>This Thursday, Friday, Saturday, Sunday!</strong></h1>
 
@@ -122,7 +81,7 @@ body, html{background:#002249 !important;}
 					<p>OAC. See show for details.</p>
 				</div>
 				<div class="col-sm-6" id="hero-image">
-					<img style="width:100%;"  src="../wp-content/uploads/2018/11/Hero_3.png">
+					<img style="width:100%;"  src="http://hottubliquidators.com/wp-content/uploads/2018/11/Hero_3.png">
 				</div>
 			</div>
 		</div>
@@ -140,7 +99,7 @@ body, html{background:#002249 !important;}
 
 				</div>
 				<div class="col-md-3" id="hero-logo">
-					<img class="cs" src="../wp-content/uploads/2018/11/ss_event-logo.png" alt="Hot Tub Liquidators" />
+					<img class="cs" src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_event-logo.png" alt="Hot Tub Liquidators" />
 				</div>
 			</div>
 		</div>
@@ -166,35 +125,35 @@ body, html{background:#002249 !important;}
 			  <div class="carousel-inner" role="listbox">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2000"></div>
 				  <div class="item active">
-					  <div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer11.png" alt="Hot Tub Liquidators"></div>
-					<img src="../wp-content/uploads/2018/11/ss_slide16.jpg" alt="Hot Tub Liquidators">
+					  <div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer11.png" alt="Hot Tub Liquidators"></div>
+					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide16.jpg" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<img src="../wp-content/uploads/2018/11/ss_slide2.jpg" alt="Hot Tub Liquidators">
+					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide2.jpg" alt="Hot Tub Liquidators">
 				</div>
 				 <div class="item">
-					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer8.png" alt="Hot Tub Liquidators"></div>
-				  	<img src="../wp-content/uploads/2018/11/ss_slide10.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer8.png" alt="Hot Tub Liquidators"></div>
+				  	<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide10.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer6.png" alt="Hot Tub Liquidators"></div>
-				  	<img src="../wp-content/uploads/2018/11/ss_slide4.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer6.png" alt="Hot Tub Liquidators"></div>
+				  	<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide4.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer7.png" alt="Hot Tub Liquidators"></div>
-					<img src="../wp-content/uploads/2018/11/ss_slide11.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer7.png" alt="Hot Tub Liquidators"></div>
+					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide11.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer9.png" alt="Hot Tub Liquidators"></div>
-					<img src="../wp-content/uploads/2018/11/ss_slide12.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer9.png" alt="Hot Tub Liquidators"></div>
+					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide12.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<!--div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer5.png" alt="Hot Tub Liquidators"></div-->
-					<img src="../wp-content/uploads/2018/11/ss_slide13.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
+					<!--div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer5.png" alt="Hot Tub Liquidators"></div-->
+					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide13.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="../wp-content/uploads/2018/11/ss_slide-offer10.png" alt="Hot Tub Liquidators"></div>
-					<img src="../wp-content/uploads/2018/11/ss_slide14.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
+					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer10.png" alt="Hot Tub Liquidators"></div>
+					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide14.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 			  </div>
 
@@ -212,32 +171,32 @@ body, html{background:#002249 !important;}
 </div>
 	
 <div class="container">
-	<div class="row">
+	<div class="row" style="padding:30px 0 0 !important;">
 		<div class="col-md-6">
-			<div class="thumbnail">
-			  <img src="../wp-content/uploads/2018/11/ss_slide7.jpg" alt="Hot Tub Liquidators" />
-				<!--img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag4.png" alt="Hot Tub Liquidators" /-->
+			<div class="thumbnail"><span class="aboveL">Up To <br>50% OFF</span>
+			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide7.jpg" alt="Hot Tub Liquidators" />
+				<img class="red-tags" src="../wp-content/themes/salient/img/ss_red-tag_L.png" alt="Hot Tub Liquidators" />
 			</div>
 		  </div>
 		<div class="col-md-6">
-			<div class="thumbnail">
-			  <img src="../wp-content/uploads/2018/11/ss_slide8.jpg" alt="Hot Tub Liquidators">
-				  <!--img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag2.png" alt="Hot Tub Liquidators" /-->
+			<div class="thumbnail"><span class="aboveR">Factory <br>Direct</span>
+			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide8.jpg" alt="Hot Tub Liquidators">
+				  <img class="red-tags tag-shift" src="../wp-content/themes/salient/img/ss_red-tag_R.png" alt="Hot Tub Liquidators" />
 			  </div>
 			</div>
 		  </div>
 	
-	<div class="row">
+	<div class="row"  style="padding:0 0 30px !important;">
 		<div class="col-md-6">
-			<div class="thumbnail">
-			  <img src="../wp-content/uploads/2018/11/ss_slide3.jpg" alt="Hot Tub Liquidators">
-				  <!--img class="red-tags" src="../wp-content/uploads/2018/11/ss_red-tag3.png" alt="Hot Tub Liquidators" /-->
+			<div class="thumbnail"><span class="aboveL">Instant <br>Rebates</span>
+			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide3.jpg" alt="Hot Tub Liquidators">
+				  <img class="red-tags" src="../wp-content/themes/salient/img/ss_red-tag_L.png" alt="Hot Tub Liquidators" />
 			  </div>
 			</div>
 		<div class="col-md-6">
-			<div class="thumbnail">
-			  <img src="../wp-content/uploads/2018/11/ss_slide9.jpg" alt="Hot Tub Liquidators">
-				  <!--img class="red-tags tag-shift" src="../wp-content/uploads/2018/11/ss_red-tag1.png" alt="Hot Tub Liquidators"/-->
+			<div class="thumbnail"><span class="aboveR pullUp">Don't <br>Miss This!</span>
+			  <img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide9.jpg" alt="Hot Tub Liquidators">
+				  <img class="red-tags tag-shift" src="../wp-content/themes/salient/img/ss_red-tag_R.png" alt="Hot Tub Liquidators"/>
 			</div>
 		 </div>
 	</div>
@@ -251,8 +210,8 @@ body, html{background:#002249 !important;}
 					<div class="video">
 						<h2 style="font-size: 50px;">Nevadas #1 Spa Dealer</h2>
 						<video width="100%" height="auto" controls> 
-  							<source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4">
-  							<source src="../wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg">
+  							<source src="http://hottubliquidators.com/wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4">
+  							<source src="http://hottubliquidators.com/wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg">
 						</video>
 
 					<h1>One Block North of I-215 &amp; Gibson RD Exit #2!</h1>
