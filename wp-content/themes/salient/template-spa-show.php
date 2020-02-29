@@ -140,7 +140,7 @@ body, html{background:#002249 !important;}
 				  	<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide4.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
-					<div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer7.png" alt="Hot Tub Liquidators"></div>
+					<!--div class="badge-large"><img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide-offer7.png" alt="Hot Tub Liquidators"></div-->
 					<img src="http://hottubliquidators.com/wp-content/uploads/2018/11/ss_slide11.jpg" alt="Hot Tub Liquidators" alt="Hot Tub Liquidators">
 				</div>
 				<div class="item">
