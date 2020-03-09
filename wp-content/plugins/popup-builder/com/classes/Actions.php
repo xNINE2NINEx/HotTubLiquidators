@@ -37,7 +37,7 @@ class Actions
 		add_action('add_meta_boxes', array($this, 'popupMetaboxes'), 100);
 		add_filter('post_updated_messages', array($this, 'popupPublishedMessage'), 1, 1);
 		add_action('before_delete_post', array($this, 'deleteSubscribersWithPopup'), 1, 1);
-		add_action('dp_duplicate_post', array($this, 'popupCopyPostMetaInfo'), 10, 2);
+		add_action('sgpb_duplicate_post', array($this, 'popupCopyPostMetaInfo'), 10, 2);
 		add_filter('get_sample_permalink_html', array($this, 'removePostPermalink'), 1, 1);
 		add_action('manage_'.SG_POPUP_POST_TYPE.'_posts_custom_column' , array($this, 'popupsTableColumnsValues'), 10, 2);
 		add_action('media_buttons', array($this, 'popupMediaButton'));
@@ -1053,7 +1053,7 @@ class Actions
 			do_action('dp_duplicate_page', $newPostId, $post, $status);
 		}
 		else {
-			do_action('dp_duplicate_post', $newPostId, $post, $status);
+			do_action('sgpb_duplicate_post', $newPostId, $post, $status);
 		}
 
 		delete_post_meta($newPostId, '_sgpb_original');

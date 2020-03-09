@@ -485,14 +485,6 @@ class SgpbDataConfig
 	{
 		$keys = array();
 
-		$keys[] = array(
-			'label' => __('PDF', SG_POPUP_TEXT_DOMAIN),
-			'pluginKey' =>  'popupbuilder-pdf/PopupBuilderPdf.php',
-			'key' => 'pdf',
-			'url' => SGPB_PDF_PLUGIN_URL,
-			'availability' => 'free'
-		);
-
 		return $keys;
 	}
 
@@ -511,6 +503,12 @@ class SgpbDataConfig
 			'pluginKey' =>  'popupbuilder-gamification/PopupBuilderGamification.php',
 			'key' => 'gamification',
 			'url' => SGPB_GAMIFICATION_PLUGIN_URL
+		);
+		$keys[] = array(
+			'label' => __('PDF', SG_POPUP_TEXT_DOMAIN),
+			'pluginKey' =>  'popupbuilder-pdf/PopupBuilderPdf.php',
+			'key' => 'pdf',
+			'url' => SGPB_PDF_PLUGIN_URL
 		);
         $keys[] = array(
 			'label' => __('Push Notification', SG_POPUP_TEXT_DOMAIN),

@@ -122,13 +122,13 @@ class SGPBNotificationCenter
 		}
 		$removedNotifications = get_option('sgpb-all-removed-notifications');
 		$removedNotifications = json_decode($removedNotifications, true);
-		
-		if (is_array($removedNotifications)) {
-			foreach ($removedNotifications as $removedNotificationId) {
-				foreach ($activeNotifications as $key => $activeNotification) {
-					if ($activeNotification['id'] == $removedNotificationId) {
-						unset($activeNotifications[$key]);
-					}
+		if (empty($removedNotifications)) {
+			return $activeNotifications;
+		}
+		foreach ($removedNotifications as $removedNotificationId) {
+			foreach ($activeNotifications as $key => $activeNotification) {
+				if ($activeNotification['id'] == $removedNotificationId) {
+					unset($activeNotifications[$key]);
 				}
 			}
 		}
