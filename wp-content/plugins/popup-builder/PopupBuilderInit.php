@@ -68,6 +68,7 @@ class PopupBuilderInit
 		require_once(SG_POPUP_CLASSES_PATH.'Updates.php');
 		require_once(SG_POPUP_CLASSES_PATH.'NotificationCenter.php');
 		require_once(SG_POPUP_CLASSES_PATH.'Notification.php');
+		require_once(SG_POPUP_CLASSES_PATH.'Feedback.php');
 	}
 
 	public function actions()
@@ -90,12 +91,14 @@ class PopupBuilderInit
 	{
 		Installer::install();
 		Installer::registerPlugin();
+		AdminHelper::filterUserCapabilitiesForTheUserRoles('activate');
 	}
 
 	public function deactivate()
 	{
 		Functions::clearAllTransients();
 		AdminHelper::removeSelectedTypeOptions('cron');
+		AdminHelper::filterUserCapabilitiesForTheUserRoles('deactivate');
 		require_once(SG_POPUP_EXTENSION_PATH.'SgpbPopupExtensionRegister.php');
 		$pluginName = SG_POPUP_FILE_NAME;
 		// remove AWeber extension from registered extensions

@@ -297,7 +297,7 @@ class ConfigDataHelper
 		);
 
 		$data['customEditorContent'] = array(
-			'js' => array( 
+			'js' => array(
 				'helperText' => array(
 					'ShouldOpen' => '<b>Opening events:</b><br><br><b>#1</b> Add the code you want to run <b>before</b> the popup opening. This will be a condition for opening the popup, that is processed and defined before the popup opening. If the return value is <b>"true"</b> then the popup will open, if the value is <b>"false"</b> the popup won\'t open.',
 					'WillOpen' => '<b>#2</b> Add the code you want to run <b>before</b> the popup opens. This will be the code that will work in the process of opening the popup. <b>true/false</b> conditions will not work in this phase.',
@@ -308,7 +308,7 @@ class ConfigDataHelper
 				),
 				'description' => array(
 					__('If you need the popup id number in the custom code, you may use the following variable to get the ID: <code>popupId</code>', SG_POPUP_TEXT_DOMAIN)
-				) 
+				)
 			),
 			'css' => array(
 				// we need this oldDefaultValue for the backward compatibility
@@ -1204,7 +1204,8 @@ class ConfigDataHelper
 			'addButtonSpinner' => __('Add', SG_POPUP_TEXT_DOMAIN),
 			'audioSupportAlertMessage' => __('Only audio files supported (e.g.: mp3, wav, m4a, ogg)', SG_POPUP_TEXT_DOMAIN),
 			'publishPopupBeforeElementor' => __('Please, publish the popup before starting to use Elementor with it!', SG_POPUP_TEXT_DOMAIN),
-			'publishPopupBeforeDivi' => __('Please, publish the popup before starting to use Divi Builder with it!', SG_POPUP_TEXT_DOMAIN)
+			'publishPopupBeforeDivi' => __('Please, publish the popup before starting to use Divi Builder with it!', SG_POPUP_TEXT_DOMAIN),
+			'closeButtonAltText' =>  __('Close', SG_POPUP_TEXT_DOMAIN)
 		);
 
 		return $translatedData;

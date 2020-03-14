@@ -1596,10 +1596,14 @@ SGPBPopup.prototype.contentCloseBehavior = function()
 	var closePopupAfterCopy = SGPBPopup.varToBool(popupData['sgpb-copy-to-clipboard-close-popup']);
 	var clipboardAlert = SGPBPopup.varToBool(popupData['sgpb-copy-to-clipboard-alert']);
 
+	var separators = ['&amp;', '/&/g'];
+	for (var i in separators) {
+		redirectUrl = redirectUrl.split(separators[i]).join('&');
+	}
+
 	sgAddEvent(window, 'sgpbDidOpen', function(e) {
 
 	});
-
 	sgAddEvent(window, 'sgpbWillOpen', function(e) {
 		if (popupId != e.detail.popupId || e.detail.popupData['sgpb-content-click'] == 'undefined') {
 			return false;
@@ -1616,7 +1620,6 @@ SGPBPopup.prototype.contentCloseBehavior = function()
 			jQuery(window).trigger('sgpbPopupContentClick', settings);
 
 			if (contentClickBehavior == 'redirect') {
-
 				if (redirectToNewTab) {
 					window.open(redirectUrl);
 					SGPBPopup.closePopupById(that.getPopupId());

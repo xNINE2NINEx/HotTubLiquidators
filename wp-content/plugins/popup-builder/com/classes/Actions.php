@@ -57,6 +57,7 @@ class Actions
 		add_action('pre_get_posts', array($this, 'preGetPosts'));
 		add_action('template_redirect', array($this, 'redirectFromPopupPage'));
 		add_filter('views_edit-popupbuilder', array($this, 'mainActionButtons'), 10, 1);
+		new SGPBFeedback();
 		new Ajax();
 	}
 
@@ -1165,6 +1166,10 @@ class Actions
 	public function getSubscribersCsvFile()
 	{
 		global $wpdb;
+		$allowToAction = AdminHelper::userCanAccessTo();
+		if (!$allowToAction) {
+			return false;
+		}
 		$query = AdminHelper::subscribersRelatedQuery();
 		if (isset($_GET['orderby']) && !empty($_GET['orderby'])) {
 			if (isset($_GET['order']) && !empty($_GET['order'])) {
@@ -1209,6 +1214,11 @@ class Actions
 
 	public function getSystemInfoFile()
 	{
+		$allowToAction = AdminHelper::userCanAccessTo();
+		if (!$allowToAction) {
+			return false;
+		}
+
 		$content = AdminHelper::getSystemInfoText();
 
 		header('Pragma: public');
@@ -1224,6 +1234,13 @@ class Actions
 
 	public function saveSettings()
 	{
+		$allowToAction = AdminHelper::userCanAccessTo();
+		if (!$allowToAction) {
+			wp_redirect(get_home_url());
+
+			return false;
+		}
+
 		$postData = $_POST;
 		$deleteData = 0;
 
@@ -1234,6 +1251,8 @@ class Actions
 
 		update_option('sgpb-user-roles', $userRoles);
 		update_option('sgpb-dont-delete-data', $deleteData);
+
+		AdminHelper::filterUserCapabilitiesForTheUserRoles('save');
 
 		wp_redirect(admin_url().'edit.php?post_type='.SG_POPUP_POST_TYPE.'&page='.SG_POPUP_SETTINGS_PAGE);
 	}

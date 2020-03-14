@@ -605,11 +605,17 @@ class AdminHelper
 			return $role;
 		}
 
-		global $current_user;
-		$userRoleName = $current_user->roles;
-
-		if (!empty($userRoleName)) {
+		global $currentUser;
+		if (!empty($currentUser)) {
+			$userRoleName = $currentUser->roles;
 			$role = $userRoleName;
+		}
+		else {
+			if (!function_exists('wp_get_current_user')) {
+				require_once(ABSPATH.'wp-includes/pluggable.php');
+			}
+			$currentUser = wp_get_current_user();
+			$role = $currentUser->roles;
 		}
 
 		return $role;
@@ -2054,5 +2060,70 @@ class AdminHelper
 		$browserInfoContent .= 'User Agent:         '.$uAgent."\n";
 
 		return $browserInfoContent;
+	}
+
+	// checking user roles capability to do actions
+	public static function userCanAccessTo()
+	{
+		// if empty, should return administrator
+		$savedUserRoles = self::getPopupPostAllowedUserRoles();
+		$currentUserRole = self::getCurrentUserRole();
+		if (is_array($currentUserRole) && is_array($savedUserRoles)) {
+			return array_intersect($currentUserRole, $savedUserRoles);
+		}
+	}
+
+	public static function filterUserCapabilitiesForTheUserRoles($hook = 'save')
+	{
+		global $wp_roles;
+
+    	$allAvailableWpRoles = $wp_roles->roles;
+    	$savedUserRoles = get_option('sgpb-user-roles');
+    	// we need to remove from all roles, either when deactivating the plugin and when there is no saved roles
+    	if (empty($savedUserRoles) || $hook == 'deactivate') {
+    		$savedUserRoles = array();
+    	}
+    	$rolesToBeRestricted = array();
+		// selected user roles, which have access to the PB
+		foreach ($allAvailableWpRoles as $allAvailableWpRole) {
+			if (isset($allAvailableWpRole['name']) && in_array(lcfirst($allAvailableWpRole['name']), $savedUserRoles)) {
+				$indexToUnset = lcfirst($allAvailableWpRole['name']);
+				continue;
+			}
+			$rolesToBeRestricted[] = lcfirst($allAvailableWpRole['name']);
+		}
+
+		$caps = array(
+			'read_private_sgpb_popups',
+			'edit_sgpb_popup',
+			'edit_sgpb_popups',
+			'edit_others_sgpb_popups',
+			'edit_published_sgpb_popups',
+			'publish_sgpb_popups',
+			'delete_sgpb_popups',
+			'delete_published_posts',
+			'delete_others_sgpb_popups',
+			'delete_private_sgpb_popups',
+			'delete_private_sgpb_popup',
+			'delete_published_sgpb_popups',
+			'sgpb_manage_options',
+			'manage_popup_terms',
+			'manage_popup_categories_terms'
+		);
+
+		if ($hook == 'activate') {
+			$rolesToBeRestricted = $savedUserRoles;
+		}
+		foreach ($rolesToBeRestricted as $roleToBeRestricted) {
+			foreach ($caps as $cap) {
+				// only for the activation hook we need to add our capabilities back
+				if ($hook == 'activate') {
+					$wp_roles->add_cap($roleToBeRestricted, $cap);
+				}
+				else {
+					$wp_roles->remove_cap($roleToBeRestricted, $cap);
+				}
+			}
+		}
 	}
 }

@@ -9,7 +9,7 @@ Tags: popup, pop up, wordpress popup, popup maker, exit popup, popup builder, wo
 Requires at least: 3.8
 Tested up to: 5.3
 Requires PHP: 5.3.3
-Stable tag: 3.63
+Stable tag: 3.64.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -184,6 +184,14 @@ Go to the Popup Builder settings and set your desired options.
 13. Facebook popup
 
 == Changelog ==
+
+= Version 3.64 =
+* Security fixes.
+* Conflict resolved related to Duplicate Post plugin.
+* Speed improvements related to popup opening when custom close button setup.
+* Added ALT attribute inside the close button element.
+* Bug fixed related to Content Click Redirect functionality when the URL contains Unicode characters.
+* Minor improvements.
 
 = Version 3.63 =
 * Autosave fixed.
@@ -1146,7 +1154,7 @@ Leave us a good review :)
 
 == Upgrade Notice ==
 
-Current Version of Popup Builder is 3.63
+Current Version of Popup Builder is 3.64
 
 == Other Notes ==
 

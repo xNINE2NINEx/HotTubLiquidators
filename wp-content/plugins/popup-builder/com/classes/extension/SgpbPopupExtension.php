@@ -134,7 +134,7 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 				'handle' => 'Backend.js',
 				'name' => 'SGPB_JS_LOCALIZATION',
 				'data' => $translatedData
-			);
+			);			
 
 			$localizeData[] = array(
 				'handle' => 'Popup.js',
@@ -249,6 +249,7 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 
 	public function getFrontendScripts($page, $popupObjs)
 	{
+		$translatedData = ConfigDataHelper::getJsLocalizedData();
 		$jsFiles = array();
 		$localizeData = array();
 		$jsFiles[] = array('folderUrl'=> '', 'filename' => 'wp-color-picker');
@@ -302,6 +303,12 @@ class SgpbPopupExtension implements SgpbIPopupExtension
 			'name' => 'sgpbPublicUrl',
 			'data' => SG_POPUP_PUBLIC_URL
 		);
+
+		$localizeData[] = array(
+				'handle' => 'Popup.js',
+				'name' => 'SGPB_JS_LOCALIZATION',
+				'data' => $translatedData
+			);
 
 		$localizeData[] = array(
 			'handle' => 'PopupBuilder.js',

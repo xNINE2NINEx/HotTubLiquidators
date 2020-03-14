@@ -89,7 +89,7 @@ function removeOverlay()
 function setCloseButton(mainDiv)
 {if(!closeButton.data){return;}
 if(closeBehavior.showButton===false){return;}
-closeButtonImage.style.zIndex=defaultZIndex+20;closeButtonImage.style.position="absolute";closeButtonImage.style.float="left";closeButtonImage.style.top=closeBehavior.top;closeButtonImage.style.right=closeBehavior.right;closeButtonImage.style.bottom=closeBehavior.bottom;closeButtonImage.style.left=closeBehavior.left;if(closeButton.type=='button'){closeButtonImage.id=prefix+'-close-button';closeButtonImage.innerHTML=config.closeButton.text;}
+closeButtonImage.style.zIndex=defaultZIndex+20;closeButtonImage.style.position="absolute";closeButtonImage.style.float="left";closeButtonImage.style.top=closeBehavior.top;closeButtonImage.style.right=closeBehavior.right;closeButtonImage.style.bottom=closeBehavior.bottom;closeButtonImage.style.left=closeBehavior.left;closeButtonImage.alt=SGPB_JS_LOCALIZATION.closeButtonAltText;if(closeButton.type=='button'){closeButtonImage.id=prefix+'-close-button';closeButtonImage.innerHTML=config.closeButton.text;}
 closeButtonImage.style.width=closeButton.width+closeButton.widthType;closeButtonImage.style.cursor="pointer";closeButtonImage.style.height=closeButton.height+closeButton.heightType;closeButtonImage.src=closeButton.data;closeButtonImage.style.backgroundRepeat="no-repeat";closeButtonImage.style.backgroundSize="cover";closeButtonImage.onclick=closePopup;positionCloseButton(mainDiv);}
 function positionCloseButton(mainDiv)
 {if(closeBehavior.buttonPosition=="left"){closeButtonImage.style.left=(closeButton.width/2+parseFloat(closeBehavior.leftPosition))+"px";}

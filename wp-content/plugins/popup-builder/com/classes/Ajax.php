@@ -63,9 +63,7 @@ class Ajax
 		add_action('wp_ajax_sgpb_send_newsletter', array($this, 'sendNewsletter'));
 		add_action('wp_ajax_sgpb_send_to_open_counter', array($this, 'addToCounter'));
 		add_action('wp_ajax_sgpb_change_review_popup_show_period', array($this, 'changeReviewPopupPeriod'));
-		add_action('wp_ajax_nopriv_sgpb_change_review_popup_show_period', array($this, 'changeReviewPopupPeriod'));
 		add_action('wp_ajax_sgpb_dont_show_review_popup', array($this, 'dontShowReviewPopup'));
-		add_action('wp_ajax_nopriv_sgpb_dont_show_review_popup', array($this, 'dontShowReviewPopup'));
 		add_action('wp_ajax_nopriv_sgpb_send_to_open_counter', array($this, 'addToCounter'));
 		add_action('wp_ajax_sgpb_close_banner', array($this, 'closeMainRateUsBanner'));
 		add_action('wp_ajax_sgpb_close_license_notice', array($this, 'closeLicenseNoticeBanner'));
@@ -76,21 +74,24 @@ class Ajax
 		add_action('wp_ajax_sgpb_dont_show_problem_alert', array($this, 'dontShowProblemAlert'));
 		// autosave
 		add_action('wp_ajax_sgpb_autosave', array($this, 'sgpbAutosave'));
-		add_action('wp_ajax_nopriv_sgpb_autosave', array($this, 'sgpbAutosave'));
 	}
 
 	public function sgpbAutosave()
 	{
+		$allowToAction = AdminHelper::userCanAccessTo();
+		if (!$allowToAction) {
+			wp_die('');
+		}
+		check_ajax_referer(SG_AJAX_NONCE, 'nonce');
+
 		$popupId = @(int)$_POST['post_ID'];
 		$postStatus = get_post_status($popupId);
 		if ($postStatus == 'publish') {
-			echo '';
-			wp_die();
+			wp_die('');
 		}
 
 		if (!isset($_POST['allPopupData'])) {
-			echo true;
-			wp_die();
+			wp_die(true);
 		}
 		$popupData = SGPopup::parsePopupDataFromData($_POST['allPopupData']);
 		do_action('save_post_popupbuilder');

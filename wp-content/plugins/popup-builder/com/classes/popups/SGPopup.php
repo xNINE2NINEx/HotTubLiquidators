@@ -531,7 +531,7 @@ abstract class SGPopup
 		}
 
 		if ($buttonImageUrl != $savedImageUrl) {
-			$buttonImageData = AdminHelper::getImageDataFromUrl($buttonImageUrl);
+			$buttonImageData = AdminHelper::getImageDataFromUrl($buttonImageUrl, true);
 		}
 		if ($contentBackgroundImageUrl != $savedContentBackgroundImageUrl) {
 			$contentBackgroundImageData = AdminHelper::getImageDataFromUrl($contentBackgroundImageUrl);
