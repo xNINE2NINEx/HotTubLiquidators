@@ -9015,63 +9015,7 @@ header#top nav .sub-menu li:first-child{
 	font-size:50px;
 }
 }
-/*** MAIN NAV CENTER MENU LINKS  
-header#top nav .sf-menu [class^="icon-"]{
-	font-size:16px !important;
-}
-header#top nav .sf-menu li:nth-child(1) a{
-	padding-top:18px !important;
-}
-header#top nav .sf-menu li:nth-child(2) a{
-	padding-top:18px !important;
-}
-header#top nav .sf-menu li:nth-child(4) .sf-sub-indicator [class^="icon-"]{
-	margin-top:-15px;
-}
-header#top nav .sf-menu li:nth-child(5) .sf-sub-indicator [class^="icon-"]{
-	margin-top:-15px;
-}
-header#top nav .sf-menu li:nth-child(10) a{
-	padding-top:18px !important;
-}
-header#top nav .sf-menu li:nth-child(10) .sf-sub-indicator [class^="icon-"]{
-	margin-bottom:-5px;
-}
 
-
-@media only screen and (max-width: 1165px){
-.sub-menu{
-	top:50px !important;
-	left:0 !important;
-}
-header#top nav .sf-menu li:nth-child(1) a{
-	padding-top:16px !important;
-}
-header#top nav .sf-menu li:nth-child(4) .sf-sub-indicator [class^="icon-"]{
-	margin-top:-9px !important;
-}
-header#top nav .sf-menu li:nth-child(5) .sf-sub-indicator [class^="icon-"]{
-	margin-top:-9px !important;
-}
-header#top nav .sf-menu li:nth-child(9) a{
-	padding-top:16px !important;
-}
-header#top nav .sf-menu li:nth-child(10) a{
-	padding-top:16px !important;
-}
-header#top nav .sf-menu li:nth-child(10) .sf-sub-indicator [class^="icon-"]{
-	margin-bottom:-2px !important;
-}
-}
-header#top nav .sf-menu li:nth-child(2) a{
-	padding-top:13px !important;
-}
-header#top nav .sf-menu li:nth-child(8) a{
-	padding-top:13px !important;
-}
-header#top nav .sf-menu li:nth-child(9) a{
-	padding-top:13px !important;
-}*/
 #search-outer{display:none;}
 .downloadPDFs{width:90%;margin-left:10px !important;}
 .downloadpdf{
@@ -9336,4 +9280,63 @@ small{font-size:60%;}
 @media only screen and (max-width: 480px){
 	#save-text {font-size:30px!important;}
 
+}
+
+/******** CSS from wp customize pull ********/
+
+.paygrid img{border:10px solid #ccc;padding:10px;}
+.table{font-size:14px;border-collapse:collapse;border-spacing:0;}
+.table tbody > tr > td {padding:20px 5px 15px 5px;border-bottom:1px solid #dddddd;line-height:16px;border-spacing:0;}
+.btn-success{
+	text-align:center;
+	background-color:#29c1e8;
+	padding:1% 20%;
+	border-radius:50px;
+}
+.btn-success:hover{
+	background-color:#2c3e50;
+	color:#29c1e8;
+	cursor:pointer;
+}
+#ninja_forms_required_items, .nf-field-container{margin-bottom:10px !important;}
+.nf-field-description p{padding-bottom:10px !important;}
+.label-above .nf-field-label{margin-bottom:5px !important;}
+
+.viking-page-content {
+  padding: 80px 0 50px 0;
+  text-align: center;
+}
+.passion-page-content {
+  padding: 80px 0 50px 0;
+}
+.passion-page-content .txtleft {
+  text-align:left;
+}
+.passion-page-content .txtright {
+  text-align:right;
+}
+.babyblue{background-color:#e0f2fb;}
+.darkblue{background-color:#073866;}
+.water_bg{
+  background: url(/wp-content/uploads/2020/01/water-bg.jpg);
+  background-size: 1900px 950px;
+  background-position: 50% 50%;
+}
+.product-view{padding:0
+22px 0 11px}
+.product-view .video-icon-productpage{background-image:url(https://static.fonteyn.nl/skin/frontend/fonteyn/default/images/compiled/sprite-default-general-1551178895358.png);
+	background-position:-363px -1104px;
+	background-size:1605px 1513px;opacity:.8;height:66px;width:66px;display:block;left:50%;margin-left:-40px;margin-top:-20px;position:absolute;top:50%}
+.dynasty-page-content {
+  padding: 80px 0 50px 0;
+}
+.text-center{text-align:center;}
+@media only screen and (max-width: 768px) {
+  .col-xs-6 {
+    height:129px;
+  }
+}
+
+.wellis-page-content {
+  padding: 80px 0 50px 0;
 }
