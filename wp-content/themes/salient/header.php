@@ -151,11 +151,11 @@ if($using_secondary == 'header_with_secondary') { ?>
 	
 	<?php get_template_part('includes/header-search'); ?>
 	<div class="mainheader desktophide">
-  <img src="/wp-content/themes/salient/img/mainheader.png" alt="Hot Tub Liquidators" width="1150" height="auto">
+  <img src="/wp-content/themes/salient/img/mainheader_new.png" alt="Hot Tub Liquidators" width="1150" height="auto">
   </div>
   <div class="mainheader mobileshow">
   <div class="container">
-  <img src="/wp-content/themes/salient/img/mainheader_logo.png" alt="Hot Tub Liquidators" width="304" height="auto" class="logo">
+  <img src="/wp-content/themes/salient/img/mainheader_logo_new.png" alt="Hot Tub Liquidators" width="304" height="auto" class="logo">
   <img src="/wp-content/themes/salient/img/mainheader_header.png" alt="Nevada's Largest Hot Tub Display : Premium New & Pre-Owned Spas for less" width="780" height="auto" class="headz">
   <div class="cleared"></div>
   </div>
