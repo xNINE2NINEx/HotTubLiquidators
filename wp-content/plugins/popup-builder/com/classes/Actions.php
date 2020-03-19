@@ -737,6 +737,8 @@ class Actions
 			$this->unsubscribe($unsubscribeArgs);
 		}
 
+		AdminHelper::removeUnnecessaryCodeFromPopups();
+
 		$this->customPostTypeObj = new RegisterPostType();
 	}
 

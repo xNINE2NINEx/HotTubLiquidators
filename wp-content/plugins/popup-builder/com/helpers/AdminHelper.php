@@ -2126,4 +2126,35 @@ class AdminHelper
 			}
 		}
 	}
+
+	public static function removeUnnecessaryCodeFromPopups()
+	{
+		$alreadyClearded = self::getOption('sgpb-unnecessary-scripts-removed-1');
+		if ($alreadyClearded) {
+			return true;
+		}
+
+		global $wpdb;
+		$getAllDataSql = $wpdb->prepare('SELECT id FROM '.$wpdb->prefix.'posts WHERE post_type = %s', SG_POPUP_POST_TYPE);
+		$popupsId = $wpdb->get_results($getAllDataSql, ARRAY_A);
+		if (empty($popupsId)) {
+			return true;
+		}
+		foreach ($popupsId as $popupId) {
+			if (empty($popupId['id'])) {
+				continue;
+			}
+			$id = $popupId['id'];
+			$customScripts = get_post_meta($id, 'sg_popup_scripts', true);
+			if (empty($customScripts)) {
+				continue;
+			}
+			if (isset($customScripts['js'])) {
+				unset($customScripts['js']);
+				update_post_meta($id, 'sg_popup_scripts', $customScripts);
+			}
+		}
+
+		self::updateOption('sgpb-unnecessary-scripts-removed-1', 1);
+	}
 }

@@ -45,10 +45,7 @@ class SGPBFeedback
 		$headers .= 'Content-type: text/html; charset=UTF-8'."\r\n"; //set UTF-8
 
 		$receiver = 'feedbackpopupbuilder@gmail.com';
-		$customerEmailAddres = get_bloginfo('admin_email');
 		$title = 'Popup Builder Deactivation Feedback From Customer';
-		$message = 'Customer site - '.get_site_url().'<br>'."\n";
-		$message = 'Customer email address - '.$customerEmailAddres.'<br>'."\n";
 		$message .= 'Feedback key - '.$feedbackKey.'<br>'."\n";
 		$message .= 'Feedback text - '.$feedbackText."\n";
 
