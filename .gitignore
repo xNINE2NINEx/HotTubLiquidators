@@ -4,3 +4,7 @@ wp-admin/error_log
 wp-content/wflogs/*
 wp-content/wflogs/config.php
 error_log
+
+wp-admin/error_log
+wp-content/wflogs/rules.php
+wp-content/wflogs/wafRules.rules
