@@ -27,7 +27,9 @@ body, html{background:#002249 !important;}
 <div class="container-fluid bg-blue">
 		<div class="row">
 			<div class="col-lg-12" id="header-top">
-				<h2>129 N. Gibson RD., Henderson | (702) 450-7727<br><strong style="color:#fcbb11; text-transform: uppercase;">Enjoy a Hot Tub or swim spa for the Holidays!</strong></h2>
+				<h2 style="margin-bottom:5px;">129 N. Gibson RD., Henderson | (702) 450-7727<br><strong style="color:#fcbb11; text-transform: uppercase;">Enjoy a Hot Tub or swim spa!</strong></h2>
+				<h1 style="margin:0;font-size:38px !important;"><strong style="color:#c22026;">WINTER HEAT</strong> <strong style="color:#89cff0;">....... SUMMER RETREAT!</strong></h1>
+				<h2 style="margin-top:0;"><em>Year-Round Lifestyle Enhancement!</em></h2>
 			</div>
 				<div class="container">
 					<div class="row">
@@ -75,7 +77,7 @@ body, html{background:#002249 !important;}
 			<div class="row">
 			  <div class="col-sm-6 special" id="special">
 				  <h1><span style="font-size: 40px;">SAVE <br> THOUSANDS!</span></h1>
-					<h2><strong style="color:#fcbb11;">6-Month Zero Interest</strong> w/payments and <br><strong style="color:#fcbb11;">12-Month Zero Interest</strong> w/payments.</h2>
+					<h2><strong style="color:#fcbb11;">Easy Financing Available</strong></h2>
 					<h2><span style="color:#002249;">We also offer Credit Union Low Rate financing with no pre-payment penalty!</span></h2>
 					<!--h2><strong style="color:#fcbb11;">HOT TUBS</strong> $2,880! <strong style="color:#fcbb11;">SWIM SPAS</strong> $10,880! <strong style="color:#fcbb11;">PAYMENTS</strong> as low as $69 mo.</h2-->
 					<p>OAC. See show for details.</p>
@@ -210,8 +212,8 @@ body, html{background:#002249 !important;}
 					<div class="video">
 						<h2 style="font-size: 50px;">Nevadas #1 Spa Dealer</h2>
 						<video width="100%" height="auto" controls> 
-  							<source src="https://hottubliquidators.com/wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/mp4">
-  							<source src="https://hottubliquidators.com/wp-content/uploads/2020/02/HTL_Henderson_022520.mp4" type="video/ogg">
+  							<source src="https://hottubliquidators.com/wp-content/uploads/2020/06/MSA_HTL_Henderson_061620.mp4" type="video/mp4">
+  							<source src="https://hottubliquidators.com/wp-content/uploads/2020/06/MSA_HTL_Henderson_061620.mp4" type="video/ogg">
 						</video>
 
 					<h1>One Block North of I-215 &amp; Gibson RD Exit #2!</h1>
