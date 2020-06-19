@@ -94,7 +94,7 @@ body, html{background:#002249 !important;}
 				<div class="col-md-9">
 					<h1>Save Thousands on the<br>World's Best Built Spas!</h1>
 					
-					<h2 class="text-yellow"><strong>Thursday, Feb. 27th - Sunday, Mar. 1st</strong></h2>
+					<h2 class="text-yellow"><strong>Thursday, June 18th - Sunday, June 21st</strong></h2>
 						
 
 				</div>
@@ -216,7 +216,7 @@ body, html{background:#002249 !important;}
 
 					<h1>One Block North of I-215 &amp; Gibson RD Exit #2!</h1>
 					<h2> (Between the 215 &amp; The Valley Auto Mall on Gibson RD) </h2>
-					<h1 class="text-yellow">Thursday, Feb. 27th - Sunday, Mar. 1st</h1>
+					<h1 class="text-yellow">Thursday, June 18th - Sunday, June 21st</h1>
 						<h2>Hours: 10am - 7pm</h2>
 						<h1> Factory Reps On Hand!</h1>
 						<h1>For more information click here</h1>
