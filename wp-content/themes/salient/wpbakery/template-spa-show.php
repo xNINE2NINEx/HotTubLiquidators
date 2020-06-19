@@ -48,7 +48,7 @@ body, html{background:#002249 !important;}
 				<div class="col-lg-6"><img class="blink" src="https://hottubliquidators.com/wp-content/uploads/2018/11/Dont_Miss.gif">
 				</div>
 				<div class="col-sm-12" >
-					<a href="https://hottubliquidators.com/about/" title="Spa Show : Hot Tub Liquidators - About"><img class="brand" src="https://hottubliquidators.com/wp-content/uploads/2018/05/ss_Logo_SpaShow_4.png" alt="Hot Tub Liquidators" /></a>
+					<img class="brand" src="https://hottubliquidators.com/wp-content/uploads/2018/05/ss_Logo_SpaShow_4.png" alt="Hot Tub Liquidators" />
 				</div>
 				<h1 style="color:#000000; text-align: center; padding-bottom: 20px;"><strong>This Thursday, Friday, Saturday, Sunday!</strong></h1>
 
